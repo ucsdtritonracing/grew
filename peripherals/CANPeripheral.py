@@ -78,11 +78,15 @@ class CANPeripheral(QObject):
                               data=data)
             task = self.bus.send_periodic(msg, interval) 
             self.periodics[name] = task
+        else:
+            print("ERROR: Periodic already started!") #find better way to do this?
 
     def stop_periodic(self, name):
         task = self.periodics.get(name)
         if task:
             task.stop()
+            del self.periodics[name]
+            
             
     def stop_all_periodics(self):
         for task in self.periodics.values():
@@ -96,4 +100,6 @@ class CANPeripheral(QObject):
                               is_extended_id=self.isExtended,
                               data=data)
             task.modify_data(msg)
+        else:
+            print("ERROR: Periodic doesn't exist!")
     
