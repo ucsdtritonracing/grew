@@ -16,9 +16,17 @@ class PDUWidget(PeripheralWidget):
         self.disable = QtWidgets.QPushButton("DISABLE")
         self.disable.clicked.connect(self.peripheral.disable)
 
+        self.enableVCU = QtWidgets.QPushButton("ENABLE VCU")
+        self.enableVCU.clicked.connect(self.peripheral.enableVCU)
+        self.disableVCU = QtWidgets.QPushButton("DISABLE VCU")
+        self.disableVCU.clicked.connect(self.peripheral.disableVCU)
+
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.Channel1Off)
         self.layout.addWidget(self.Channel1On)
         self.layout.addWidget(self.enable)
         self.layout.addWidget(self.disable)
+        self.layout.addWidget(self.enableVCU)
+        self.layout.addWidget(self.disableVCU)
+        
         

@@ -4,7 +4,7 @@ import sys
 from PySide6 import QtWidgets
 def __main__():
     app = QtWidgets.QApplication([])
-    with can.interface.Bus(interface='pcan', receive_own_messages=True) as bus:
+    with can.interface.Bus(interface='virtual', receive_own_messages=True) as bus:
         widgets = {}
         listners = []
         widgets["PDU"] = PDUWidget(bus)

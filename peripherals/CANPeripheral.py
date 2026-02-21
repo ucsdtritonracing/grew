@@ -14,7 +14,7 @@ class CANPeripheral(QObject):
         self.id = id # id identifying the peripheral
         self.isExtended = isExtended
         self.bus = bus
-        self.perodics = {}
+        self.periodics = {}
         self.state = {}
         self.txData = []
         self.listner = CANListner(func)
@@ -32,6 +32,16 @@ class CANPeripheral(QObject):
 
     @Slot()
     def disable(self):
+        raise NotImplementedError("Must be implemented by subclass")
+        pass # implement to pause periodics and hand control back to vcu
+    
+    @Slot()
+    def enableVCU(self):
+        raise NotImplementedError("Must be implemented by subclass")
+        pass # implement to start periodics and take control from vcu
+
+    @Slot()
+    def disableVCU(self):
         raise NotImplementedError("Must be implemented by subclass")
         pass # implement to pause periodics and hand control back to vcu
 
@@ -54,25 +64,33 @@ class CANPeripheral(QObject):
                           data=data)
         self.bus.send(msg)
 
-    def start_periodic(self, data, interval, name):
-        msg = can.Message(arbitration_id=self.id,
+    def send_message(self, data, id):
+        # data to be passed in through GUI
+        msg = can.Message(arbitration_id=id,
                           is_extended_id=self.isExtended,
                           data=data)
-        task = self.bus.send_periodic(msg, interval) 
-        self.perodics[name] = task
+        self.bus.send(msg)
+
+    def start_periodic(self, data, interval, name):
+        if(name not in self.periodics):
+            msg = can.Message(arbitration_id=self.id,
+                              is_extended_id=self.isExtended,
+                              data=data)
+            task = self.bus.send_periodic(msg, interval) 
+            self.periodics[name] = task
 
     def stop_periodic(self, name):
-        task = self.perodics.get(name)
+        task = self.periodics.get(name)
         if task:
             task.stop()
             
     def stop_all_periodics(self):
-        for task in self.perodics.values():
+        for task in self.periodics.values():
             task.stop()
-        self.perodics.clear()
+        self.periodics.clear()
 
     def update_periodic(self, name, data):
-        task = self.perodics.get(name)
+        task = self.periodics.get(name)
         if task:
             msg = can.Message(arbitration_id=self.id,
                               is_extended_id=self.isExtended,

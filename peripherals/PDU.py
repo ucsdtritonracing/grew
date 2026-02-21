@@ -23,6 +23,14 @@ class PDU(CANPeripheral):
     def disable(self):
         super().stop_periodic("setCurrentLimit")
     
+    @Slot()
+    def enableVCU(self):
+        super().send_message(data=self.const.ENABLE_FRAME, id=self.const.VCU_COMMAND_ID)
+    
+    @Slot()
+    def disableVCU(self):
+        super().send_message(data=self.const.DISABLE_FRAME, id=self.const.VCU_COMMAND_ID)
+
     def processMessage(self, msg, offset):
         channel = offset
         for i in range(0, self.const.NUM_CHANNELS, 2):
