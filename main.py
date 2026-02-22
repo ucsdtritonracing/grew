@@ -8,7 +8,7 @@ def __main__():
         widgets = {}
         listners = []
         widgets["PDU"] = PDUWidget(bus)
-        listners.append(widgets["PDU"].peripheral.returnListner())
+        listners.append(widgets["PDU"].peripheral.getListner())
         print_listener = can.Printer()
         with can.Notifier(bus, listners + [print_listener]) as notifier:
             widgets["PDU"].resize(800, 600)

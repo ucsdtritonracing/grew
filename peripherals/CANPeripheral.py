@@ -54,7 +54,7 @@ class CANPeripheral(QObject):
         raise NotImplementedError("Must be implemented by subclass")
         pass # implement to process incoming messages and update state
     
-    def returnListner(self):
+    def getListner(self):
         return self.listner
     
     def send_message(self, data):
