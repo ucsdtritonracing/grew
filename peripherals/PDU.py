@@ -25,11 +25,13 @@ class PDU(CANPeripheral):
     
     @Slot()
     def enableVCU(self):
-        super().send_message(data=self.const.ENABLE_FRAME, id=self.const.VCU_COMMAND_ID)
+        data = [0xFF,self.const.DEVICE_ID] #0xFF on
+        super().send_message(data=data, id=self.const.VCU_COMMAND_ID, isExtended=False)
     
     @Slot()
     def disableVCU(self):
-        super().send_message(data=self.const.DISABLE_FRAME, id=self.const.VCU_COMMAND_ID)
+        data = [0x00, self.const.DEVICE_ID] #0x00 off
+        super().send_message(data=data, id=self.const.VCU_COMMAND_ID, isExtended=False)
 
     def processMessage(self, msg, offset):
         channel = offset

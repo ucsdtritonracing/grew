@@ -5,12 +5,10 @@ from typing import ClassVar
 
 @dataclass(frozen=True)
 class PDUConstants:
-    VCU_COMMAND_ID: int =                   0x00676767
-    ENABLE_FRAME: ClassVar[list[int]] =     [0x67,0x67,0x67,0x67,0x0,0x0,0x0,0x0]
-    DISABLE_FRAME: ClassVar[list[int]] =    [0x0,0x0,0x0,0x0,0x67,0x67,0x67,0x67]
+    VCU_COMMAND_ID: int =                   0xDDD # in the future, make this a global constant in seperate file
+    DEVICE_ID: int =                        0xA1
     RX_1_ID: int =                          0x000A0610
     RX_2_ID: int =                          0x000A0611
-    DEVICE_ID: int =                        0x000A0620
     ERROR_MASK: int =                       0b11100000
     CURRENT_MASK: int = 	                0b0000001111111111
     NUM_CHANNELS: int =                     8

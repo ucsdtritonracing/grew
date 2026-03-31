@@ -64,10 +64,10 @@ class CANPeripheral(QObject):
                           data=data)
         self.bus.send(msg)
 
-    def send_message(self, data, id):
+    def send_message(self, data, id, isExtended):
         # data to be passed in through GUI
         msg = can.Message(arbitration_id=id,
-                          is_extended_id=self.isExtended,
+                          is_extended_id=isExtended,
                           data=data)
         self.bus.send(msg)
 
