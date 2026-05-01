@@ -2,6 +2,7 @@ from peripherals.CANPeripheral import CANPeripheral
 from constants.PDUConstants import VCUConstants
 from PySide6.QtCore import Slot
 import struct
+import cantools
     
 class PDU(CANPeripheral):
     const = VCUConstants()
@@ -10,6 +11,7 @@ class PDU(CANPeripheral):
         super().__init__(id=self.const.DEVICE_ID, isExtended=False, bus=bus, func=self.func)
     def setup(self):
         self.state = {
+            "imu": [0,0,0,0,0,0],
             "apps1RefVolts": [0,0],
             "apps2RefVolts": [0,0],
             "appsValidity": [False,False],
@@ -17,15 +19,16 @@ class PDU(CANPeripheral):
             "bpsThresholds": [0,0],
             "bpsValidity": [False,False],
             "bpsPositions": [0,0],
-            "sasAngle": 0,
+            "sasAngle": 0, # recieve from sensor itself 
             "r2dButtonPressed": False,
             "shutdownClosed": False,
+            "r2dMode": False,
             "pedalMap": [0,0,0,0,0,0,0,0,0,0],
             "wheelSpeeds": [0,0,0,0],
         }
         self.txData = [0,0,0,0,0,0,0,0]
         self.txData1 = [0]
-    
+        self.dbc = cantools.database.load_file("constants\TR-26.dbc")
     @Slot()
     def enable(self):
         self.txData1 = [self.const.BROADCAST_ON]
@@ -43,7 +46,8 @@ class PDU(CANPeripheral):
                 self.processBroadcast(msg)
 
     def processMessage(self, msg):
-        # see VCU CAN API for data format
+        # see VCU CAN API for data format\
+
         if(msg.arbitration_id == 0x12A):
             self.state["wheelSpeeds"][0] = struct.unpack('>eeee', msg.data)
         elif(msg.arbitration_id == 0x12B):
