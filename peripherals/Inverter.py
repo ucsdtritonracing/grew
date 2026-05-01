@@ -52,9 +52,12 @@ class Inverter(CANPeripheral):
     
     def on_message_received(self, msg):
         self.processMessage(msg)
+        self.updateUI()
 
 
     @Slot()
     def shutdown(self):
         super().stop_all_periodics()
         #TODO: send message here to hand over control to VCU
+    
+    

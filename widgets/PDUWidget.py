@@ -6,7 +6,7 @@ from functools import partial
 class PDUWidget(PeripheralWidget):
     def __init__(self, bus):
         super().__init__(PDU(bus))
-
+    
         self.Channel1Off = QtWidgets.QPushButton("CHANNEL 1 OFF")
         self.Channel1Off.clicked.connect(partial(self.peripheral.setCurrentLimit, 1, 0))
         self.Channel1On = QtWidgets.QPushButton("CHANNEL 1 ON")
