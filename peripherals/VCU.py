@@ -1,12 +1,12 @@
 from peripherals.CANPeripheral import CANPeripheral
 from constants.PDUConstants import VCUConstants
-from PySide6.QtCore import Slot
-import struct
+from PySide6.QtCore import Slot, Signal
 import cantools
     
-class PDU(CANPeripheral):
+class VCU(CANPeripheral):
     const = VCUConstants()
     func = lambda self, msg: self.on_message_received(msg)
+    dataSignal = Signal(list,str)
     def __init__(self, bus):
         super().__init__(id=self.const.DEVICE_ID, isExtended=False, bus=bus, func=self.func)
     def setup(self):
