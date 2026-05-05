@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1437</width>
+    <height>739</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QGroupBox" name="groupbox">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>175</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>Dashboard</string>
+        </property>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>343</y>
+           <width>1141</width>
+           <height>241</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="leftMargin">
+           <number>9</number>
+          </property>
+          <property name="topMargin">
+           <number>9</number>
+          </property>
+          <property name="rightMargin">
+           <number>9</number>
+          </property>
+          <property name="bottomMargin">
+           <number>9</number>
+          </property>
+          <item>
+           <widget class="QGroupBox" name="InverterCarStatus">
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Inverter Summary</string>
+            </property>
+            <widget class="QWidget" name="formLayoutWidget">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>20</y>
+               <width>521</width>
+               <height>171</height>
+              </rect>
+             </property>
+             <layout class="QFormLayout" name="formLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="StatusLabelInverter">
+                <property name="text">
+                 <string>Status: </string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="StatusActual">
+                <property name="text">
+                 <string>DISABLED</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="FaultLabel">
+                <property name="text">
+                 <string>Fault: </string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="FaultStatus">
+                <property name="text">
+                 <string>NO FAULT</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="RequestedTorqueLabel">
+                <property name="text">
+                 <string>Requested Torque: </string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="TorqueStatus">
+                <property name="text">
+                 <string>-- Nm</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="ActualTorqueLabel">
+                <property name="text">
+                 <string>Actual Torque: </string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLabel" name="ActualTorqueStatus">
+                <property name="text">
+                 <string>-NM</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="HighestTempLabel">
+                <property name="text">
+                 <string>Highest Temp: </string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QLabel" name="TempStatus">
+                <property name="text">
+                 <string>--C°</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="graphWidget" native="true">
+             <property name="geometry">
+              <rect>
+               <x>150</x>
+               <y>230</y>
+               <width>500</width>
+               <height>250</height>
+              </rect>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>500</width>
+               <height>250</height>
+              </size>
+             </property>
+             <widget class="QWidget" name="graphWidget_2" native="true">
+              <property name="geometry">
+               <rect>
+                <x>30</x>
+                <y>10</y>
+                <width>371</width>
+                <height>41</height>
+               </rect>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QPushButton" name="OpenToInverterWindow">
+             <property name="geometry">
+              <rect>
+               <x>160</x>
+               <y>210</y>
+               <width>241</width>
+               <height>32</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>[Open Inverter Details]</string>
+             </property>
+            </widget>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Car Status</string>
+            </property>
+            <widget class="QWidget" name="gridLayoutWidget">
+             <property name="geometry">
+              <rect>
+               <x>50</x>
+               <y>30</y>
+               <width>189</width>
+               <height>224</height>
+              </rect>
+             </property>
+             <layout class="QGridLayout" name="gridLayout">
+              <item row="2" column="0">
+               <widget class="QLabel" name="R2DPressedLabel">
+                <property name="text">
+                 <string>R2D Button Pressed</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="WheelSpeedsLabel">
+                <property name="text">
+                 <string>Wheel Speeds</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLabel" name="RLLabel">
+                <property name="text">
+                 <string>RL:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="FLLabel">
+                <property name="text">
+                 <string>FL:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="SASLabel">
+                <property name="text">
+                 <string>SAS Angle: </string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0">
+               <widget class="QLabel" name="BPSLabel">
+                <property name="text">
+                 <string>BPS:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="Ready2DriveStatus">
+                <property name="text">
+                 <string>FALSE</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="ShutdownLabel">
+                <property name="text">
+                 <string>Shutdown Closed:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="Read2DriveLabel">
+                <property name="text">
+                 <string>Ready2Drive:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="0">
+               <widget class="QLabel" name="APPSLabel">
+                <property name="text">
+                 <string>APPS:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="ShutdownStatus">
+                <property name="text">
+                 <string>FALSE</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="R2DPressedLabelStatus">
+                <property name="text">
+                 <string>FALSE</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLabel" name="SASAngleStatus">
+                <property name="text">
+                 <string>--°</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QLabel" name="WheelSpeedsStatus_2">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QLabel" name="FRLabel">
+                <property name="text">
+                 <string>FR:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="QLabel" name="RRLabel">
+                <property name="text">
+                 <string>RR:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="1">
+               <widget class="QLabel" name="ValidLabel1">
+                <property name="text">
+                 <string>Valid:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="1">
+               <widget class="QLabel" name="ValidLabel2">
+                <property name="text">
+                 <string>Valid:</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>50</y>
+           <width>1151</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Connection</string>
+         </property>
+         <widget class="QWidget" name="horizontalLayoutWidget_3">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>19</y>
+            <width>841</width>
+            <height>81</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QLabel" name="Connection">
+             <property name="text">
+              <string>Interface: </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comboBox">
+             <item>
+              <property name="text">
+               <string>[PCAN_USBBUS1]</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="ConnectButton">
+             <property name="text">
+              <string>[Connect]</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="StatusConnectedLabel">
+             <property name="text">
+              <string>Status:Disconnected</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="PlotWidget" name="MainGraphGroup">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>130</y>
+           <width>1151</width>
+           <height>221</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>175</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Main graph</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QWidget" name="widget" native="true">
+            <widget class="QWidget" name="MainGraphWidget" native="true">
+             <property name="geometry">
+              <rect>
+               <x>30</x>
+               <y>0</y>
+               <width>1061</width>
+               <height>130</height>
+              </rect>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>130</height>
+              </size>
+             </property>
+            </widget>
+            <widget class="QWidget" name="horizontalLayoutWidget">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>120</y>
+               <width>1101</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QPushButton" name="StartGraph">
+                <property name="text">
+                 <string>Start Graph</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="StopGraphButton">
+                <property name="text">
+                 <string>Stop Graph</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Timescale:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="TimescaleComboBox">
+                <item>
+                 <property name="text">
+                  <string>5 sec</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>10 sec</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>30 sec</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>60 sec</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="SelectSignalButton">
+                <property name="text">
+                 <string>SelectSignals</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QTableWidget" name="logTable">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>590</y>
+           <width>1151</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+         </property>
+         <row>
+          <property name="text">
+           <string>New Row</string>
+          </property>
+         </row>
+         <column>
+          <property name="text">
+           <string>Time</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Dir</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>ID</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Data</string>
+          </property>
+         </column>
+        </widget>
+        <widget class="QPushButton" name="PDU">
+         <property name="geometry">
+          <rect>
+           <x>199</x>
+           <y>21</y>
+           <width>57</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PDU</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="VCUconfguration">
+         <property name="geometry">
+          <rect>
+           <x>270</x>
+           <y>21</y>
+           <width>142</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>VCU Configuration</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="PyCanDashboard">
+         <property name="geometry">
+          <rect>
+           <x>12</x>
+           <y>25</y>
+           <width>125</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PyCan Dashboard     </string>
+         </property>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1437</width>
+     <height>37</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PlotWidget</class>
+   <extends>QGroupBox</extends>
+   <header>PyQt6.QtCharts</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>logTable</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
