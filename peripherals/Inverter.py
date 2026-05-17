@@ -1,4 +1,4 @@
-from constants import InverterConstants
+from constants.InverterConstants import InverterConstants
 from peripherals.CANPeripheral import CANPeripheral
 import cantools
 from PySide6.QtCore import Slot, Signal
@@ -7,8 +7,10 @@ class Inverter(CANPeripheral):
     const = InverterConstants()
     func = lambda self, msg: self.on_message_received(msg)
     dataSignal = Signal(list,str)
-    def __init__(self, bus):
-        super().__init__(id=self.const.DEVICE_ID, isExtended=False, bus=bus, func=self.func)
+    def __init__(self, bus, parent = None):
+        super().__init__(id=self.const.DEVICE_ID, isExtended=False, bus=bus, func=self.func, parent = parent )
+        
+
     def setup(self):
         self.state = {
             "motorInfo":    [0,0,0], #motor speed, motor mechanical angle, motor temp
@@ -16,7 +18,7 @@ class Inverter(CANPeripheral):
             "torqueInfo":   [0,0,0], # commanded torque, torqueFeedback, torque capability
             "inverterInfo": [False,False,False] # inverter enabled, lockout, forward
         }
-        self.db = cantools.database.load_file("constants\20240815_PM_and_RM_CAN_DB.dbc")
+        self.db = cantools.database.load_file("constants\\20240815_PM_and_RM_CAN_DB.dbc")
         
     @Slot()
     def enable(self):
@@ -38,7 +40,7 @@ class Inverter(CANPeripheral):
                 self.state["tempInfo"][0] = [data["INV_Module_A"]]
                 self.state["tempInfo"][1] = [data["INV_Module_B"]]
                 self.state["tempInfo"][2] = [data["INV_Module_C"]]
-                self.dataSignal.emit(self.state["tempInfo"])
+                self.dataSignal.emit(self.state["tempInfo"],"invTemp")
             case self.const.TEMPS_ID_2:
                 self.state["tempInfo"][3] = [data["INV_Control_Board_Temperature"]]
                 self.dataSignal.emit(self.state["tempInfo"],"temp")
