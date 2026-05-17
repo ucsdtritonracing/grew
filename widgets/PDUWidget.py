@@ -5,16 +5,16 @@ from widgets.PeripheralWidget import PeripheralWidget
 from functools import partial
 class PDUWidget(PeripheralWidget):
     def __init__(self, bus):
-        super().__init__(PDU(bus))
-    
+        super().__init__()
+        self.pdu = PDU(bus)
         self.Channel1Off = QtWidgets.QPushButton("CHANNEL 1 OFF")
-        self.Channel1Off.clicked.connect(partial(self.peripheral.setCurrentLimit, 1, 0))
+        self.Channel1Off.clicked.connect(partial(self.pdu.setCurrentLimit, 1, 0))
         self.Channel1On = QtWidgets.QPushButton("CHANNEL 1 ON")
-        self.Channel1On.clicked.connect(partial(self.peripheral.setCurrentLimit, 1, 10))
+        self.Channel1On.clicked.connect(partial(self.pdu.setCurrentLimit, 1, 10))
         self.enable = QtWidgets.QPushButton("ENABLE")
-        self.enable.clicked.connect(self.peripheral.enable)
+        self.enable.clicked.connect(self.pdu.enable)
         self.disable = QtWidgets.QPushButton("DISABLE")
-        self.disable.clicked.connect(self.peripheral.disable)
+        self.disable.clicked.connect(self.pdu.disable)
 
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.Channel1Off)
