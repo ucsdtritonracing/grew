@@ -10,4 +10,5 @@ class VCUConstants:
     BROADCAST_3_ID: int =       0x12C
     BROADCAST_ON: int =         0xFF
     BROADCAST_OFF: int =        0x00
+    DEVICE_ID: int =  0x067
     
