@@ -26,6 +26,7 @@ class MainWidget(PeripheralWidget):
         self.setupGraph()
         self.window.StartGraphButton.clicked.connect(partial(self.startGraph))
         self.window.StopGraphButton.clicked.connect(partial(self.stopGraph))
+        self.window.TimescaleDropdown.currentIndexChanged.connect(partial(self.setRange))
         self.graphEnabled = True
 
     @Slot()
@@ -35,6 +36,18 @@ class MainWidget(PeripheralWidget):
     @Slot()
     def stopGraph(self):
         self.graphEnabled = False
+
+    @Slot(int)
+    def setRange(self, index):
+        match index:
+            case 0:
+                self.viewRange = 5
+            case 1: 
+                self.viewRange = 10
+            case 2: 
+                self.viewRange = 30
+            case 3:
+                self.viewRange = 60
 
     def setupGraph(self):
         self.start_time = time.perf_counter()
@@ -49,7 +62,7 @@ class MainWidget(PeripheralWidget):
             name: self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name=name)
             for name in self.sources
         }
-        self.viewRange = 10 # default seconds to see
+        self.viewRange = 5 # default seconds to see
 
 
     def updateGraph(self, value, name):

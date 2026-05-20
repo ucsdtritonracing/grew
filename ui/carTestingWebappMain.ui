@@ -512,7 +512,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QComboBox" name="TimescaleDropDown">
+               <widget class="QComboBox" name="TimescaleDropdown">
                 <item>
                  <property name="text">
                   <string>5 sec</string>
