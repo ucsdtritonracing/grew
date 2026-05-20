@@ -44,11 +44,10 @@ class MainWidget(PeripheralWidget):
             name: {'x': deque(maxlen=500), 'y': deque(maxlen=500)} 
             for name in self.sources
         }
+
         self.curves = {
-            "FRWS": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="FRWS"),
-            "FLWS": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="FLWS"),
-            "BRWS": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="BRWS"),
-            "BLWS": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="BLWS")
+            name: self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name=name)
+            for name in self.sources
         }
         self.viewRange = 10 # default seconds to see
 
