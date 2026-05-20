@@ -1,14 +1,14 @@
 from PySide6.QtUiTools import QUiLoader
 from functools import partial
-from widgets.PeripheralWidget import PeripheralWidget
 from peripherals.Inverter import Inverter
 from peripherals.VCU import VCU
+from PySide6 import QtWidgets
 from PySide6.QtCore import Slot, Signal, QFile
 import pyqtgraph as pg
 import time
 from collections import deque
 
-class MainWidget(PeripheralWidget):
+class MainWidget(QtWidgets.QMainWindow):
     def __init__(self, bus):
         self.inverter = Inverter(bus)
         self.vcu = VCU(bus)
