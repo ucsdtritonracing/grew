@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1779</width>
-    <height>863</height>
+    <width>1348</width>
+    <height>865</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -71,9 +71,9 @@
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>10</y>
-               <width>341</width>
-               <height>374</height>
+               <y>20</y>
+               <width>251</width>
+               <height>356</height>
               </rect>
              </property>
              <layout class="QFormLayout" name="formLayout">
@@ -443,7 +443,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="QGroupBox" name="MainGraphGroup">
+        <widget class="PlotWidget" name="MainGraphGroup">
          <property name="geometry">
           <rect>
            <x>10</x>
@@ -464,13 +464,13 @@
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
            <widget class="QWidget" name="widget" native="true">
-            <widget class="PlotWidget" name="MainGraphWidget" native="true">
+            <widget class="QWidget" name="MainGraphWidget" native="true">
              <property name="geometry">
               <rect>
                <x>30</x>
                <y>0</y>
-               <width>1061</width>
-               <height>130</height>
+               <width>901</width>
+               <height>231</height>
               </rect>
              </property>
              <property name="minimumSize">
@@ -484,9 +484,9 @@
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>290</y>
+               <y>260</y>
                <width>1311</width>
-               <height>41</height>
+               <height>71</height>
               </rect>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -533,16 +533,6 @@
                   <string>60 sec</string>
                  </property>
                 </item>
-                <item>
-                 <property name="text">
-                  <string>120 sec</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Unlimited</string>
-                 </property>
-                </item>
                </widget>
               </item>
               <item>
@@ -554,6 +544,71 @@
               </item>
              </layout>
             </widget>
+            <widget class="QListWidget" name="listWidget">
+             <property name="geometry">
+              <rect>
+               <x>965</x>
+               <y>1</y>
+               <width>321</width>
+               <height>251</height>
+              </rect>
+             </property>
+             <item>
+              <property name="text">
+               <string>APPS</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>BSE Front</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>BSE Rear</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>SAS</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Motor Speed</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Temperature</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>New Item</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>New Item</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>New Item</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>New Item</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>New Item</string>
+              </property>
+             </item>
+            </widget>
            </widget>
           </item>
          </layout>
@@ -561,10 +616,10 @@
         <widget class="QPushButton" name="PDU">
          <property name="geometry">
           <rect>
-           <x>199</x>
+           <x>175</x>
            <y>21</y>
-           <width>57</width>
-           <height>32</height>
+           <width>81</width>
+           <height>41</height>
           </rect>
          </property>
          <property name="text">
@@ -576,8 +631,8 @@
           <rect>
            <x>270</x>
            <y>21</y>
-           <width>142</width>
-           <height>32</height>
+           <width>181</width>
+           <height>41</height>
           </rect>
          </property>
          <property name="text">
@@ -608,8 +663,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1779</width>
-     <height>22</height>
+     <width>1348</width>
+     <height>37</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMain_Window">
@@ -623,8 +678,8 @@
  <customwidgets>
   <customwidget>
    <class>PlotWidget</class>
-   <extends>QWidget</extends>
-   <header>pyqtgraph</header>
+   <extends>QGroupBox</extends>
+   <header location="global">PyQt6.QtCharts</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
