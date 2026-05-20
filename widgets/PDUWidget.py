@@ -1,9 +1,8 @@
 import sys
 from PySide6 import QtCore, QtWidgets, QtGui
 from peripherals.PDU import PDU
-from widgets.PeripheralWidget import PeripheralWidget
 from functools import partial
-class PDUWidget(PeripheralWidget):
+class PDUWidget(QtWidgets.QMainWindow):
     def __init__(self, bus):
         super().__init__()
         self.pdu = PDU(bus)
