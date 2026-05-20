@@ -16,7 +16,8 @@ class Inverter(CANPeripheral):
             "motorInfo":    [0,0,0], #motor speed, motor mechanical angle, motor temp
             "tempInfo":     [0,0,0,0], # A/B/C/control board/
             "torqueInfo":   [0,0,0], # commanded torque, torqueFeedback, torque capability
-            "inverterInfo": [False,False,False] # inverter enabled, lockout, forward
+            "inverterInfo": [False,False,False], # inverter enabled, lockout, forward
+            "faults": []
         }
         self.db = cantools.database.load_file("constants\\20240815_PM_and_RM_CAN_DB.dbc")
         
@@ -55,7 +56,14 @@ class Inverter(CANPeripheral):
                 self.state["torqueInfo"][0] = data["INV_Commanded_Torque"]
                 self.state["torqueInfo"][1] = data["INV_Torque_Feedback"]
                 self.dataSignal.emit(self.state["torqueInfo"],"torque")
-                
+            case self.const.FAULTS_ID:
+                run_fault_lo = int(data.get("INV_Run_Fault_Lo", 0))
+                run_fault_hi = int(data.get("INV_Run_Fault_Hi", 0))
+                run_faults = (run_fault_hi << 16) | run_fault_lo
+                if run_faults != 0:
+                    for bit, fault_name in self.const.faults_dict.items():
+                        if (run_faults >> bit) & 1:
+                            self.dataSignal.emit([msg.timestamp, fault_name], "invFaults")
     
     def on_message_received(self, msg):
         self.processMessage(msg)
