@@ -443,7 +443,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="PlotWidget" name="MainGraphGroup">
+        <widget class="QGroupBox" name="MainGraphGroup">
          <property name="geometry">
           <rect>
            <x>10</x>
@@ -464,7 +464,7 @@
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
            <widget class="QWidget" name="widget" native="true">
-            <widget class="QWidget" name="MainGraphWidget" native="true">
+            <widget class="PlotWidget" name="MainGraphWidget" native="true">
              <property name="geometry">
               <rect>
                <x>30</x>
@@ -664,7 +664,7 @@
      <x>0</x>
      <y>0</y>
      <width>1348</width>
-     <height>37</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMain_Window">
@@ -678,8 +678,8 @@
  <customwidgets>
   <customwidget>
    <class>PlotWidget</class>
-   <extends>QGroupBox</extends>
-   <header location="global">PyQt6.QtCharts</header>
+   <extends>QWidget</extends>
+   <header>pyqtgraph</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
