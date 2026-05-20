@@ -23,29 +23,40 @@ class MainWidget(PeripheralWidget):
         loader.registerCustomWidget(pg.PlotWidget)
         self.window = loader.load(ui_file,self)
         ui_file.close()
-        self
         self.setupGraph()
+        self.window.StartGraphButton.clicked.connect(partial(self.startGraph))
+        self.window.StopGraphButton.clicked.connect(partial(self.stopGraph))
+        self.graphEnabled = True
 
+    @Slot()
+    def startGraph(self):
+        self.graphEnabled = True
+    
+    @Slot()
+    def stopGraph(self):
+        self.graphEnabled = False
 
     def setupGraph(self):
         self.start_time = time.perf_counter()
-        self.sources = ["Front Right Wheel Speed", "Front Left Wheel Speed", 
-                        "Back Right Wheel Speed", "Back Left Wheel Speed"]
+        self.sources = ["FRWS", "FLWS", 
+                        "BRWS", "BLWS"]
         self.buffers = {
             name: {'x': deque(maxlen=500), 'y': deque(maxlen=500)} 
             for name in self.sources
         }
         self.curves = {
-            "Front Right Wheel Speed": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="Front Right Wheel Speed"),
-            "Front Left Wheel Speed": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="Front Left Wheel Speed"),
-            "Back Right Wheel Speed": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="Back Right Wheel Speed"),
-            "Back Left Wheel Speed": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="Back Left Wheel Speed")
+            "FRWS": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="FRWS"),
+            "FLWS": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="FLWS"),
+            "BRWS": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="BRWS"),
+            "BLWS": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="BLWS")
         }
         self.viewRange = 10 # default seconds to see
 
 
     def updateGraph(self, value, name):
         timestamp = time.perf_counter() - self.start_time
+        if(self.graphEnabled == False):
+            return
         if name in self.curves:
             # Append new data point to the specific source buffer
             self.buffers[name]['x'].append(timestamp)
@@ -68,7 +79,7 @@ class MainWidget(PeripheralWidget):
             self.updateGraph(data[1],"MOTOR_ANGLE")
             self.updateGraph(data[2],"MOTOR_TEMP")
         elif name == "wheelSpeeds":
-            self.updateGraph(data[0],"Front Right Wheel Speed")
-            self.updateGraph(data[1],"Front Left Wheel Speed")
-            self.updateGraph(data[2],"Back Right Wheel Speed")
-            self.updateGraph(data[3],"Back Left Wheel Speed")
+            self.updateGraph(data[0],"FRWS")
+            self.updateGraph(data[1],"FLWS")
+            self.updateGraph(data[2],"BRWS")
+            self.updateGraph(data[3],"BLWS")
