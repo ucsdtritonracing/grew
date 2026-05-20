@@ -553,6 +553,9 @@
                <height>251</height>
               </rect>
              </property>
+             <property name="selectionMode">
+              <enum>QAbstractItemView::SelectionMode::MultiSelection</enum>
+             </property>
              <item>
               <property name="text">
                <string>APPS</string>
