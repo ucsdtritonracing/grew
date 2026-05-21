@@ -16,17 +16,25 @@ class MainWidget(QtWidgets.QMainWindow):
         
         ui_file = QFile("ui\\carTestingWebappMain.ui")
         ui_file.open(QFile.ReadOnly)
-        
-        self.inverter.dataSignal.connect(self.updateUI)
-        self.vcu.dataSignal.connect(self.updateUI)
         loader = QUiLoader()
         loader.registerCustomWidget(pg.PlotWidget)
-        self.window = loader.load(ui_file,self)
+        self.window = loader.load(ui_file,None)
         ui_file.close()
-        self
+
+        ui_file = QFile("ui\\VCU.ui")
+        ui_file.open(QFile.ReadOnly)
+        self.vcuWindow = loader.load(ui_file,None)
+        ui_file.close()
+        
+        self.window.VCUConfigButton.clicked.connect(partial(self.openVCU))
+        self.inverter.dataSignal.connect(self.updateUI)
+        self.vcu.dataSignal.connect(self.updateUI)
         self.setupGraph()
 
-
+    @Slot()
+    def openVCU(self):
+        self.vcuWindow.raise_()
+        self.vcuWindow.show()
     def setupGraph(self):
         self.start_time = time.perf_counter()
         self.sources = ["Front Right Wheel Speed", "Front Left Wheel Speed", 
