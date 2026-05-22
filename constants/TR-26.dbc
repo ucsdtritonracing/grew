@@ -33,7 +33,7 @@ NS_ :
 
 BS_:
 
-BU_: VCU
+BU_: VCU SAS GREW
 
 
 BO_ 298 WHEEL_STATE: 8 VCU
@@ -54,10 +54,12 @@ BO_ 300 APPS_STATE: 5 VCU
  SG_ APPS1_VALID : 32|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ APPS2_VALID : 33|1@1+ (1,0) [0|1] "" Vector__XXX
 
-BO_ 303 READY_STATE: 1 VCU
+BO_ 303 VCU_FLAGS: 1 VCU
  SG_ R2D_PRESSED : 0|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ SHUTDOWN_CLOSED : 1|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ READY_2_DRIVE_MODE : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ APPS_FAULT : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABPPSC_FAULT : 0|8@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 302 IMU_STATE: 8 VCU
  SG_ IMU_YAW : 0|16@1- (1,0) [-180|180] "degrees" Vector__XXX
@@ -67,8 +69,49 @@ BO_ 302 IMU_STATE: 8 VCU
  SG_ IMU_Y_ACCEL : 48|8@1- (0.1,0) [-12.8|12.7] "g" Vector__XXX
  SG_ IMU_Z_ACCEL : 56|8@1- (0.1,0) [-12.8|12.7] "g" Vector__XXX
 
+BO_ 1984 Message_LWS_CONFIG: 2 SAS
+ SG_ RES : 4|12@1+ (1,0) [0|4095] "" Vector__XXX
+ SG_ CCW : 0|4@1+ (1,0) [0|15] "" Vector__XXX
+
+BO_ 688 LWS_Standard: 5 SAS
+ SG_ CHK_SUM : 36|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ MSG_CNT : 32|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ SF1_5 : 27|5@1+ (1,0) [0|31] "" Vector__XXX
+ SG_ TRIM : 26|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ CAL : 25|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ OK : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ LWS_SPEED : 16|8@1+ (4,0) [0|1016] "°/s" Vector__XXX
+ SG_ LWS_ANGLE : 0|16@1- (0.1,0) [-780|780] "°" Vector__XXX
+
+BO_ 500 LOCK_CONFIG: 1 VCU
+ SG_ LOCK_CONFIG : 0|1@1+ (1,0) [0|0] "bit" Vector__XXX
+
+BO_ 400 VCU_SET_PARAM: 7 GREW
+ SG_ PARAM_ID : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PARAM_VALUE_FP32 : 16|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PARAM_OPTION : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 401 VCU_GET_PARAM: 2 GREW
+ SG_ PARAM_ID : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 402 VCU_PARAM_RESPONSE: 8 VCU
+ SG_ PARAM_ID : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PARAM_VALUE_FP32 : 16|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PARAM_OPTION : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ PARAM_ID_2 : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ CKSUM : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DATA_3 : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DATA_2 : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DATA_1 : 24|8@1+ (1,0) [0|0] "" Vector__XXX
 
 
+
+CM_ SG_ 303 R2D_PRESSED "1 = pressed 0 = not pressed";
+CM_ SG_ 303 SHUTDOWN_CLOSED "1 = closed 0 = open";
 CM_ SG_ 303 READY_2_DRIVE_MODE "1 = ready
 0 = idle";
+CM_ SG_ 303 APPS_FAULT "apps sensor fault";
+CM_ SG_ 303 ABPPSC_FAULT "apps and brake concurrently activated";
 
