@@ -2,6 +2,7 @@ from PySide6.QtUiTools import QUiLoader
 from functools import partial
 from peripherals.Inverter import Inverter
 from peripherals.VCU import VCU
+from widgets.VCUWidget import VCUWidget
 from PySide6 import QtWidgets
 from PySide6.QtCore import Slot, Signal, QFile
 import pyqtgraph as pg
@@ -9,11 +10,12 @@ import time
 from collections import deque
 
 class MainWidget(QtWidgets.QMainWindow):
-    def __init__(self, bus):
-        self.inverter = Inverter(bus)
-        self.vcu = VCU(bus)
+    def __init__(self, peripheral1, peripheral2):
+        self.inverter = peripheral1
+        self.vcu = peripheral2
+        self.vcuWidget = VCUWidget(peripheral2)
+
         super().__init__()
-        
         ui_file = QFile("ui\\carTestingWebappMain.ui")
         ui_file.open(QFile.ReadOnly)
         loader = QUiLoader()
@@ -21,20 +23,13 @@ class MainWidget(QtWidgets.QMainWindow):
         self.window = loader.load(ui_file,None)
         ui_file.close()
 
-        ui_file = QFile("ui\\VCU.ui")
-        ui_file.open(QFile.ReadOnly)
-        self.vcuWindow = loader.load(ui_file,None)
-        ui_file.close()
         
-        self.window.VCUConfigButton.clicked.connect(partial(self.openVCU))
+        self.window.VCUConfigButton.clicked.connect(partial(self.vcuWidget.show))
         self.inverter.dataSignal.connect(self.updateUI)
         self.vcu.dataSignal.connect(self.updateUI)
         self.setupGraph()
 
-    @Slot()
-    def openVCU(self):
-        self.vcuWindow.raise_()
-        self.vcuWindow.show()
+    
     def setupGraph(self):
         self.start_time = time.perf_counter()
         self.sources = ["Front Right Wheel Speed", "Front Left Wheel Speed", 

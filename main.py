@@ -4,6 +4,8 @@ import math
 from PySide6 import QtWidgets, QtCore
 import cantools
 import pyqtgraph as pg
+from peripherals.Inverter import Inverter
+from peripherals.VCU import VCU
 
 # Dummy wrapper assuming MainWidget loads your UI layout internally
 from widgets.MainWidget import MainWidget 
@@ -47,8 +49,10 @@ def main():
     # 1. Initialize CAN Bus interface
     bus = can.interface.Bus(interface='virtual', receive_own_messages=True)
     
+    inverter = Inverter(bus)
+    vcu = VCU(bus)
     # 2. Instantiate Main Layout Widget and make it visible
-    main_widget = MainWidget(bus)
+    main_widget = MainWidget(inverter,vcu)
     main_widget.show()  # CRITICAL: Ensures the window actually paints to your desktop
     
     # 3. Setup background CAN configuration 
@@ -56,7 +60,7 @@ def main():
     msg_def = db.get_message_by_name('WHEEL_STATE')
     
     # 4. Bind listeners using python-can Notifier framework
-    listeners = [main_widget.vcu.getListner(), can.Printer()]
+    listeners = [vcu.getListner(), can.Printer()] 
     notifier = can.Notifier(bus, listeners)
     
     # 5. Start background simulator to feed virtual data
