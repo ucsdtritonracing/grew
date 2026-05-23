@@ -23,7 +23,8 @@ class VCU(CANPeripheral):
             "r2dButtonPressed": False,
             "shutdownClosed": False,
             "r2dMode": False,
-            "pedalMap": [0,0,0,0,0,0,0,0,0,0],
+             "pedalMap": [0, 0, 0, 0, 0, 0, 0, 0,
+                         0, 0, 0, 0, 0, 0, 0, 0, 0],
             "wheelSpeeds": [0,0,0,0],
         }
         self.txData = [0,0,0,0,0,0,0,0]
