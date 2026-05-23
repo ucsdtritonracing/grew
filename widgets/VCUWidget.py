@@ -28,6 +28,10 @@ class DraggablePoint(pg.TargetItem):
 
         # Lock X axis
         self.setPos(self.fixed_x, pos.y())
+        if(self.index == 0):
+            self.setPos(self.fixed_x, 0)
+        if(self.index == 17):
+            self.setPos(self.fixed_x, 100)
         if(pos.y() > 100):
             self.setPos(self.fixed_x, 100)
         elif(pos.y() < 0):
@@ -57,9 +61,9 @@ class VCUWidget(QtWidgets.QMainWindow):
         self.start_time = time.perf_counter()
         self.sources = ["pedalMap"]
         self.buffers = {
-            "pedalMap": [0, 0, 0, 0, 0, 0, 0, 0,
+            "pedalMap": [0, 0, 0, 0, 0, 0, 0, 0, 0,
                          0, 0, 0, 0, 0, 0, 0, 0, 100],
-            "x": [x * 6.25 for x in range(17)]
+            "x": [x * 6.25 for x in range(18)]
         }
         self.window.pedalGraph.setXRange(0, 100)
         self.window.pedalGraph.setYRange(0, 100)
@@ -88,14 +92,56 @@ class VCUWidget(QtWidgets.QMainWindow):
             self.window.pedalGraph.addItem(point)
             self.points.append(point)
 
+        # Collect spin box references in index order (pointInput1 = index 0, etc.)
+        self.spinboxes = [
+            getattr(self.window, f"pointInput{n}") for n in range(1, 19)
+        ]
+
+        # Configure and connect spin boxes for editable points (skip index 0 and 17)
+        for i, sb in enumerate(self.spinboxes):
+            sb.setRange(0.0, 100.0)
+            sb.setDecimals(2)
+            sb.setSingleStep(0.5)
+            sb.setValue(self.buffers["pedalMap"][i])
+            if i == 0 or i == 17:
+                sb.setReadOnly(True)
+            else:
+                # Use a default-argument capture to bind the correct index
+                sb.valueChanged.connect(lambda val, idx=i: self.onSpinBoxChanged(idx, val))
+
+    def onSpinBoxChanged(self, index, value):
+        """Called when the user edits a spin box — updates the graph point and buffer."""
+        # Update internal buffer and VCU state
+        self.buffers["pedalMap"][index] = value
+        self.vcu.state["pedalMap"] = self.buffers["pedalMap"]
+        # Move the draggable point (block its position-change signal to avoid loops)
+        self.points[index].sigPositionChanged.disconnect()
+        self.points[index].setPos(self.buffers["x"][index], value)
+        self.points[index].sigPositionChanged.connect(self.points[index].on_move)
+        # Redraw curve
+        self.curves["pedalMap"].setData(
+            self.buffers["x"],
+            self.buffers["pedalMap"]
+        )
+
     def updateGraph(self, index, value):
+        if(index == 0):
+            self.setPos(self.fixed_x, 0)
+        if(index == 17):
+            self.setPos(self.fixed_x, 100)
         if(value > 100):
             self.setPos(self.fixed_x, 100)
         elif(value < 0):
             self.setPos(self.fixed_x, 0)
         # Update internal mapping
         self.buffers["pedalMap"][index] = value
-        self.vcu.state["pedalMap"] = self.buffers["pedalMap"] 
+        self.vcu.state["pedalMap"] = self.buffers["pedalMap"]
+        # Sync the corresponding spin box without triggering valueChanged
+        if index != 0 and index != 17:
+            sb = self.spinboxes[index]
+            sb.blockSignals(True)
+            sb.setValue(value)
+            sb.blockSignals(False)
         # Update curve
         self.curves["pedalMap"].setData(
             self.buffers["x"],
