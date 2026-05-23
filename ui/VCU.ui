@@ -204,7 +204,7 @@
           </property>
          </widget>
         </widget>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="setPedalMapButton">
          <property name="geometry">
           <rect>
            <x>70</x>
@@ -494,7 +494,7 @@
           </rect>
          </property>
          <property name="text">
-          <string>BPS HighThreshold</string>
+          <string>BPS High Threshold</string>
          </property>
         </widget>
         <widget class="QLabel" name="label_15">
@@ -519,6 +519,9 @@
            <height>22</height>
           </rect>
          </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::NoButtons</enum>
+         </property>
         </widget>
         <widget class="QSpinBox" name="spinBox_13">
          <property name="geometry">
@@ -528,6 +531,9 @@
            <width>42</width>
            <height>22</height>
           </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::NoButtons</enum>
          </property>
         </widget>
         <widget class="QPushButton" name="pushButton_2">
@@ -591,6 +597,9 @@
            <height>22</height>
           </rect>
          </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::NoButtons</enum>
+         </property>
         </widget>
         <widget class="QSpinBox" name="spinBox_16">
          <property name="geometry">
@@ -600,6 +609,139 @@
            <width>42</width>
            <height>22</height>
           </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QSpinBox" name="spinBox_17">
+         <property name="geometry">
+          <rect>
+           <x>690</x>
+           <y>30</y>
+           <width>42</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_19">
+         <property name="geometry">
+          <rect>
+           <x>530</x>
+           <y>60</y>
+           <width>121</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>BPS Low Threshold</string>
+         </property>
+        </widget>
+        <widget class="QSpinBox" name="spinBox_18">
+         <property name="geometry">
+          <rect>
+           <x>690</x>
+           <y>60</y>
+           <width>42</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_8">
+         <property name="geometry">
+          <rect>
+           <x>530</x>
+           <y>80</y>
+           <width>100</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_20">
+         <property name="geometry">
+          <rect>
+           <x>530</x>
+           <y>30</y>
+           <width>121</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>BPS High Threshold</string>
+         </property>
+        </widget>
+        <widget class="QSpinBox" name="spinBox_19">
+         <property name="geometry">
+          <rect>
+           <x>930</x>
+           <y>30</y>
+           <width>42</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_21">
+         <property name="geometry">
+          <rect>
+           <x>770</x>
+           <y>60</y>
+           <width>121</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>BPS Low Threshold</string>
+         </property>
+        </widget>
+        <widget class="QSpinBox" name="spinBox_20">
+         <property name="geometry">
+          <rect>
+           <x>930</x>
+           <y>60</y>
+           <width>42</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_9">
+         <property name="geometry">
+          <rect>
+           <x>770</x>
+           <y>80</y>
+           <width>100</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_22">
+         <property name="geometry">
+          <rect>
+           <x>770</x>
+           <y>30</y>
+           <width>121</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>BPS High Threshold</string>
          </property>
         </widget>
        </widget>

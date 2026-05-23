@@ -54,6 +54,7 @@ class VCUWidget(QtWidgets.QMainWindow):
         ui_file.close()
         
         self.setupGraph()
+        self.window.setPedalMapButton.clicked.connect(self.sendPedalMap)
 
     
     def setupGraph(self):
@@ -110,7 +111,6 @@ class VCUWidget(QtWidgets.QMainWindow):
                 sb.valueChanged.connect(lambda val, idx=i: self.onSpinBoxChanged(idx, val))
 
     def onSpinBoxChanged(self, index, value):
-        """Called when the user edits a spin box — updates the graph point and buffer."""
         # Update internal buffer and VCU state
         self.buffers["pedalMap"][index] = value
         self.vcu.state["pedalMap"] = self.buffers["pedalMap"]
@@ -150,6 +150,12 @@ class VCUWidget(QtWidgets.QMainWindow):
 
         # Debug print
 
+
+    def sendPedalMap(self):
+        PEDAL_MAP_BASE_ID = 0x0100
+        for i in range(1, 17):                          # indices 1–16 inclusive
+            param_id = PEDAL_MAP_BASE_ID + (i - 1)     # 0x0100, 0x0101, … 0x010F
+            self.vcu.set_param(param_id, float(self.buffers["pedalMap"][i]))
 
     @Slot()  
     def show(self):

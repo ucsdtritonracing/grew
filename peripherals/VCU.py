@@ -42,13 +42,6 @@ class VCU(CANPeripheral):
         super().send_message(self, self.txData1, self.const.TOGGLE_BROADCAST_ID)
 
     def set_param(self, param_id: int, value: float, option: int = 0):
-        """Encode and send a VCU_SET_PARAM (ID 400) message.
-
-        Args:
-            param_id: 16-bit parameter identifier.
-            value:    Parameter value as a float (packed as IEEE 754 FP32).
-            option:   Optional 8-bit option byte (default 0).
-        """
         # Reinterpret the float as its raw IEEE 754 uint32 bit pattern so
         # cantools can pack it into the PARAM_VALUE_FP32 field unchanged.
         raw_fp32 = struct.unpack('<I', struct.pack('<f', value))[0]
@@ -61,7 +54,7 @@ class VCU(CANPeripheral):
                 'PARAM_OPTION':     option,
             }
         )
-        super().send_message(self, list(data), self.const.SET_PARAM_ID)
+        super().send_message(list(data), self.const.SET_PARAM_ID)
     
     def on_message_received(self, msg):
         self.processMessage(msg)
