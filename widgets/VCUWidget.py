@@ -121,7 +121,6 @@ class VCUWidget(QtWidgets.QMainWindow):
                 sb.valueChanged.connect(lambda val, idx=i: self.onSpinBoxChanged(idx, val))
 
     def onSpinBoxChanged(self, index, value):
-        """Called when the user edits a spin box — updates the graph point and buffer."""
         # Update internal buffer and VCU state
         self.buffers["pedalMap"][index] = value
         self.vcu.state["pedalMap"] = self.buffers["pedalMap"]
@@ -163,12 +162,6 @@ class VCUWidget(QtWidgets.QMainWindow):
 
 
     def sendPedalMap(self):
-        """Send all 16 editable pedal map points to the VCU over CAN.
-
-        Param IDs 0x0100–0x010F correspond to pedal map points 1–16,
-        which are buffer indices 1–16 (endpoints 0 and 17 are fixed in
-        the VCU and have no param ID).
-        """
         PEDAL_MAP_BASE_ID = 0x0100
         for i in range(1, 17):                          # indices 1–16 inclusive
             param_id = PEDAL_MAP_BASE_ID + (i - 1)     # 0x0100, 0x0101, … 0x010F
