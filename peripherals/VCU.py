@@ -34,14 +34,16 @@ class VCU(CANPeripheral):
         
     @Slot()
     def enable(self):
-        self.txData1 = [self.const.BROADCAST_ON]
-        super().send_message(self, self.txData1, self.const.TOGGLE_BROADCAST_ID)
+        # enter flash mode 
+        self.txData1[0] = [self.const.FLASH_ON]
+        super().send_message(self.txData1, self.const.FLASH_ID)
     @Slot()
     def disable(self):
-        self.txData1 = [self.const.BROADCAST_OFF]
-        super().send_message(self, self.txData1, self.const.TOGGLE_BROADCAST_ID)
-
-    def set_param(self, param_id: int, value: float, option: int = 0x01):
+        self.txData1 = [self.const.FLASH_OFF]
+        super().send_message(self.txData1, self.const.FLASH_ID)
+    
+    @Slot()
+    def set_param(self, param_id: int, value: float, info: int):
         # Reinterpret the float as its raw IEEE 754 uint32 bit pattern so
         # cantools can pack it into the PARAM_VALUE_FP32 field unchanged.
         raw_fp32 = struct.unpack('<I', struct.pack('<f', value))[0]
@@ -51,10 +53,14 @@ class VCU(CANPeripheral):
             {
                 'PARAM_ID':         param_id,
                 'PARAM_VALUE_FP32': raw_fp32,
-                'PARAM_OPTION':     option,
+                'PARAM_INFO':       info,
             }
         )
         super().send_message(list(data), self.const.SET_PARAM_ID)
+    
+    @Slot()
+    def writeConfiguration(self):
+        super().send_message([], self.const.WRITE_CONFIG_ID)
     
     def on_message_received(self, msg):
         self.processMessage(msg)

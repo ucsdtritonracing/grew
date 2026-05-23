@@ -25,6 +25,7 @@ class MainWidget(QtWidgets.QMainWindow):
 
         
         self.window.VCUConfigButton.clicked.connect(partial(self.vcuWidget.show))
+        self.window.VCUConfigButton.clicked.connect(partial(self.vcu.enable))
         self.inverter.dataSignal.connect(self.updateUI)
         self.vcu.dataSignal.connect(self.updateUI)
         self.setupGraph()

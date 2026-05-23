@@ -55,18 +55,21 @@ class VCUWidget(QtWidgets.QMainWindow):
         
         self.setupGraph()
         self.window.setPedalMapButton.clicked.connect(self.sendPedalMap)
-
+        self.window.sendMaxTorqueButton.clicked.connect(self.vcu.writeConfiguration)
         # BPS/APPS threshold buttons
-        self.window.sendAPPSSignal.clicked.connect(self.sendAPPS1SignalThresholds)
-        self.window.sendAPPSSignal_2.clicked.connect(self.sendAPPS2SignalThresholds)
-        self.window.sendBPSFault.clicked.connect(self.sendBPSFFaultThresholds)
-        self.window.sendBPSFault_2.clicked.connect(self.sendBPSRFaultThresholds)
-        self.window.sendAPPSFault.clicked.connect(self.sendAPPS1FaultThresholds)
-        self.window.sendAPPSFault_2.clicked.connect(self.sendAPPS2FaultThresholds)
-        self.window.sendBPSEngaged.clicked.connect(self.sendBPSEngagedThresholds)
-        self.window.sendMaxTorque.clicked.connect(self.sendMaxTorque)
+        for btn_name, (param_id, widget_name) in self.const.button_map.items():
+            widget = getattr(self.window, widget_name)
+            getattr(self.window, btn_name).clicked.connect(
+                lambda checked=False, pid=param_id, w=widget: self.vcu.set_param(pid, float(w.value()))
+            )
 
-    
+        self.window_closed = Signal()
+        self.window_closed.connect(partial(self.vcu.disable))
+
+    def closeEvent(self, event):
+        self.window_closed.emit()
+        event.accept()
+
     def setupGraph(self):
         self.window.pedalGraph.getViewBox().disableAutoRange()
         self.start_time = time.perf_counter()
@@ -133,7 +136,7 @@ class VCUWidget(QtWidgets.QMainWindow):
             self.buffers["x"],
             self.buffers["pedalMap"]
         )
-
+    
     def updateGraph(self, index, value):
         if(index == 0):
             self.setPos(self.fixed_x, 0)
@@ -159,44 +162,16 @@ class VCUWidget(QtWidgets.QMainWindow):
         )
 
         # Debug print
-
-
+    
+    @Slot()
     def sendPedalMap(self):
         PEDAL_MAP_BASE_ID = 0x0100
         for i in range(1, 17):                          # indices 1–16 inclusive
-            param_id = PEDAL_MAP_BASE_ID + (i - 1)     # 0x0100, 0x0101, … 0x010F
+            param_id = PEDAL_MAP_BASE_ID + (i - 1)      # 0x0100, 0x0101, … 0x010F
             self.vcu.set_param(param_id, float(self.buffers["pedalMap"][i]))
-
-    def sendAPPS1SignalThresholds(self):
-        self.vcu.set_param(0x0004, float(self.window.appsHSignal.value()))   # APP1 Signal High
-        self.vcu.set_param(0x0003, float(self.window.appsLSignal.value()))   # APP1 Signal Low
-
-    def sendAPPS2SignalThresholds(self):
-        self.vcu.set_param(0x0008, float(self.window.appsHSignal_2.value())) # APP2 Signal High
-        self.vcu.set_param(0x0007, float(self.window.appsLSignal_2.value())) # APP2 Signal Low
-
-    def sendBPSFFaultThresholds(self):
-        self.vcu.set_param(0x000A, float(self.window.bpsHFault.value()))     # BSEF Fault High
-        self.vcu.set_param(0x0009, float(self.window.bpsLFault.value()))     # BSEF Fault Low
-
-    def sendBPSRFaultThresholds(self):
-        self.vcu.set_param(0x000C, float(self.window.bpsHFault_2.value()))   # BSER Fault High
-        self.vcu.set_param(0x000B, float(self.window.bpsLFault_2.value()))   # BSER Fault Low
-
-    def sendAPPS1FaultThresholds(self):
-        self.vcu.set_param(0x0002, float(self.window.appsHFault.value()))    # APP1 Fault High
-        self.vcu.set_param(0x0001, float(self.window.appsLFault.value()))    # APP1 Fault Low
-
-    def sendAPPS2FaultThresholds(self):
-        self.vcu.set_param(0x0006, float(self.window.appsHFault_2.value()))  # APP2 Fault High
-        self.vcu.set_param(0x0005, float(self.window.appsLFault_2.value()))  # APP2 Fault Low
-
+    @Slot()
     def sendMaxTorque(self):
         self.vcu.set_param(0x000F, float(self.window.maxTorque.value()))     # Maximum Torque Request
-
-    def sendBPSEngagedThresholds(self):
-        self.vcu.set_param(0x000D, float(self.window.bpsfEngaged.value()))   # BSEF Engaged
-        self.vcu.set_param(0x000E, float(self.window.bpsrEngaged.value()))   # BSER Engaged
 
     @Slot()  
     def show(self):
