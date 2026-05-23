@@ -535,13 +535,6 @@
                 </item>
                </widget>
               </item>
-              <item>
-               <widget class="QPushButton" name="SelectSignalButton">
-                <property name="text">
-                 <string>SelectSignals</string>
-                </property>
-               </widget>
-              </item>
              </layout>
             </widget>
             <widget class="QListWidget" name="listWidget">
@@ -558,22 +551,77 @@
              </property>
              <item>
               <property name="text">
-               <string>APPS</string>
+               <string>APP1 Fault Low</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>BSE Front</string>
+               <string>APP1 Fault High</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>BSE Rear</string>
+               <string>APP1 Signal Low</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>SAS</string>
+               <string>APP1 Signal High</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>APP2 Fault Low</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>APP2 Fault High</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>APP2 Signal Low</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>APP2 Signal High</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>BSEF Fault Low</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>BSEF Fault High</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>BSER Fault Low</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>BSER Fault High</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>BSEF Engaged Threshold</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>BSER Engaged Threshold</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Maximum Torque Request(N.M)</string>
               </property>
              </item>
              <item>
@@ -583,32 +631,12 @@
              </item>
              <item>
               <property name="text">
+               <string>Steering Angle Sensor</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
                <string>Temperature</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>New Item</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>New Item</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>New Item</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>New Item</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>New Item</string>
               </property>
              </item>
             </widget>
@@ -645,8 +673,8 @@
         <widget class="QLabel" name="PyCanDashboard">
          <property name="geometry">
           <rect>
-           <x>12</x>
-           <y>25</y>
+           <x>10</x>
+           <y>30</y>
            <width>125</width>
            <height>16</height>
           </rect>
@@ -667,7 +695,7 @@
      <x>0</x>
      <y>0</y>
      <width>1348</width>
-     <height>22</height>
+     <height>37</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMain_Window">
@@ -682,7 +710,7 @@
   <customwidget>
    <class>PlotWidget</class>
    <extends>QWidget</extends>
-   <header>pyqtgraph</header>
+   <header location="global">pyqtgraph</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
