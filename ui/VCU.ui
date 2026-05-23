@@ -32,7 +32,7 @@
           <x>10</x>
           <y>0</y>
           <width>1281</width>
-          <height>371</height>
+          <height>421</height>
          </rect>
         </property>
         <property name="title">
@@ -204,144 +204,11 @@
           </property>
          </widget>
         </widget>
-        <widget class="QWidget" name="TorqueRequestWidget" native="true">
-         <property name="geometry">
-          <rect>
-           <x>1160</x>
-           <y>80</y>
-           <width>121</width>
-           <height>251</height>
-          </rect>
-         </property>
-         <widget class="QLabel" name="label_13">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>0</y>
-            <width>101</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Torque Request</string>
-          </property>
-         </widget>
-         <widget class="QSpinBox" name="spinBox">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>20</y>
-            <width>42</width>
-            <height>22</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QSpinBox" name="spinBox_2">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>40</y>
-            <width>42</width>
-            <height>22</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QSpinBox" name="spinBox_3">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>60</y>
-            <width>42</width>
-            <height>22</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QSpinBox" name="spinBox_4">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>80</y>
-            <width>42</width>
-            <height>22</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QSpinBox" name="spinBox_5">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>100</y>
-            <width>42</width>
-            <height>22</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QSpinBox" name="spinBox_6">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>120</y>
-            <width>42</width>
-            <height>22</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QSpinBox" name="spinBox_7">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>140</y>
-            <width>42</width>
-            <height>22</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QSpinBox" name="spinBox_8">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>160</y>
-            <width>42</width>
-            <height>22</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QSpinBox" name="spinBox_9">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>180</y>
-            <width>42</width>
-            <height>22</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QSpinBox" name="spinBox_10">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>200</y>
-            <width>42</width>
-            <height>22</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QSpinBox" name="spinBox_11">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>220</y>
-            <width>42</width>
-            <height>22</height>
-           </rect>
-          </property>
-         </widget>
-        </widget>
         <widget class="QPushButton" name="pushButton">
          <property name="geometry">
           <rect>
-           <x>1110</x>
-           <y>40</y>
+           <x>180</x>
+           <y>370</y>
            <width>151</width>
            <height>32</height>
           </rect>
@@ -353,31 +220,224 @@
         <widget class="QWidget" name="widget_2" native="true">
          <property name="geometry">
           <rect>
-           <x>130</x>
+           <x>70</x>
            <y>60</y>
-           <width>971</width>
+           <width>1191</width>
            <height>301</height>
           </rect>
          </property>
          <widget class="QWidget" name="widget_3" native="true">
           <property name="geometry">
            <rect>
-            <x>10</x>
+            <x>20</x>
             <y>260</y>
-            <width>941</width>
-            <height>31</height>
+            <width>1171</width>
+            <height>41</height>
            </rect>
           </property>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>10</y>
+             <width>51</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_3">
+           <property name="geometry">
+            <rect>
+             <x>180</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
+           <property name="geometry">
+            <rect>
+             <x>240</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_5">
+           <property name="geometry">
+            <rect>
+             <x>310</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_6">
+           <property name="geometry">
+            <rect>
+             <x>370</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_7">
+           <property name="geometry">
+            <rect>
+             <x>440</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_8">
+           <property name="geometry">
+            <rect>
+             <x>510</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_9">
+           <property name="geometry">
+            <rect>
+             <x>570</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_10">
+           <property name="geometry">
+            <rect>
+             <x>640</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_11">
+           <property name="geometry">
+            <rect>
+             <x>120</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_12">
+           <property name="geometry">
+            <rect>
+             <x>710</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_13">
+           <property name="geometry">
+            <rect>
+             <x>780</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_14">
+           <property name="geometry">
+            <rect>
+             <x>840</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_15">
+           <property name="geometry">
+            <rect>
+             <x>900</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_16">
+           <property name="geometry">
+            <rect>
+             <x>960</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_17">
+           <property name="geometry">
+            <rect>
+             <x>1030</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_18">
+           <property name="geometry">
+            <rect>
+             <x>1100</x>
+             <y>10</y>
+             <width>62</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
          </widget>
+        </widget>
+        <widget class="QPushButton" name="pushButton_7">
+         <property name="geometry">
+          <rect>
+           <x>350</x>
+           <y>370</y>
+           <width>151</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Set Configuration</string>
+         </property>
         </widget>
        </widget>
        <widget class="QGroupBox" name="groupBox_2">
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>400</y>
+          <y>420</y>
           <width>1281</width>
-          <height>141</height>
+          <height>121</height>
          </rect>
         </property>
         <property name="title">
