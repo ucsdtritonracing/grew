@@ -106,6 +106,9 @@ BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
  SG_ DATA_2 : 32|8@1+ (1,0) [0|0] "" Vector__XXX
  SG_ DATA_1 : 24|8@1+ (1,0) [0|0] "" Vector__XXX
 
+BO_ 403 VCU_FLASH_MODE: 1 GREW
+ SG_ FLASH_ENABLED : 0|1@1+ (1,0) [0|0] "bit" Vector__XXX
+
 
 
 CM_ SG_ 303 R2D_PRESSED "1 = pressed 0 = not pressed";
@@ -114,4 +117,6 @@ CM_ SG_ 303 READY_2_DRIVE_MODE "1 = ready
 0 = idle";
 CM_ SG_ 303 APPS_FAULT "apps sensor fault";
 CM_ SG_ 303 ABPPSC_FAULT "apps and brake concurrently activated";
+CM_ SG_ 403 FLASH_ENABLED "1 = on, 0 = off
+";
 
