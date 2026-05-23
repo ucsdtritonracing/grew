@@ -2,6 +2,7 @@ from peripherals.CANPeripheral import CANPeripheral
 from constants.VCUConstants import VCUConstants
 from PySide6.QtCore import Slot, Signal
 import cantools
+import struct
     
 class VCU(CANPeripheral):
     const = VCUConstants()
@@ -39,6 +40,28 @@ class VCU(CANPeripheral):
     def disable(self):
         self.txData1 = [self.const.BROADCAST_OFF]
         super().send_message(self, self.txData1, self.const.TOGGLE_BROADCAST_ID)
+
+    def set_param(self, param_id: int, value: float, option: int = 0):
+        """Encode and send a VCU_SET_PARAM (ID 400) message.
+
+        Args:
+            param_id: 16-bit parameter identifier.
+            value:    Parameter value as a float (packed as IEEE 754 FP32).
+            option:   Optional 8-bit option byte (default 0).
+        """
+        # Reinterpret the float as its raw IEEE 754 uint32 bit pattern so
+        # cantools can pack it into the PARAM_VALUE_FP32 field unchanged.
+        raw_fp32 = struct.unpack('<I', struct.pack('<f', value))[0]
+
+        data = self.dbc.encode_message(
+            'VCU_SET_PARAM',
+            {
+                'PARAM_ID':         param_id,
+                'PARAM_VALUE_FP32': raw_fp32,
+                'PARAM_OPTION':     option,
+            }
+        )
+        super().send_message(self, list(data), self.const.SET_PARAM_ID)
     
     def on_message_received(self, msg):
         self.processMessage(msg)
@@ -54,11 +77,3 @@ class VCU(CANPeripheral):
                 self.state["wheelSpeeds"][2] = data["BR_SPEED"]
                 self.state["wheelSpeeds"][3] = data["BL_SPEED"]
                 self.dataSignal.emit(self.state["wheelSpeeds"],"wheelSpeeds")
-        
-                
-        
-
-
-                
-
-    
