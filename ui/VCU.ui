@@ -13,31 +13,225 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">/* Main app background */
+QMainWindow,
+QWidget {
+    background-color: #061427;
+    color: white;
+    font-family: Arial;
+    font-size: 14px;
+}
+
+/* Main title labels */
+QLabel#titleLabel {
+    color: white;
+    font-size: 42px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+QLabel#subtitleLabel {
+    color: #f6e16b;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Normal labels */
+QLabel {
+    color: white;
+    font-size: 14px;
+}
+
+/* Buttons */
+QPushButton {
+    background-color: #f6e16b;
+    color: #061B3A;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #fff08a;
+}
+
+QPushButton:pressed {
+    background-color: #d6c75c;
+}
+
+/* Text input boxes */
+QLineEdit {
+    background-color: #0b1c36;
+    color: white;
+    border: 1px solid rgba(246, 225, 107, 90);
+    border-radius: 8px;
+    padding: 7px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #f6e16b;
+}
+
+/* Dropdowns */
+QComboBox {
+    background-color: #0b1c36;
+    color: white;
+    border: 1px solid rgba(246, 225, 107, 90);
+    border-radius: 8px;
+    padding: 7px;
+}
+
+QComboBox::drop-down {
+    border: none;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #0b1c36;
+    color: white;
+    selection-background-color: #f6e16b;
+    selection-color: #061B3A;
+}
+
+/* Tables */
+QTableWidget {
+    background-color: #0b1c36;
+    alternate-background-color: #102747;
+    color: white;
+    gridline-color: #263b5c;
+    border: 1px solid rgba(246, 225, 107, 80);
+    border-radius: 10px;
+}
+
+QTableWidget::item {
+    padding: 6px;
+}
+
+QTableWidget::item:selected {
+    background-color: #f6e16b;
+    color: #061B3A;
+}
+
+/* Table headers */
+QHeaderView::section {
+    background-color: #071427;
+    color: #f6e16b;
+    padding: 7px;
+    border: 1px solid #263b5c;
+    font-weight: bold;
+}
+
+/* Group boxes = dashboard cards */
+QGroupBox {
+    background-color: rgba(8, 24, 50, 210);
+    border: 1px solid rgba(246, 225, 107, 90);
+    border-radius: 14px;
+    margin-top: 18px;
+    padding: 14px;
+    color: white;
+    font-weight: bold;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    left: 14px;
+    padding: 0 6px;
+    color: #f6e16b;
+}
+
+/* List widgets */
+QListWidget {
+    background-color: #0b1c36;
+    color: white;
+    border: 1px solid rgba(246, 225, 107, 80);
+    border-radius: 10px;
+    padding: 6px;
+}
+
+QListWidget::item {
+    padding: 8px;
+    border-radius: 6px;
+}
+
+QListWidget::item:selected {
+    background-color: #f6e16b;
+    color: #061B3A;
+}
+
+/* Scroll bars */
+QScrollBar:vertical {
+    background-color: #071427;
+    width: 12px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #f6e16b;
+    border-radius: 6px;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+/* Check boxes */
+QCheckBox {
+    color: white;
+    spacing: 8px;
+}
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #f6e16b;
+    border: 1px solid #f6e16b;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: #0b1c36;
+    border: 1px solid #f6e16b;
+}
+
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>19</x>
-      <y>9</y>
-      <width>1311</width>
-      <height>721</height>
+      <x>9</x>
+      <y>19</y>
+      <width>1331</width>
+      <height>711</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QWidget" name="widget" native="true">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="mouseTracking">
+        <bool>false</bool>
+       </property>
        <widget class="QGroupBox" name="groupBox">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>0</y>
-          <width>1281</width>
-          <height>421</height>
+          <y>60</y>
+          <width>1311</width>
+          <height>391</height>
          </rect>
         </property>
         <property name="title">
          <string>Pedal Map</string>
         </property>
+<<<<<<< HEAD
         <widget class="QWidget" name="ThrottleWidget" native="true">
          <property name="geometry">
           <rect>
@@ -210,8 +404,23 @@
            <x>70</x>
            <y>370</y>
            <width>151</width>
+=======
+        <widget class="QPushButton" name="pushButton">
+         <property name="geometry">
+          <rect>
+           <x>140</x>
+           <y>350</y>
+           <width>201</width>
+>>>>>>> 9972880 (VCU CHANGES ADDED)
            <height>32</height>
           </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>-1</pointsize>
+           <bold>true</bold>
+          </font>
          </property>
          <property name="text">
           <string>Send Pedal Map to VCU</string>
@@ -220,15 +429,204 @@
         <widget class="PlotWidget" name="pedalGraph" native="true">
          <property name="geometry">
           <rect>
-           <x>70</x>
-           <y>60</y>
-           <width>1191</width>
-           <height>301</height>
+           <x>10</x>
+           <y>30</y>
+           <width>1291</width>
+           <height>311</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">/* Main app background */
+QMainWindow,
+QWidget {
+    background-color: rgb(20, 36, 103);
+    color: white;
+    font-family: Arial;
+    font-size: 14px;
+}
+
+/* Main title labels */
+QLabel#titleLabel {
+    color: white;
+    font-size: 42px;
+    font-weight: bold;
+    letter-spacing: 3px;
+	
+}
+
+QLabel#subtitleLabel {
+    color: #f6e16b;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Normal labels */
+QLabel {
+    color: white;
+    font-size: 14px;
+}
+
+/* Buttons */
+QPushButton {
+    background-color: rgb(250, 255, 244);
+    color: #061B3A;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #fff08a;
+}
+
+QPushButton:pressed {
+    background-color: #d6c75c;
+}
+
+/* Text input boxes */
+QLineEdit {
+    background-color: #0b1c36;
+    color: white;
+    border: 1px solid rgba(246, 225, 107, 90);
+    border-radius: 8px;
+    padding: 7px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #f6e16b;
+}
+
+/* Dropdowns */
+QComboBox {
+    background-color: #0b1c36;
+    color: white;
+    border: 1px solid rgba(246, 225, 107, 90);
+    border-radius: 8px;
+    padding: 7px;
+}
+
+QComboBox::drop-down {
+    border: none;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #0b1c36;
+    color: white;
+    selection-background-color: #f6e16b;
+    selection-color: #061B3A;
+}
+
+/* Tables */
+QTableWidget {
+    background-color: #0b1c36;
+    alternate-background-color: #102747;
+    color: white;
+    gridline-color: #263b5c;
+    border: 1px solid rgba(246, 225, 107, 80);
+    border-radius: 10px;
+}
+
+QTableWidget::item {
+    padding: 6px;
+}
+
+QTableWidget::item:selected {
+    background-color: #f6e16b;
+    color: #061B3A;
+}
+
+/* Table headers */
+QHeaderView::section {
+    background-color: #071427;
+    color: #f6e16b;
+    padding: 7px;
+    border: 1px solid #263b5c;
+    font-weight: bold;
+}
+
+/* Group boxes = dashboard cards */
+QGroupBox {
+    background-color: rgba(8, 24, 50, 210);
+    border: 1px solid rgba(246, 225, 107, 90);
+    border-radius: 14px;
+    margin-top: 18px;
+    padding: 14px;
+    color: white;
+    font-weight: bold;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    left: 14px;
+    padding: 0 6px;
+    color: #f6e16b;
+}
+
+/* List widgets */
+QListWidget {
+    background-color: #0b1c36;
+    color: white;
+    border: 1px solid rgba(246, 225, 107, 80);
+    border-radius: 10px;
+    padding: 6px;
+}
+
+QListWidget::item {
+    padding: 8px;
+    border-radius: 6px;
+}
+
+QListWidget::item:selected {
+    background-color: #f6e16b;
+    color: #061B3A;
+}
+
+/* Scroll bars */
+QScrollBar:vertical {
+    background-color: #071427;
+    width: 12px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #f6e16b;
+    border-radius: 6px;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+/* Check boxes */
+QCheckBox {
+    color: white;
+    spacing: 8px;
+}
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #f6e16b;
+    border: 1px solid #f6e16b;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: #0b1c36;
+    border: 1px solid #f6e16b;
+}
+
+</string>
          </property>
          <widget class="QWidget" name="widget_3" native="true">
           <property name="geometry">
            <rect>
+<<<<<<< HEAD
             <x>10</x>
             <y>260</y>
             <width>1181</width>
@@ -471,14 +869,295 @@
           </widget>
          </widget>
         </widget>
+=======
+            <x>50</x>
+            <y>280</y>
+            <width>1241</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput1">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput2">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput3">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput4">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput5">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput6">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput7">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput8">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput9">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput10">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput11">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput12">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput13">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput14">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="doubleSpinBox_15">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput16">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput17">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="pointInput18">
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="verticalLayoutWidget_2">
+          <property name="geometry">
+           <rect>
+            <x>-50</x>
+            <y>20</y>
+            <width>2</width>
+            <height>2</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2"/>
+         </widget>
+         <widget class="QWidget" name="widget_4" native="true">
+          <property name="geometry">
+           <rect>
+            <x>-10</x>
+            <y>0</y>
+            <width>71</width>
+            <height>304</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QLabel" name="label_12">
+             <property name="text">
+              <string>Throttle</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>100%</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>90%</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>80%</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>70%</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_6">
+             <property name="text">
+              <string>60%</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>50%</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_8">
+             <property name="text">
+              <string>40%</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_9">
+             <property name="text">
+              <string>30%</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_10">
+             <property name="text">
+              <string>20%</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>10%</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_11">
+             <property name="text">
+              <string>0%</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="PlotWidget" name="pedalGraph" native="true">
+          <property name="geometry">
+           <rect>
+            <x>69</x>
+            <y>39</y>
+            <width>1201</width>
+            <height>231</height>
+           </rect>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QPushButton" name="pushButton_7">
+         <property name="geometry">
+          <rect>
+           <x>350</x>
+           <y>350</y>
+           <width>171</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>-1</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Set Configuration</string>
+         </property>
+        </widget>
+>>>>>>> 9972880 (VCU CHANGES ADDED)
        </widget>
        <widget class="QGroupBox" name="groupBox_2">
         <property name="geometry">
          <rect>
           <x>10</x>
+<<<<<<< HEAD
           <y>420</y>
           <width>1281</width>
           <height>211</height>
+=======
+          <y>450</y>
+          <width>1311</width>
+          <height>251</height>
+>>>>>>> 9972880 (VCU CHANGES ADDED)
          </rect>
         </property>
         <property name="title">
@@ -487,6 +1166,7 @@
         <widget class="QPushButton" name="sendAPPSSignal">
          <property name="geometry">
           <rect>
+<<<<<<< HEAD
            <x>270</x>
            <y>80</y>
            <width>181</width>
@@ -495,11 +1175,367 @@
          </property>
          <property name="text">
           <string>Send APPS1 Signal Thresholds</string>
+=======
+           <x>20</x>
+           <y>30</y>
+           <width>131</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>BPS HighThreshold</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_15">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>110</y>
+           <width>131</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>BPS Low Threshold</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>220</y>
+           <width>91</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="geometry">
+          <rect>
+           <x>500</x>
+           <y>210</y>
+           <width>71</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SendAPPSFault</string>
          </property>
         </widget>
         <widget class="QLabel" name="label_17">
          <property name="geometry">
           <rect>
+           <x>230</x>
+           <y>30</y>
+           <width>141</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>APP1 High Threshold</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_18">
+         <property name="geometry">
+          <rect>
+           <x>220</x>
+           <y>80</y>
+           <width>141</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>APP1 Low Threshold</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_13">
+         <property name="geometry">
+          <rect>
+           <x>480</x>
+           <y>120</y>
+           <width>111</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>APP2 SignalHigh</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_19">
+         <property name="geometry">
+          <rect>
+           <x>480</x>
+           <y>180</y>
+           <width>111</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>APP2 Signal Low</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="appsHSignal_2">
+         <property name="geometry">
+          <rect>
+           <x>600</x>
+           <y>120</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="appsLSignal_2">
+         <property name="geometry">
+          <rect>
+           <x>600</x>
+           <y>180</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_20">
+         <property name="geometry">
+          <rect>
+           <x>690</x>
+           <y>30</y>
+           <width>111</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>BSEF` Fault Low</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="sendBPSFaultH">
+         <property name="geometry">
+          <rect>
+           <x>700</x>
+           <y>80</y>
+           <width>111</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>BSEF Fault High</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="bpsLFault">
+         <property name="geometry">
+          <rect>
+           <x>820</x>
+           <y>30</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="bpsHFault">
+         <property name="geometry">
+          <rect>
+           <x>820</x>
+           <y>100</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="bpsfEngaged">
+         <property name="geometry">
+          <rect>
+           <x>1100</x>
+           <y>30</y>
+           <width>51</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_24">
+         <property name="geometry">
+          <rect>
+           <x>910</x>
+           <y>30</y>
+           <width>171</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>BSEF Engaged Threshold</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_25">
+         <property name="geometry">
+          <rect>
+           <x>220</x>
+           <y>140</y>
+           <width>151</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>APP1 Signal Low</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_26">
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>190</y>
+           <width>141</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>APP1 Signal High</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="sendbpshigh">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>30</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="sendappsLSignal_2">
+         <property name="geometry">
+          <rect>
+           <x>380</x>
+           <y>140</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="sendappsHSignal">
+         <property name="geometry">
+          <rect>
+           <x>380</x>
+           <y>190</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="sendbpslow">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>110</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="sendappsHFault">
+         <property name="geometry">
+          <rect>
+           <x>390</x>
+           <y>30</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="sendappsLFault">
+         <property name="geometry">
+          <rect>
+           <x>380</x>
+           <y>80</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>60</y>
+           <width>71</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Send</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_6">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>140</y>
+           <width>71</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>-1</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Send</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_8">
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>160</y>
+           <width>91</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+>>>>>>> 9972880 (VCU CHANGES ADDED)
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_9">
+         <property name="geometry">
+          <rect>
+<<<<<<< HEAD
            <x>270</x>
            <y>30</y>
            <width>161</width>
@@ -508,11 +1544,48 @@
          </property>
          <property name="text">
           <string>APPS1 High Signal Threshold</string>
+=======
+           <x>259</x>
+           <y>110</y>
+           <width>91</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
          </property>
         </widget>
-        <widget class="QLabel" name="label_18">
+        <widget class="QPushButton" name="pushButton_10">
          <property name="geometry">
           <rect>
+           <x>259</x>
+           <y>50</y>
+           <width>91</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="sendEngagedRear">
+         <property name="geometry">
+          <rect>
+           <x>920</x>
+           <y>90</y>
+           <width>171</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>BSER Engaged Threshold</string>
+>>>>>>> 9972880 (VCU CHANGES ADDED)
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_28">
+         <property name="geometry">
+          <rect>
+<<<<<<< HEAD
            <x>270</x>
            <y>60</y>
            <width>161</width>
@@ -524,11 +1597,62 @@
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="appsHSignal">
+=======
+           <x>920</x>
+           <y>150</y>
+           <width>161</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Maximum Torque Request</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_11">
          <property name="geometry">
           <rect>
-           <x>440</x>
-           <y>30</y>
-           <width>42</width>
+           <x>499</x>
+           <y>150</y>
+           <width>71</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="sendBPSFaultL">
+         <property name="geometry">
+          <rect>
+           <x>710</x>
+           <y>50</y>
+           <width>81</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_13">
+         <property name="geometry">
+          <rect>
+           <x>710</x>
+           <y>100</y>
+           <width>81</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="bpsrEngaged">
+         <property name="geometry">
+          <rect>
+           <x>1100</x>
+           <y>90</y>
+           <width>62</width>
            <height>22</height>
           </rect>
          </property>
@@ -536,12 +1660,82 @@
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
         </widget>
+        <widget class="QPushButton" name="pushButton_16">
+         <property name="geometry">
+          <rect>
+           <x>499</x>
+           <y>91</y>
+           <width>71</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_29">
+         <property name="geometry">
+          <rect>
+           <x>490</x>
+           <y>70</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>APP2 Low</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_30">
+>>>>>>> 9972880 (VCU CHANGES ADDED)
+         <property name="geometry">
+          <rect>
+           <x>490</x>
+           <y>20</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>APP2 High</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_17">
+         <property name="geometry">
+          <rect>
+           <x>500</x>
+           <y>40</y>
+           <width>61</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="appsHFault_2">
+         <property name="geometry">
+          <rect>
+           <x>580</x>
+           <y>40</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+        </widget>
+<<<<<<< HEAD
         <widget class="QDoubleSpinBox" name="appsLSignal">
+=======
+        <widget class="QDoubleSpinBox" name="appsLFault_2">
+>>>>>>> 9972880 (VCU CHANGES ADDED)
          <property name="geometry">
           <rect>
-           <x>440</x>
-           <y>60</y>
-           <width>42</width>
+           <x>590</x>
+           <y>80</y>
+           <width>62</width>
            <height>22</height>
           </rect>
          </property>
@@ -549,6 +1743,7 @@
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
         </widget>
+<<<<<<< HEAD
         <widget class="QDoubleSpinBox" name="bpsHFault">
          <property name="geometry">
           <rect>
@@ -568,10 +1763,19 @@
            <x>520</x>
            <y>60</y>
            <width>151</width>
+=======
+        <widget class="QLabel" name="SendBPSFaultL_2">
+         <property name="geometry">
+          <rect>
+           <x>700</x>
+           <y>130</y>
+           <width>111</width>
+>>>>>>> 9972880 (VCU CHANGES ADDED)
            <height>20</height>
           </rect>
          </property>
          <property name="text">
+<<<<<<< HEAD
           <string>BPSF Low Fault Threshold</string>
          </property>
         </widget>
@@ -607,10 +1811,22 @@
            <x>520</x>
            <y>30</y>
            <width>151</width>
+=======
+          <string>BSER Fault Low</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="bpsHFault_2">
+         <property name="geometry">
+          <rect>
+           <x>700</x>
+           <y>180</y>
+           <width>111</width>
+>>>>>>> 9972880 (VCU CHANGES ADDED)
            <height>20</height>
           </rect>
          </property>
          <property name="text">
+<<<<<<< HEAD
           <string>BPSF High Fault Threshold</string>
          </property>
         </widget>
@@ -872,14 +2088,23 @@
          </property>
          <property name="text">
           <string>Send APPS2 Fault Thresholds</string>
+=======
+          <string>BSER Fault High</string>
+>>>>>>> 9972880 (VCU CHANGES ADDED)
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="bpsLFault_2">
          <property name="geometry">
           <rect>
+<<<<<<< HEAD
            <x>190</x>
            <y>60</y>
            <width>42</width>
+=======
+           <x>820</x>
+           <y>130</y>
+           <width>62</width>
+>>>>>>> 9972880 (VCU CHANGES ADDED)
            <height>22</height>
           </rect>
          </property>
@@ -887,12 +2112,21 @@
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
         </widget>
+<<<<<<< HEAD
         <widget class="QDoubleSpinBox" name="bpsHFault_2">
          <property name="geometry">
           <rect>
            <x>190</x>
            <y>30</y>
            <width>42</width>
+=======
+        <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+         <property name="geometry">
+          <rect>
+           <x>820</x>
+           <y>180</y>
+           <width>62</width>
+>>>>>>> 9972880 (VCU CHANGES ADDED)
            <height>22</height>
           </rect>
          </property>
@@ -900,16 +2134,65 @@
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
         </widget>
+<<<<<<< HEAD
         <widget class="QPushButton" name="sendBPSFault_2">
          <property name="geometry">
           <rect>
            <x>20</x>
            <y>80</y>
            <width>161</width>
+=======
+        <widget class="QPushButton" name="pushButton_18">
+         <property name="geometry">
+          <rect>
+           <x>710</x>
+           <y>150</y>
+           <width>71</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_19">
+         <property name="geometry">
+          <rect>
+           <x>719</x>
+           <y>210</y>
+           <width>71</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="maxtorque">
+         <property name="geometry">
+          <rect>
+           <x>1090</x>
+           <y>150</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="sendMaxTorque">
+         <property name="geometry">
+          <rect>
+           <x>960</x>
+           <y>180</y>
+           <width>100</width>
+>>>>>>> 9972880 (VCU CHANGES ADDED)
            <height>32</height>
           </rect>
          </property>
          <property name="text">
+<<<<<<< HEAD
           <string>Send BPSR Fault Thresholds</string>
          </property>
         </widget>
@@ -937,16 +2220,122 @@
          </property>
          <property name="text">
           <string>BPSR High Fault Threshold</string>
+=======
+          <string>send</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="sendEngagedFront">
+         <property name="geometry">
+          <rect>
+           <x>940</x>
+           <y>50</y>
+           <width>100</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>send</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_14">
+         <property name="geometry">
+          <rect>
+           <x>940</x>
+           <y>120</y>
+           <width>100</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>send</string>
+>>>>>>> 9972880 (VCU CHANGES ADDED)
          </property>
         </widget>
        </widget>
-       <widget class="QGroupBox" name="groupBox_3">
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>750</y>
+      <width>711</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QWidget" name="widget_5" native="true">
+       <widget class="QWidget" name="FaultLoggraph" native="true">
         <property name="geometry">
          <rect>
+          <x>30</x>
+          <y>50</y>
+          <width>651</width>
+          <height>181</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="FaultLabel">
+        <property name="geometry">
+         <rect>
+<<<<<<< HEAD
           <x>10</x>
           <y>630</y>
           <width>1281</width>
           <height>81</height>
+=======
+          <x>20</x>
+          <y>10</y>
+          <width>58</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Fault Log</string>
+        </property>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_4">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>830</y>
+      <width>551</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_5">
+     <item>
+      <widget class="QWidget" name="widget_6" native="true"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_5">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>749</y>
+      <width>551</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_6">
+     <item>
+      <widget class="QWidget" name="widget_7" native="true">
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>0</y>
+          <width>521</width>
+          <height>61</height>
+>>>>>>> 9972880 (VCU CHANGES ADDED)
          </rect>
         </property>
         <property name="title">
@@ -965,10 +2354,14 @@
           <string>Max Torque Request</string>
          </property>
         </widget>
+<<<<<<< HEAD
         <widget class="QDoubleSpinBox" name="maxTorque">
+=======
+        <widget class="QSpinBox" name="sendmaxtorque">
+>>>>>>> 9972880 (VCU CHANGES ADDED)
          <property name="geometry">
           <rect>
-           <x>180</x>
+           <x>190</x>
            <y>30</y>
            <width>42</width>
            <height>22</height>
@@ -994,6 +2387,22 @@
           <string>Send Max Torque</string>
          </property>
         </widget>
+<<<<<<< HEAD
+=======
+        <widget class="QPushButton" name="sendMaxTorque_2">
+         <property name="geometry">
+          <rect>
+           <x>280</x>
+           <y>20</y>
+           <width>191</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Send Max Torque</string>
+         </property>
+        </widget>
+>>>>>>> 9972880 (VCU CHANGES ADDED)
        </widget>
       </widget>
      </item>
