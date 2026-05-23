@@ -8,6 +8,7 @@ class VCU(CANPeripheral):
     const = VCUConstants()
     func = lambda self, msg: self.on_message_received(msg)
     dataSignal = Signal(list,str)
+    logger = Signal(str)
     def __init__(self, bus,parent = None):
         super().__init__(id=self.const.DEVICE_ID, isExtended=False, bus=bus, func=self.func, parent = parent)
     def setup(self):
@@ -63,7 +64,10 @@ class VCU(CANPeripheral):
         super().send_message([], self.const.WRITE_CONFIG_ID)
     
     def on_message_received(self, msg):
-        self.processMessage(msg)
+        if(msg.arbitration_id == self.const.RX_PARAMETER_ID):
+            
+        else:
+            self.processMessage(msg)
 
     def processMessage(self, msg):
         # see VCU CAN API for data format

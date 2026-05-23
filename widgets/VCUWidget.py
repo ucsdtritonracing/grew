@@ -55,15 +55,16 @@ class VCUWidget(QtWidgets.QMainWindow):
         
         self.setupGraph()
         self.window.setPedalMapButton.clicked.connect(self.sendPedalMap)
-        self.window.sendMaxTorqueButton.clicked.connect(self.vcu.writeConfiguration)
+        self.window.sendConfigButton.clicked.connect(self.vcu.writeConfiguration)
         # BPS/APPS threshold buttons
-        for btn_name, (param_id, widget_name) in self.const.button_map.items():
+        for btn_name, (param_id, widget_name) in self.vcu.const.button_map.items():
             widget = getattr(self.window, widget_name)
             getattr(self.window, btn_name).clicked.connect(
                 lambda checked=False, pid=param_id, w=widget: self.vcu.set_param(pid, float(w.value()))
             )
 
         self.window_closed = Signal()
+        self.logger = Signal(str)
         self.window_closed.connect(partial(self.vcu.disable))
 
     def closeEvent(self, event):
@@ -160,15 +161,19 @@ class VCUWidget(QtWidgets.QMainWindow):
             self.buffers["x"],
             self.buffers["pedalMap"]
         )
-
         # Debug print
     
     @Slot()
     def sendPedalMap(self):
         PEDAL_MAP_BASE_ID = 0x0100
+        for i in range(2,17):
+            if(self.buffers["pedalMap"][i] < self.buffers["pedalMap"][i-1]):
+                self.logger.emit("Pedal Map not monotonically increasing! Mapping not sent.")
+                return # do not do anything, invalid param
         for i in range(1, 17):                          # indices 1–16 inclusive
             param_id = PEDAL_MAP_BASE_ID + (i - 1)      # 0x0100, 0x0101, … 0x010F
             self.vcu.set_param(param_id, float(self.buffers["pedalMap"][i]))
+    
     @Slot()
     def sendMaxTorque(self):
         self.vcu.set_param(0x000F, float(self.window.maxTorque.value()))     # Maximum Torque Request
