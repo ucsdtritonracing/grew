@@ -58,8 +58,8 @@ BO_ 303 VCU_FLAGS: 1 VCU
  SG_ R2D_PRESSED : 0|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ SHUTDOWN_CLOSED : 1|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ READY_2_DRIVE_MODE : 2|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ APPS_FAULT : 0|8@1+ (1,0) [0|0] "" Vector__XXX
- SG_ ABPPSC_FAULT : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ APPS_FAULT : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ABPPSC_FAULT : 4|1@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 302 IMU_STATE: 8 VCU
  SG_ IMU_YAW : 0|16@1- (1,0) [-180|180] "degrees" Vector__XXX
