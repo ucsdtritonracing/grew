@@ -8,7 +8,7 @@ class InverterConstants:
     TEMPS_ID_2: int =       161
     TEMPS_ID_3: int =       162
     STATES_ID: int =        170
-    TORQUES_ID: int =       172
+    TORQUES_ID: int =       192
     FAULTS_ID: int =        171
     POLE_PAIRS: int =       10
     DEVICE_ID: int = 0x067

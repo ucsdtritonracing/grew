@@ -43,7 +43,8 @@ class MainWidget(QtWidgets.QMainWindow):
             "Front Right Wheel Speed": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="Front Right Wheel Speed"),
             "Front Left Wheel Speed": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="Front Left Wheel Speed"),
             "Back Right Wheel Speed": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="Back Right Wheel Speed"),
-            "Back Left Wheel Speed": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="Back Left Wheel Speed")
+            "Back Left Wheel Speed": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="Back Left Wheel Speed"),
+            "Commanded Torque": self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name="Commanded Torque")
         }
         self.viewRange = 10 # default seconds to see
 
@@ -76,3 +77,6 @@ class MainWidget(QtWidgets.QMainWindow):
             self.updateGraph(data[1],"Front Left Wheel Speed")
             self.updateGraph(data[2],"Back Right Wheel Speed")
             self.updateGraph(data[3],"Back Left Wheel Speed")
+        elif name == "torqueInfo":
+            self.updateGraph(data[0],"Commanded Torque")
+            

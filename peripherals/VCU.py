@@ -41,7 +41,7 @@ class VCU(CANPeripheral):
         # enter flash mode 
         print("HI IM ENABLED")
         self.txData1[0] = self.const.FLASH_ON
-        #super().send_message(self.txData1, self.const.FLASH_ID)
+        super().send_message(self.txData1, self.const.FLASH_ID, is_extended_id=False)
     @Slot()
     def disable(self):
         self.txData1 = [self.const.FLASH_OFF]
@@ -49,19 +49,26 @@ class VCU(CANPeripheral):
     
     @Slot()
     def set_param(self, param_id: int, value: float, info: int):
-        data = self.dbc.encode_message(
-            'VCU_SET_PARAM',
-            {
-                'PARAM_ID':         param_id,
-                'PARAM_VALUE_FP32': value,
-                'PARAM_INFO':       info,
-            }
+        msg_def = self.dbc.get_message_by_name('VCU_SET_PARAM')
+        
+        # 2. Encode signals to raw bytes (keep as a bytes object)
+        data = msg_def.encode({
+            'PARAM_ID':         param_id,
+            'PARAM_VALUE_FP32': value,
+            'PARAM_INFO':       info,
+        },padding=True)
+        
+        # 3. Pass the DBC's metadata properties directly to the sender
+        super().send_message(
+            data=data, 
+            arbitration_id=msg_def.frame_id, 
+            is_extended_id=msg_def.is_extended_frame,
+            is_fd=msg_def.is_fd
         )
-        super().send_message(list(data), self.const.SET_PARAM_ID)
     
     @Slot()
     def writeConfiguration(self):
-        super().send_message([], self.const.WRITE_CONFIG_ID)
+        super().send_message([], self.const.WRITE_CONFIG_ID, is_extended_id=False)
     
     def on_message_received(self, msg):
         if(msg.arbitration_id == self.const.RX_PARAMETER_ID):
@@ -99,7 +106,6 @@ class VCU(CANPeripheral):
         param_name = self.const.PARAM_NAMES.get(param_id, f"UNKNOWN (0x{param_id:04X})")
 
         return (param_name, param_info, param_value)
-
     def processMessage(self, msg):
         # see VCU CAN API for data format
         data = self.dbc.decode_message(msg.arbitration_id, msg.data)

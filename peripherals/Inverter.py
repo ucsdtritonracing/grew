@@ -53,8 +53,7 @@ class Inverter(CANPeripheral):
                 self.state["inverterInfo"] = data["INV_Inverter_Enable_State"] == 1
                 self.dataSignal.emit(self.state["inverterInfo"],"inverter")
             case self.const.TORQUES_ID:
-                self.state["torqueInfo"][0] = data["INV_Commanded_Torque"]
-                self.state["torqueInfo"][1] = data["INV_Torque_Feedback"]
+                self.state["torqueInfo"][0] = data["VCU_INV_Torque_Command"]
                 self.dataSignal.emit(self.state["torqueInfo"],"torque")
             case self.const.FAULTS_ID:
                 run_fault_lo = int(data.get("INV_Run_Fault_Lo", 0))

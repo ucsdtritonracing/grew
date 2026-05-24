@@ -463,12 +463,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput2">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -477,12 +489,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput4">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -491,12 +515,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput6">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -505,12 +541,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput8">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -519,12 +567,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput10">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -533,12 +593,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput12">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -547,12 +619,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput14">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -561,12 +645,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput16">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -575,12 +671,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput18">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -817,6 +925,12 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="appsLSignal_2">
          <property name="geometry">
@@ -829,6 +943,12 @@ QCheckBox::indicator:unchecked {
          </property>
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
          </property>
         </widget>
         <widget class="QLabel" name="label_20">
@@ -869,6 +989,12 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="bpsHFault">
          <property name="geometry">
@@ -882,6 +1008,12 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="bpsfEngaged">
          <property name="geometry">
@@ -894,6 +1026,12 @@ QCheckBox::indicator:unchecked {
          </property>
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
          </property>
         </widget>
         <widget class="QLabel" name="label_24">
@@ -947,6 +1085,12 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="appsHSignal">
          <property name="geometry">
@@ -959,6 +1103,12 @@ QCheckBox::indicator:unchecked {
          </property>
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="appsHFault">
@@ -973,6 +1123,12 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="appsLFault">
          <property name="geometry">
@@ -985,6 +1141,12 @@ QCheckBox::indicator:unchecked {
          </property>
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
          </property>
         </widget>
         <widget class="QPushButton" name="sendAPPSLSignal">
@@ -1103,6 +1265,12 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
         </widget>
         <widget class="QPushButton" name="sendAPPSLFault_2">
          <property name="geometry">
@@ -1168,6 +1336,12 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="appsLFault_2">
          <property name="geometry">
@@ -1180,6 +1354,12 @@ QCheckBox::indicator:unchecked {
          </property>
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
          </property>
         </widget>
         <widget class="QLabel" name="SendBPSFaultL_2">
@@ -1246,6 +1426,12 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>500.000000000000000</double>
+         </property>
         </widget>
         <widget class="QPushButton" name="sendMaxTorqRequest">
          <property name="geometry">
@@ -1298,6 +1484,12 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="bpsHFault_2">
          <property name="geometry">
@@ -1310,6 +1502,12 @@ QCheckBox::indicator:unchecked {
          </property>
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
          </property>
         </widget>
        </widget>

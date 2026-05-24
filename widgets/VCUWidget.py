@@ -1,6 +1,6 @@
 import sys
 from PySide6 import QtCore, QtWidgets, QtGui
-from PySide6.QtCore import Slot, Signal, QFile
+from PySide6.QtCore import QTimer, Slot, Signal, QFile
 from PySide6.QtUiTools import QUiLoader
 from peripherals.VCU import VCU
 from functools import partial
@@ -80,11 +80,11 @@ class VCUWidget(QtWidgets.QMainWindow):
         self.sources = ["pedalMap"]
         self.buffers = {
             "pedalMap": [0, 0, 0, 0, 0, 0, 0, 0, 0,
-                         0, 0, 0, 0, 0, 0, 0, 0, 100],
+                         0, 0, 0, 0, 0, 0, 0, 0, 1],
             "x": [x * 6.25 for x in range(18)]
         }
         self.window.pedalGraph.setXRange(0, 100)
-        self.window.pedalGraph.setYRange(0, 100)
+        self.window.pedalGraph.setYRange(0, 1)
         self.window.pedalGraph.showGrid(x=True, y=True)
         self.window.pedalGraph.setLabel('bottom', 'Pedal Input %')
         self.window.pedalGraph.setLabel('left', 'Output %')
@@ -117,7 +117,7 @@ class VCUWidget(QtWidgets.QMainWindow):
 
         # Configure and connect spin boxes for editable points (skip index 0 and 17)
         for i, sb in enumerate(self.spinboxes):
-            sb.setRange(0.0, 100.0)
+            sb.setRange(0.0, 1.0)
             sb.setDecimals(2)
             sb.setSingleStep(0.5)
             sb.setValue(self.buffers["pedalMap"][i])
@@ -145,11 +145,8 @@ class VCUWidget(QtWidgets.QMainWindow):
         if(index == 0):
             value = 0
         if(index == 17):
-            value = 100
-        if(value > 100):
-            value = 100
-        elif(value < 0):
-            value = 0
+            value = 1
+        max(0, min(value,1))
         # Update internal mapping
         self.buffers["pedalMap"][index] = value
         self.vcu.state["pedalMap"] = self.buffers["pedalMap"]
@@ -174,8 +171,8 @@ class VCUWidget(QtWidgets.QMainWindow):
                 self.logger.emit("Pedal Map not monotonically increasing! Mapping not sent.")
                 return # do not do anything, invalid param
         for i in range(1, 17):                          # indices 1–16 inclusive
-            param_id = PEDAL_MAP_BASE_ID + (i - 1)      # 0x0100, 0x0101, … 0x010F
-            self.vcu.set_param(param_id, float(self.buffers["pedalMap"][i]),i)
+            param_id = 0x0006
+            QTimer.singleShot(100,lambda param_id=param_id,i=i : self.vcu.set_param(param_id, float(self.buffers["pedalMap"][i]),i))
     
     @Slot()
     def sendMaxTorque(self):

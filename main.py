@@ -47,13 +47,14 @@ class CANSimulators(QtCore.QObject):
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    timing = can.BitTiming.from_sample_point(
-                f_clock=120_000_000,
-                bitrate=500000,
-                sample_point=99,
-            )
+    
     # 1. Initialize CAN Bus interface
-    bus = can.interface.Bus(interface='pcan', receive_own_messages=True)
+    bus = can.interface.Bus(
+        interface='pcan',
+        channel='PCAN_USBBUS1',
+        bitrate=500000,        # match exactly what the VCU firmware is configured for
+        receive_own_messages=True,
+    )
     #bus = can.interfaces.pcan.PcanBus(channel='PCAN_USBBUS1', timing=timing, bitrate=500000, receive_own_messages=False)
     #print(bus.status_string())
     inverter = Inverter(bus)
@@ -65,14 +66,15 @@ def main():
     # 3. Setup background CAN configuration 
     db = cantools.database.load_file("constants\\TR-26.dbc")
     msg_def = db.get_message_by_name('WHEEL_STATE')
-    
+    msg = db.get_message_by_name('VCU_SET_PARAM')
+    print(f"is_fd={msg.is_fd}, is_extended={msg.is_extended_frame}")
     # 4. Bind listeners using python-can Notifier framework
-    listeners = [vcu.getListner(), can.Printer()] 
+    listeners = [vcu.getListner(),inverter.getListner(), can.Printer()] 
     notifier = can.Notifier(bus, listeners)
     
     # 5. Start background simulator to feed virtual data
     #simulator = CANSimulators(bus, msg_def)
-    print(bus.status_string())
+#    print(bus.status_string())
     # 6. Execute Application and ensure clean socket/notifier resource cleanup on close
     exit_code = app.exec()
     notifier.stop()
