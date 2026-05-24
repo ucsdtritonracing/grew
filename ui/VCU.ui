@@ -231,187 +231,12 @@ QCheckBox::indicator:unchecked {
         <property name="title">
          <string>Pedal Map</string>
         </property>
-<<<<<<< HEAD
-        <widget class="QWidget" name="ThrottleWidget" native="true">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>30</y>
-           <width>101</width>
-           <height>331</height>
-          </rect>
-         </property>
-         <widget class="QLabel" name="label_2">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>20</y>
-            <width>58</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>100%</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_3">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>50</y>
-            <width>58</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>90%</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_4">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>80</y>
-            <width>58</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>80%</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_5">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>110</y>
-            <width>58</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>70%</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_6">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>140</y>
-            <width>58</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>60%</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_7">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>170</y>
-            <width>58</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>50%</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_8">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>190</y>
-            <width>58</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>40%</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_9">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>210</y>
-            <width>58</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>30%</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_10">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>230</y>
-            <width>58</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>20%</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>250</y>
-            <width>58</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>10%</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_11">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>270</y>
-            <width>58</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>0%</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_12">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>0</y>
-            <width>58</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Throttle</string>
-          </property>
-         </widget>
-        </widget>
         <widget class="QPushButton" name="setPedalMapButton">
-         <property name="geometry">
-          <rect>
-           <x>70</x>
-           <y>370</y>
-           <width>151</width>
-=======
-        <widget class="QPushButton" name="pushButton">
          <property name="geometry">
           <rect>
            <x>140</x>
            <y>350</y>
            <width>201</width>
->>>>>>> 9972880 (VCU CHANGES ADDED)
            <height>32</height>
           </rect>
          </property>
@@ -626,250 +451,6 @@ QCheckBox::indicator:unchecked {
          <widget class="QWidget" name="widget_3" native="true">
           <property name="geometry">
            <rect>
-<<<<<<< HEAD
-            <x>10</x>
-            <y>260</y>
-            <width>1181</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <widget class="QDoubleSpinBox" name="pointInput1">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>10</y>
-             <width>51</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput2">
-           <property name="geometry">
-            <rect>
-             <x>50</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput4">
-           <property name="geometry">
-            <rect>
-             <x>180</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput5">
-           <property name="geometry">
-            <rect>
-             <x>240</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput6">
-           <property name="geometry">
-            <rect>
-             <x>310</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput7">
-           <property name="geometry">
-            <rect>
-             <x>370</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput8">
-           <property name="geometry">
-            <rect>
-             <x>440</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput9">
-           <property name="geometry">
-            <rect>
-             <x>510</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput10">
-           <property name="geometry">
-            <rect>
-             <x>570</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput11">
-           <property name="geometry">
-            <rect>
-             <x>640</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput3">
-           <property name="geometry">
-            <rect>
-             <x>120</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput12">
-           <property name="geometry">
-            <rect>
-             <x>710</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput13">
-           <property name="geometry">
-            <rect>
-             <x>780</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput14">
-           <property name="geometry">
-            <rect>
-             <x>840</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput15">
-           <property name="geometry">
-            <rect>
-             <x>900</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput16">
-           <property name="geometry">
-            <rect>
-             <x>960</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput17">
-           <property name="geometry">
-            <rect>
-             <x>1030</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-          <widget class="QDoubleSpinBox" name="pointInput18">
-           <property name="geometry">
-            <rect>
-             <x>1100</x>
-             <y>10</y>
-             <width>62</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-           </property>
-          </widget>
-         </widget>
-        </widget>
-=======
             <x>50</x>
             <y>280</y>
             <width>1241</width>
@@ -882,12 +463,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput2">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -896,12 +489,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput4">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -910,12 +515,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput6">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -924,12 +541,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput8">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -938,12 +567,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput10">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -952,12 +593,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput12">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -966,6 +619,12 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
@@ -973,12 +632,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
-            <widget class="QDoubleSpinBox" name="doubleSpinBox_15">
+            <widget class="QDoubleSpinBox" name="pointInput15">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -987,6 +658,12 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
@@ -994,12 +671,24 @@ QCheckBox::indicator:unchecked {
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="pointInput18">
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -1112,18 +801,8 @@ QCheckBox::indicator:unchecked {
            </item>
           </layout>
          </widget>
-         <widget class="PlotWidget" name="pedalGraph" native="true">
-          <property name="geometry">
-           <rect>
-            <x>69</x>
-            <y>39</y>
-            <width>1201</width>
-            <height>231</height>
-           </rect>
-          </property>
-         </widget>
         </widget>
-        <widget class="QPushButton" name="pushButton_7">
+        <widget class="QPushButton" name="sendConfigButton">
          <property name="geometry">
           <rect>
            <x>350</x>
@@ -1143,63 +822,20 @@ QCheckBox::indicator:unchecked {
           <string>Set Configuration</string>
          </property>
         </widget>
->>>>>>> 9972880 (VCU CHANGES ADDED)
        </widget>
        <widget class="QGroupBox" name="groupBox_2">
         <property name="geometry">
          <rect>
           <x>10</x>
-<<<<<<< HEAD
-          <y>420</y>
-          <width>1281</width>
-          <height>211</height>
-=======
           <y>450</y>
           <width>1311</width>
           <height>251</height>
->>>>>>> 9972880 (VCU CHANGES ADDED)
          </rect>
         </property>
         <property name="title">
          <string>BPS/APPS Threshold</string>
         </property>
-        <widget class="QPushButton" name="sendAPPSSignal">
-         <property name="geometry">
-          <rect>
-<<<<<<< HEAD
-           <x>270</x>
-           <y>80</y>
-           <width>181</width>
-           <height>32</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Send APPS1 Signal Thresholds</string>
-=======
-           <x>20</x>
-           <y>30</y>
-           <width>131</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>BPS HighThreshold</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_15">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>110</y>
-           <width>131</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>BPS Low Threshold</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="sendAPPSHSignal">
          <property name="geometry">
           <rect>
            <x>260</x>
@@ -1212,7 +848,7 @@ QCheckBox::indicator:unchecked {
           <string/>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="sendAPPSLSignal_2">
          <property name="geometry">
           <rect>
            <x>500</x>
@@ -1289,6 +925,12 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="appsLSignal_2">
          <property name="geometry">
@@ -1301,6 +943,12 @@ QCheckBox::indicator:unchecked {
          </property>
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
          </property>
         </widget>
         <widget class="QLabel" name="label_20">
@@ -1341,18 +989,30 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
         </widget>
         <widget class="QDoubleSpinBox" name="bpsHFault">
          <property name="geometry">
           <rect>
            <x>820</x>
-           <y>100</y>
+           <y>80</y>
            <width>62</width>
            <height>22</height>
           </rect>
          </property>
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="bpsfEngaged">
@@ -1366,6 +1026,12 @@ QCheckBox::indicator:unchecked {
          </property>
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
          </property>
         </widget>
         <widget class="QLabel" name="label_24">
@@ -1407,20 +1073,7 @@ QCheckBox::indicator:unchecked {
           <string>APP1 Signal High</string>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="sendbpshigh">
-         <property name="geometry">
-          <rect>
-           <x>150</x>
-           <y>30</y>
-           <width>62</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="sendappsLSignal_2">
+        <widget class="QDoubleSpinBox" name="appsLSignal">
          <property name="geometry">
           <rect>
            <x>380</x>
@@ -1432,8 +1085,14 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="sendappsHSignal">
+        <widget class="QDoubleSpinBox" name="appsHSignal">
          <property name="geometry">
           <rect>
            <x>380</x>
@@ -1445,21 +1104,14 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="sendbpslow">
-         <property name="geometry">
-          <rect>
-           <x>150</x>
-           <y>110</y>
-           <width>62</width>
-           <height>22</height>
-          </rect>
+         <property name="decimals">
+          <number>3</number>
          </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         <property name="maximum">
+          <double>1.000000000000000</double>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="sendappsHFault">
+        <widget class="QDoubleSpinBox" name="appsHFault">
          <property name="geometry">
           <rect>
            <x>390</x>
@@ -1471,8 +1123,14 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="sendappsLFault">
+        <widget class="QDoubleSpinBox" name="appsLFault">
          <property name="geometry">
           <rect>
            <x>380</x>
@@ -1484,41 +1142,14 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_5">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>60</y>
-           <width>71</width>
-           <height>31</height>
-          </rect>
+         <property name="decimals">
+          <number>3</number>
          </property>
-         <property name="text">
-          <string>Send</string>
+         <property name="maximum">
+          <double>1.000000000000000</double>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_6">
-         <property name="geometry">
-          <rect>
-           <x>40</x>
-           <y>140</y>
-           <width>71</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>-1</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Send</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_8">
+        <widget class="QPushButton" name="sendAPPSLSignal">
          <property name="geometry">
           <rect>
            <x>260</x>
@@ -1529,22 +1160,11 @@ QCheckBox::indicator:unchecked {
          </property>
          <property name="text">
           <string>PushButton</string>
->>>>>>> 9972880 (VCU CHANGES ADDED)
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_9">
+        <widget class="QPushButton" name="sendAPPSLFault">
          <property name="geometry">
           <rect>
-<<<<<<< HEAD
-           <x>270</x>
-           <y>30</y>
-           <width>161</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>APPS1 High Signal Threshold</string>
-=======
            <x>259</x>
            <y>110</y>
            <width>91</width>
@@ -1555,7 +1175,7 @@ QCheckBox::indicator:unchecked {
           <string>PushButton</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_10">
+        <widget class="QPushButton" name="sendAPPSHFault">
          <property name="geometry">
           <rect>
            <x>259</x>
@@ -1579,25 +1199,11 @@ QCheckBox::indicator:unchecked {
          </property>
          <property name="text">
           <string>BSER Engaged Threshold</string>
->>>>>>> 9972880 (VCU CHANGES ADDED)
          </property>
         </widget>
         <widget class="QLabel" name="label_28">
          <property name="geometry">
           <rect>
-<<<<<<< HEAD
-           <x>270</x>
-           <y>60</y>
-           <width>161</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>APPS1 Low Signal Threshold</string>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="appsHSignal">
-=======
            <x>920</x>
            <y>150</y>
            <width>161</width>
@@ -1608,7 +1214,7 @@ QCheckBox::indicator:unchecked {
           <string>Maximum Torque Request</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_11">
+        <widget class="QPushButton" name="sendAPPSHSignal_2">
          <property name="geometry">
           <rect>
            <x>499</x>
@@ -1621,7 +1227,7 @@ QCheckBox::indicator:unchecked {
           <string>PushButton</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="sendBPSFaultL">
+        <widget class="QPushButton" name="sendBPSLFault">
          <property name="geometry">
           <rect>
            <x>710</x>
@@ -1634,7 +1240,7 @@ QCheckBox::indicator:unchecked {
           <string>PushButton</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_13">
+        <widget class="QPushButton" name="sendBPSHFault">
          <property name="geometry">
           <rect>
            <x>710</x>
@@ -1659,8 +1265,14 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_16">
+        <widget class="QPushButton" name="sendAPPSLFault_2">
          <property name="geometry">
           <rect>
            <x>499</x>
@@ -1687,7 +1299,6 @@ QCheckBox::indicator:unchecked {
          </property>
         </widget>
         <widget class="QLabel" name="label_30">
->>>>>>> 9972880 (VCU CHANGES ADDED)
          <property name="geometry">
           <rect>
            <x>490</x>
@@ -1700,7 +1311,7 @@ QCheckBox::indicator:unchecked {
           <string>APP2 High</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_17">
+        <widget class="QPushButton" name="sendAPPSHFault_2">
          <property name="geometry">
           <rect>
            <x>500</x>
@@ -1725,12 +1336,14 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
         </widget>
-<<<<<<< HEAD
-        <widget class="QDoubleSpinBox" name="appsLSignal">
-=======
         <widget class="QDoubleSpinBox" name="appsLFault_2">
->>>>>>> 9972880 (VCU CHANGES ADDED)
          <property name="geometry">
           <rect>
            <x>590</x>
@@ -1742,407 +1355,40 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
-        </widget>
-<<<<<<< HEAD
-        <widget class="QDoubleSpinBox" name="bpsHFault">
-         <property name="geometry">
-          <rect>
-           <x>690</x>
-           <y>30</y>
-           <width>42</width>
-           <height>22</height>
-          </rect>
+         <property name="decimals">
+          <number>3</number>
          </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         <property name="maximum">
+          <double>1.000000000000000</double>
          </property>
         </widget>
-        <widget class="QLabel" name="label_19">
-         <property name="geometry">
-          <rect>
-           <x>520</x>
-           <y>60</y>
-           <width>151</width>
-=======
         <widget class="QLabel" name="SendBPSFaultL_2">
          <property name="geometry">
           <rect>
            <x>700</x>
            <y>130</y>
            <width>111</width>
->>>>>>> 9972880 (VCU CHANGES ADDED)
            <height>20</height>
           </rect>
          </property>
          <property name="text">
-<<<<<<< HEAD
-          <string>BPSF Low Fault Threshold</string>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="bpsLFault">
-         <property name="geometry">
-          <rect>
-           <x>690</x>
-           <y>60</y>
-           <width>42</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="sendBPSFault">
-         <property name="geometry">
-          <rect>
-           <x>520</x>
-           <y>80</y>
-           <width>171</width>
-           <height>32</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Send BPSF Fault Thresholds</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_20">
-         <property name="geometry">
-          <rect>
-           <x>520</x>
-           <y>30</y>
-           <width>151</width>
-=======
           <string>BSER Fault Low</string>
          </property>
         </widget>
-        <widget class="QLabel" name="bpsHFault_2">
+        <widget class="QLabel" name="blah">
          <property name="geometry">
           <rect>
            <x>700</x>
            <y>180</y>
            <width>111</width>
->>>>>>> 9972880 (VCU CHANGES ADDED)
            <height>20</height>
           </rect>
          </property>
          <property name="text">
-<<<<<<< HEAD
-          <string>BPSF High Fault Threshold</string>
+          <string>BSER High Fault Threshold</string>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="appsHFault">
-         <property name="geometry">
-          <rect>
-           <x>930</x>
-           <y>30</y>
-           <width>42</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_21">
-         <property name="geometry">
-          <rect>
-           <x>760</x>
-           <y>60</y>
-           <width>151</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>APPS1 Low Fault Threshold</string>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="appsLFault">
-         <property name="geometry">
-          <rect>
-           <x>930</x>
-           <y>60</y>
-           <width>42</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="sendAPPSFault">
-         <property name="geometry">
-          <rect>
-           <x>760</x>
-           <y>80</y>
-           <width>171</width>
-           <height>32</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Send APPS1 Fault Thresholds</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_22">
-         <property name="geometry">
-          <rect>
-           <x>760</x>
-           <y>30</y>
-           <width>171</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>APPS1 High Fault Threshold</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_23">
-         <property name="geometry">
-          <rect>
-           <x>1030</x>
-           <y>30</y>
-           <width>131</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>BPSF Engaged Threshold</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_24">
-         <property name="geometry">
-          <rect>
-           <x>1030</x>
-           <y>60</y>
-           <width>131</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>BPSR Engaged Threshold</string>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="bpsfEngaged">
-         <property name="geometry">
-          <rect>
-           <x>1200</x>
-           <y>30</y>
-           <width>42</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="bpsrEngaged">
-         <property name="geometry">
-          <rect>
-           <x>1200</x>
-           <y>60</y>
-           <width>42</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="sendBPSEngaged">
-         <property name="geometry">
-          <rect>
-           <x>1030</x>
-           <y>80</y>
-           <width>171</width>
-           <height>32</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Send BPS Engaged Threshold</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_25">
-         <property name="geometry">
-          <rect>
-           <x>490</x>
-           <y>120</y>
-           <width>161</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>APPS2 High Fault Threshold</string>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="appsHSignal_2">
-         <property name="geometry">
-          <rect>
-           <x>190</x>
-           <y>120</y>
-           <width>42</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="appsLFault_2">
-         <property name="geometry">
-          <rect>
-           <x>660</x>
-           <y>150</y>
-           <width>42</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="appsLSignal_2">
-         <property name="geometry">
-          <rect>
-           <x>190</x>
-           <y>150</y>
-           <width>42</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_26">
-         <property name="geometry">
-          <rect>
-           <x>490</x>
-           <y>150</y>
-           <width>161</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>APPS2 Low Fault Threshold</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_27">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>120</y>
-           <width>161</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>APPS2 High Signal Threshold</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="sendAPPSSignal_2">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>170</y>
-           <width>181</width>
-           <height>32</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Send APPS2 Signal Thresholds</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_28">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>150</y>
-           <width>171</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>APPS2 Low Signal Threshold</string>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="appsHFault_2">
-         <property name="geometry">
-          <rect>
-           <x>660</x>
-           <y>120</y>
-           <width>42</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="sendAPPSFault_2">
-         <property name="geometry">
-          <rect>
-           <x>490</x>
-           <y>170</y>
-           <width>171</width>
-           <height>32</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Send APPS2 Fault Thresholds</string>
-=======
-          <string>BSER Fault High</string>
->>>>>>> 9972880 (VCU CHANGES ADDED)
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="bpsLFault_2">
-         <property name="geometry">
-          <rect>
-<<<<<<< HEAD
-           <x>190</x>
-           <y>60</y>
-           <width>42</width>
-=======
-           <x>820</x>
-           <y>130</y>
-           <width>62</width>
->>>>>>> 9972880 (VCU CHANGES ADDED)
-           <height>22</height>
-          </rect>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-         </property>
-        </widget>
-<<<<<<< HEAD
-        <widget class="QDoubleSpinBox" name="bpsHFault_2">
-         <property name="geometry">
-          <rect>
-           <x>190</x>
-           <y>30</y>
-           <width>42</width>
-=======
-        <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
-         <property name="geometry">
-          <rect>
-           <x>820</x>
-           <y>180</y>
-           <width>62</width>
->>>>>>> 9972880 (VCU CHANGES ADDED)
-           <height>22</height>
-          </rect>
-         </property>
-         <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-         </property>
-        </widget>
-<<<<<<< HEAD
-        <widget class="QPushButton" name="sendBPSFault_2">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>80</y>
-           <width>161</width>
-=======
-        <widget class="QPushButton" name="pushButton_18">
+        <widget class="QPushButton" name="sendBPSLFault_2">
          <property name="geometry">
           <rect>
            <x>710</x>
@@ -2155,7 +1401,7 @@ QCheckBox::indicator:unchecked {
           <string>PushButton</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_19">
+        <widget class="QPushButton" name="sendBPSHFault_2">
          <property name="geometry">
           <rect>
            <x>719</x>
@@ -2168,7 +1414,7 @@ QCheckBox::indicator:unchecked {
           <string>PushButton</string>
          </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="maxtorque">
+        <widget class="QDoubleSpinBox" name="maxTorqueRequest">
          <property name="geometry">
           <rect>
            <x>1090</x>
@@ -2180,51 +1426,27 @@ QCheckBox::indicator:unchecked {
          <property name="buttonSymbols">
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>500.000000000000000</double>
+         </property>
         </widget>
-        <widget class="QPushButton" name="sendMaxTorque">
+        <widget class="QPushButton" name="sendMaxTorqRequest">
          <property name="geometry">
           <rect>
            <x>960</x>
            <y>180</y>
            <width>100</width>
->>>>>>> 9972880 (VCU CHANGES ADDED)
            <height>32</height>
           </rect>
          </property>
          <property name="text">
-<<<<<<< HEAD
-          <string>Send BPSR Fault Thresholds</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_29">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>60</y>
-           <width>151</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>BPSR Low Fault Threshold</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_30">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>30</y>
-           <width>161</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>BPSR High Fault Threshold</string>
-=======
           <string>send</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="sendEngagedFront">
+        <widget class="QPushButton" name="sendBPSFEngaged">
          <property name="geometry">
           <rect>
            <x>940</x>
@@ -2237,7 +1459,7 @@ QCheckBox::indicator:unchecked {
           <string>send</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_14">
+        <widget class="QPushButton" name="sendBPSREngaged">
          <property name="geometry">
           <rect>
            <x>940</x>
@@ -2248,7 +1470,44 @@ QCheckBox::indicator:unchecked {
          </property>
          <property name="text">
           <string>send</string>
->>>>>>> 9972880 (VCU CHANGES ADDED)
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="bpsLFault_2">
+         <property name="geometry">
+          <rect>
+           <x>830</x>
+           <y>130</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="bpsHFault_2">
+         <property name="geometry">
+          <rect>
+           <x>830</x>
+           <y>180</y>
+           <width>62</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+         </property>
+         <property name="decimals">
+          <number>3</number>
+         </property>
+         <property name="maximum">
+          <double>1.000000000000000</double>
          </property>
         </widget>
        </widget>
@@ -2281,12 +1540,6 @@ QCheckBox::indicator:unchecked {
        <widget class="QLabel" name="FaultLabel">
         <property name="geometry">
          <rect>
-<<<<<<< HEAD
-          <x>10</x>
-          <y>630</y>
-          <width>1281</width>
-          <height>81</height>
-=======
           <x>20</x>
           <y>10</y>
           <width>58</width>
@@ -2312,7 +1565,21 @@ QCheckBox::indicator:unchecked {
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_5">
      <item>
-      <widget class="QWidget" name="widget_6" native="true"/>
+      <widget class="QWidget" name="widget_6" native="true">
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>100</y>
+          <width>191</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Save Setup to TextFille</string>
+        </property>
+       </widget>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -2335,7 +1602,6 @@ QCheckBox::indicator:unchecked {
           <y>0</y>
           <width>521</width>
           <height>61</height>
->>>>>>> 9972880 (VCU CHANGES ADDED)
          </rect>
         </property>
         <property name="title">
@@ -2354,11 +1620,7 @@ QCheckBox::indicator:unchecked {
           <string>Max Torque Request</string>
          </property>
         </widget>
-<<<<<<< HEAD
-        <widget class="QDoubleSpinBox" name="maxTorque">
-=======
         <widget class="QSpinBox" name="sendmaxtorque">
->>>>>>> 9972880 (VCU CHANGES ADDED)
          <property name="geometry">
           <rect>
            <x>190</x>
@@ -2371,7 +1633,7 @@ QCheckBox::indicator:unchecked {
           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
          <property name="maximum">
-          <double>999.000000000000000</double>
+          <number>999</number>
          </property>
         </widget>
         <widget class="QPushButton" name="sendMaxTorque">
@@ -2387,8 +1649,6 @@ QCheckBox::indicator:unchecked {
           <string>Send Max Torque</string>
          </property>
         </widget>
-<<<<<<< HEAD
-=======
         <widget class="QPushButton" name="sendMaxTorque_2">
          <property name="geometry">
           <rect>
@@ -2402,7 +1662,6 @@ QCheckBox::indicator:unchecked {
           <string>Send Max Torque</string>
          </property>
         </widget>
->>>>>>> 9972880 (VCU CHANGES ADDED)
        </widget>
       </widget>
      </item>
@@ -2432,19 +1691,6 @@ QCheckBox::indicator:unchecked {
     </property>
     <property name="text">
      <string>Set Configuration</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_6">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>800</y>
-      <width>191</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Save Setup to TextFille</string>
     </property>
    </widget>
   </widget>

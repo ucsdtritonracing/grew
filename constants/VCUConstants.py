@@ -11,7 +11,7 @@ class VCUConstants:
     BROADCAST_3_ID: int =   0x12C
     FLASH_ON: int =         0x01
     FLASH_OFF: int =        0x00
-    DEVICE_ID: int =        0x067
+    DEVICE_ID: int =        0x032
     SET_PARAM_ID: int =     0x190
     button_map: dict =      field(default_factory=lambda: {
                                 "sendAPPSHSignal":      (0x0001, "appsHSignal", 3),

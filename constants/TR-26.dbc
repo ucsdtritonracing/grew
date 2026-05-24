@@ -86,10 +86,10 @@ BO_ 688 LWS_Standard: 5 SAS
 BO_ 500 LOCK_CONFIG: 1 VCU
  SG_ LOCK_CONFIG : 0|1@1+ (1,0) [0|0] "bit" Vector__XXX
 
-BO_ 400 VCU_SET_PARAM: 7 GREW
+BO_ 400 VCU_SET_PARAM: 8 GREW
  SG_ PARAM_ID : 0|16@1+ (1,0) [0|0] "" Vector__XXX
- SG_ PARAM_VALUE_FP32 : 16|32@1+ (1E-06,0) [0|0] "" Vector__XXX
- SG_ PARAM_OPTION : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PARAM_VALUE_FP32 : 32|32@1+ (1E-06,0) [0|0] "" Vector__XXX
+ SG_ PARAM_INFO : 16|16@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 402 VCU_PARAM_RESPONSE: 8 VCU
  SG_ PARAM_ID : 0|16@1+ (1,0) [0|0] "" Vector__XXX
