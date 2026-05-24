@@ -45,7 +45,7 @@ class VCU(CANPeripheral):
     @Slot()
     def disable(self):
         self.txData1 = [self.const.FLASH_OFF]
-        super().send_message(self.txData1, self.const.FLASH_ID)
+        super().send_message(self.txData1, self.const.FLASH_ID, is_extended_id=False)
     
     @Slot()
     def set_param(self, param_id: int, value: float, info: int):

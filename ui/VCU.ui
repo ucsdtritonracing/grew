@@ -1433,7 +1433,7 @@ QCheckBox::indicator:unchecked {
           <double>500.000000000000000</double>
          </property>
         </widget>
-        <widget class="QPushButton" name="sendMaxTorqRequest">
+        <widget class="QPushButton" name="sendMaxTorqueRequest">
          <property name="geometry">
           <rect>
            <x>960</x>
@@ -1510,6 +1510,19 @@ QCheckBox::indicator:unchecked {
           <double>1.000000000000000</double>
          </property>
         </widget>
+        <widget class="QPushButton" name="exitConfig">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>50</y>
+           <width>191</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Exit Config Mode</string>
+         </property>
+        </widget>
        </widget>
       </widget>
      </item>
@@ -1579,6 +1592,32 @@ QCheckBox::indicator:unchecked {
          <string>Save Setup to TextFille</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="sendMaxTorque_2">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>30</y>
+          <width>191</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Send Max Torque</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>70</y>
+          <width>191</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Load Current Setup From Car</string>
+        </property>
+       </widget>
       </widget>
      </item>
     </layout>
@@ -1639,23 +1678,10 @@ QCheckBox::indicator:unchecked {
         <widget class="QPushButton" name="sendMaxTorque">
          <property name="geometry">
           <rect>
-           <x>250</x>
+           <x>270</x>
            <y>30</y>
            <width>191</width>
            <height>32</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Send Max Torque</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="sendMaxTorque_2">
-         <property name="geometry">
-          <rect>
-           <x>280</x>
-           <y>20</y>
-           <width>191</width>
-           <height>31</height>
           </rect>
          </property>
          <property name="text">
@@ -1666,32 +1692,6 @@ QCheckBox::indicator:unchecked {
       </widget>
      </item>
     </layout>
-   </widget>
-   <widget class="QPushButton" name="pushButton_5">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>770</y>
-      <width>191</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Load Current Setup From Car</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_7">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>740</y>
-      <width>191</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Set Configuration</string>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
