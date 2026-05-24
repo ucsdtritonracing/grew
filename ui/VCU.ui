@@ -17,9 +17,9 @@
    <string notr="true">/* Main app background */
 QMainWindow,
 QWidget {
-    background-color: #061427;
+    background-color: #06092d;
     color: white;
-    font-family: Arial;
+    font-family: Georgia;
     font-size: 14px;
 }
 
@@ -32,7 +32,7 @@ QLabel#titleLabel {
 }
 
 QLabel#subtitleLabel {
-    color: #f6e16b;
+    color: #06092d;
     font-size: 18px;
     font-weight: bold;
 }
@@ -45,12 +45,11 @@ QLabel {
 
 /* Buttons */
 QPushButton {
-    background-color: #f6e16b;
-    color: #061B3A;
+    background-color: #07061e;
+    color: #ffffff;
     border: none;
     border-radius: 10px;
     padding: 10px 18px;
-    font-weight: bold;
 }
 
 QPushButton:hover {
@@ -90,7 +89,7 @@ QComboBox::drop-down {
 QComboBox QAbstractItemView {
     background-color: #0b1c36;
     color: white;
-    selection-background-color: #f6e16b;
+    selection-background-color: #130f3f;
     selection-color: #061B3A;
 }
 
@@ -125,7 +124,7 @@ QHeaderView::section {
 /* Group boxes = dashboard cards */
 QGroupBox {
     background-color: rgba(8, 24, 50, 210);
-    border: 1px solid rgba(246, 225, 107, 90);
+    border: 1px #071427
     border-radius: 14px;
     margin-top: 18px;
     padding: 14px;
@@ -138,7 +137,7 @@ QGroupBox::title {
     subcontrol-position: top left;
     left: 14px;
     padding: 0 6px;
-    color: #f6e16b;
+    color: #e6e5db;
 }
 
 /* List widgets */
@@ -225,8 +224,15 @@ QCheckBox::indicator:unchecked {
           <x>10</x>
           <y>60</y>
           <width>1311</width>
-          <height>391</height>
+          <height>411</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Georgia</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
         </property>
         <property name="title">
          <string>Pedal Map</string>
@@ -235,14 +241,14 @@ QCheckBox::indicator:unchecked {
          <property name="geometry">
           <rect>
            <x>140</x>
-           <y>350</y>
+           <y>370</y>
            <width>201</width>
-           <height>32</height>
+           <height>31</height>
           </rect>
          </property>
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>Georgia</family>
            <pointsize>-1</pointsize>
            <bold>true</bold>
           </font>
@@ -255,18 +261,18 @@ QCheckBox::indicator:unchecked {
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>30</y>
+           <y>40</y>
            <width>1291</width>
-           <height>311</height>
+           <height>321</height>
           </rect>
          </property>
          <property name="styleSheet">
           <string notr="true">/* Main app background */
 QMainWindow,
 QWidget {
-    background-color: rgb(20, 36, 103);
+    background-color: #0b1c36
     color: white;
-    font-family: Arial;
+    font-family: Georgia;
     font-size: 14px;
 }
 
@@ -280,7 +286,7 @@ QLabel#titleLabel {
 }
 
 QLabel#subtitleLabel {
-    color: #f6e16b;
+    color: #080820;
     font-size: 18px;
     font-weight: bold;
 }
@@ -297,7 +303,7 @@ QPushButton {
     color: #061B3A;
     border: none;
     border-radius: 10px;
-    padding: 10px 18px;
+    padding: 5px 15px;
     font-weight: bold;
 }
 
@@ -366,7 +372,6 @@ QHeaderView::section {
     background-color: #071427;
     color: #f6e16b;
     padding: 7px;
-    border: 1px solid #263b5c;
     font-weight: bold;
 }
 
@@ -709,9 +714,9 @@ QCheckBox::indicator:unchecked {
           <property name="geometry">
            <rect>
             <x>-10</x>
-            <y>0</y>
+            <y>3</y>
             <width>71</width>
-            <height>304</height>
+            <height>301</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -805,15 +810,15 @@ QCheckBox::indicator:unchecked {
         <widget class="QPushButton" name="sendConfigButton">
          <property name="geometry">
           <rect>
-           <x>350</x>
-           <y>350</y>
-           <width>171</width>
+           <x>370</x>
+           <y>370</y>
+           <width>191</width>
            <height>31</height>
           </rect>
          </property>
          <property name="font">
           <font>
-           <family>Arial</family>
+           <family>Georgia</family>
            <pointsize>-1</pointsize>
            <bold>true</bold>
           </font>
@@ -827,9 +832,9 @@ QCheckBox::indicator:unchecked {
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>450</y>
+          <y>470</y>
           <width>1311</width>
-          <height>251</height>
+          <height>231</height>
          </rect>
         </property>
         <property name="title">
@@ -845,7 +850,7 @@ QCheckBox::indicator:unchecked {
           </rect>
          </property>
          <property name="text">
-          <string>APPS High Signal</string>
+          <string>Send APPS High Signal</string>
          </property>
         </widget>
         <widget class="QPushButton" name="sendAPPSLSignal_2">
@@ -853,18 +858,18 @@ QCheckBox::indicator:unchecked {
           <rect>
            <x>390</x>
            <y>130</y>
-           <width>181</width>
+           <width>201</width>
            <height>41</height>
           </rect>
          </property>
          <property name="text">
-          <string>APPS 2 Low Signal </string>
+          <string>Send APPS2 Low Signal </string>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="appsHSignal_2">
          <property name="geometry">
           <rect>
-           <x>590</x>
+           <x>600</x>
            <y>140</y>
            <width>62</width>
            <height>22</height>
@@ -883,7 +888,7 @@ QCheckBox::indicator:unchecked {
         <widget class="QDoubleSpinBox" name="appsLSignal_2">
          <property name="geometry">
           <rect>
-           <x>590</x>
+           <x>600</x>
            <y>190</y>
            <width>62</width>
            <height>22</height>
@@ -902,7 +907,7 @@ QCheckBox::indicator:unchecked {
         <widget class="QDoubleSpinBox" name="bpsLFault">
          <property name="geometry">
           <rect>
-           <x>830</x>
+           <x>860</x>
            <y>40</y>
            <width>62</width>
            <height>22</height>
@@ -921,7 +926,7 @@ QCheckBox::indicator:unchecked {
         <widget class="QDoubleSpinBox" name="bpsHFault">
          <property name="geometry">
           <rect>
-           <x>830</x>
+           <x>860</x>
            <y>90</y>
            <width>62</width>
            <height>22</height>
@@ -1042,7 +1047,7 @@ QCheckBox::indicator:unchecked {
           </rect>
          </property>
          <property name="text">
-          <string>APPS Low Signal</string>
+          <string>Send APPS Low Signal</string>
          </property>
         </widget>
         <widget class="QPushButton" name="sendAPPSLFault">
@@ -1055,7 +1060,7 @@ QCheckBox::indicator:unchecked {
           </rect>
          </property>
          <property name="text">
-          <string>APPS Low Fault</string>
+          <string>Send APPS Low Fault</string>
          </property>
         </widget>
         <widget class="QPushButton" name="sendAPPSHFault">
@@ -1068,7 +1073,7 @@ QCheckBox::indicator:unchecked {
           </rect>
          </property>
          <property name="text">
-          <string>APPS High Fault</string>
+          <string>Send APPS High Fault</string>
          </property>
         </widget>
         <widget class="QPushButton" name="sendAPPSHSignal_2">
@@ -1076,18 +1081,18 @@ QCheckBox::indicator:unchecked {
           <rect>
            <x>390</x>
            <y>180</y>
-           <width>181</width>
+           <width>201</width>
            <height>41</height>
           </rect>
          </property>
          <property name="text">
-          <string>APPS 2 High Signal</string>
+          <string>Send APPS2 High Signal</string>
          </property>
         </widget>
         <widget class="QPushButton" name="sendBPSLFault">
          <property name="geometry">
           <rect>
-           <x>670</x>
+           <x>690</x>
            <y>30</y>
            <width>151</width>
            <height>41</height>
@@ -1100,7 +1105,7 @@ QCheckBox::indicator:unchecked {
         <widget class="QPushButton" name="sendBPSHFault">
          <property name="geometry">
           <rect>
-           <x>670</x>
+           <x>690</x>
            <y>80</y>
            <width>151</width>
            <height>41</height>
@@ -1132,14 +1137,14 @@ QCheckBox::indicator:unchecked {
         <widget class="QPushButton" name="sendAPPSLFault_2">
          <property name="geometry">
           <rect>
-           <x>389</x>
-           <y>81</y>
-           <width>181</width>
+           <x>390</x>
+           <y>80</y>
+           <width>201</width>
            <height>41</height>
           </rect>
          </property>
          <property name="text">
-          <string>APPS 2 Low Fault</string>
+          <string>Send APPS2 Low Fault</string>
          </property>
         </widget>
         <widget class="QPushButton" name="sendAPPSHFault_2">
@@ -1147,18 +1152,18 @@ QCheckBox::indicator:unchecked {
           <rect>
            <x>390</x>
            <y>30</y>
-           <width>171</width>
+           <width>201</width>
            <height>41</height>
           </rect>
          </property>
          <property name="text">
-          <string>APPS 2 High Fault</string>
+          <string>Send APPS2 High Fault</string>
          </property>
         </widget>
         <widget class="QDoubleSpinBox" name="appsHFault_2">
          <property name="geometry">
           <rect>
-           <x>590</x>
+           <x>600</x>
            <y>40</y>
            <width>62</width>
            <height>22</height>
@@ -1177,7 +1182,7 @@ QCheckBox::indicator:unchecked {
         <widget class="QDoubleSpinBox" name="appsLFault_2">
          <property name="geometry">
           <rect>
-           <x>590</x>
+           <x>600</x>
            <y>90</y>
            <width>62</width>
            <height>22</height>
@@ -1196,7 +1201,7 @@ QCheckBox::indicator:unchecked {
         <widget class="QPushButton" name="sendBPSLFault_2">
          <property name="geometry">
           <rect>
-           <x>670</x>
+           <x>690</x>
            <y>130</y>
            <width>151</width>
            <height>41</height>
@@ -1209,7 +1214,7 @@ QCheckBox::indicator:unchecked {
         <widget class="QPushButton" name="sendBPSHFault_2">
          <property name="geometry">
           <rect>
-           <x>670</x>
+           <x>690</x>
            <y>180</y>
            <width>151</width>
            <height>41</height>
@@ -1244,7 +1249,7 @@ QCheckBox::indicator:unchecked {
            <x>940</x>
            <y>160</y>
            <width>221</width>
-           <height>32</height>
+           <height>41</height>
           </rect>
          </property>
          <property name="text">
@@ -1280,8 +1285,8 @@ QCheckBox::indicator:unchecked {
         <widget class="QDoubleSpinBox" name="bpsLFault_2">
          <property name="geometry">
           <rect>
-           <x>830</x>
-           <y>130</y>
+           <x>860</x>
+           <y>140</y>
            <width>62</width>
            <height>22</height>
           </rect>
@@ -1299,8 +1304,8 @@ QCheckBox::indicator:unchecked {
         <widget class="QDoubleSpinBox" name="bpsHFault_2">
          <property name="geometry">
           <rect>
-           <x>830</x>
-           <y>180</y>
+           <x>860</x>
+           <y>190</y>
            <width>62</width>
            <height>22</height>
           </rect>
@@ -1315,6 +1320,25 @@ QCheckBox::indicator:unchecked {
           <double>1.000000000000000</double>
          </property>
         </widget>
+       </widget>
+       <widget class="QLabel" name="TritonRacingLogo">
+        <property name="geometry">
+         <rect>
+          <x>560</x>
+          <y>0</y>
+          <width>211</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../../../Downloads/Large Logo (2).png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
        </widget>
       </widget>
      </item>
@@ -1379,7 +1403,7 @@ QCheckBox::indicator:unchecked {
            <x>280</x>
            <y>21</y>
            <width>181</width>
-           <height>31</height>
+           <height>41</height>
           </rect>
          </property>
          <property name="text">
