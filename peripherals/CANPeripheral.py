@@ -47,13 +47,6 @@ class CANPeripheral(QObject):
     
     def getListner(self):
         return self.listner
-    
-    def send_message(self, data):
-        # data to be passed in through GUI
-        msg = can.Message(arbitration_id=self.id,
-                          is_extended_id=self.isExtended,
-                          data=data)
-        self.bus.send(msg)
 
     def send_message(self, data, id):
         # data to be passed in through GUI

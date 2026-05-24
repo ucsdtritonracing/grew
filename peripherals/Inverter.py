@@ -66,7 +66,8 @@ class Inverter(CANPeripheral):
                             self.dataSignal.emit([msg.timestamp, fault_name], "invFaults")
     
     def on_message_received(self, msg):
-        self.processMessage(msg)
+        #self.processMessage(msg)
+        pass
 
     @Slot()
     def shutdown(self):

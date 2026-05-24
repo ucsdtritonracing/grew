@@ -39,8 +39,9 @@ class VCU(CANPeripheral):
     @Slot()
     def enable(self):
         # enter flash mode 
-        self.txData1[0] = [self.const.FLASH_ON]
-        super().send_message(self.txData1, self.const.FLASH_ID)
+        print("HI IM ENABLED")
+        self.txData1[0] = self.const.FLASH_ON
+        #super().send_message(self.txData1, self.const.FLASH_ID)
     @Slot()
     def disable(self):
         self.txData1 = [self.const.FLASH_OFF]
@@ -85,7 +86,8 @@ class VCU(CANPeripheral):
                     if(self.state["pedalMap"][param[1]] != param[2]):
                         self.logger.emit(f"pedalMap param index {param[1]} desynced (vcu:{param[2]}!=grew:{self.state["pedalMap"][param[1]]})")
         else:
-            self.processMessage(msg)
+            #self.processMessage(msg)
+            pass
 
     def processParam(self, msg):
         data = self.dbc.decode_message(msg.arbitration_id, msg.data)

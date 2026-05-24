@@ -41,7 +41,10 @@ class DraggablePoint(pg.TargetItem):
 
 
 class VCUWidget(QtWidgets.QMainWindow):
+    window_closed = Signal()
+    logger = Signal(str)
     def __init__(self, peripheral):
+        
         super().__init__()
         #add ui file loading here
         self.vcu = peripheral
@@ -60,11 +63,11 @@ class VCUWidget(QtWidgets.QMainWindow):
         for btn_name, (param_id, widget_name, info) in self.vcu.const.button_map.items():
             widget = getattr(self.window, widget_name)
             getattr(self.window, btn_name).clicked.connect(
-                lambda checked=False, pid=param_id, w=widget, info=info: self.vcu.set_param(pid, float(w.value(), info))
-            )
+                lambda checked=False, pid=param_id, w=widget, info=info: self.vcu.set_param(pid, float(w.value()),info))
+            
 
-        self.window_closed = Signal()
-        self.logger = Signal(str)
+        
+        
         self.window_closed.connect(partial(self.vcu.disable))
 
     def closeEvent(self, event):
@@ -140,13 +143,13 @@ class VCUWidget(QtWidgets.QMainWindow):
     
     def updateGraph(self, index, value):
         if(index == 0):
-            self.setPos(self.fixed_x, 0)
+            value = 0
         if(index == 17):
-            self.setPos(self.fixed_x, 100)
+            value = 100
         if(value > 100):
-            self.setPos(self.fixed_x, 100)
+            value = 100
         elif(value < 0):
-            self.setPos(self.fixed_x, 0)
+            value = 0
         # Update internal mapping
         self.buffers["pedalMap"][index] = value
         self.vcu.state["pedalMap"] = self.buffers["pedalMap"]
@@ -172,7 +175,7 @@ class VCUWidget(QtWidgets.QMainWindow):
                 return # do not do anything, invalid param
         for i in range(1, 17):                          # indices 1–16 inclusive
             param_id = PEDAL_MAP_BASE_ID + (i - 1)      # 0x0100, 0x0101, … 0x010F
-            self.vcu.set_param(param_id, float(self.buffers["pedalMap"][i]))
+            self.vcu.set_param(param_id, float(self.buffers["pedalMap"][i]),i)
     
     @Slot()
     def sendMaxTorque(self):

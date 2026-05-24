@@ -6,6 +6,8 @@ import cantools
 import pyqtgraph as pg
 from peripherals.Inverter import Inverter
 from peripherals.VCU import VCU
+from can.interfaces.pcan import PcanBus
+from can import BusState
 
 # Dummy wrapper assuming MainWidget loads your UI layout internally
 from widgets.MainWidget import MainWidget 
@@ -45,10 +47,15 @@ class CANSimulators(QtCore.QObject):
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    
+    timing = can.BitTiming.from_sample_point(
+                f_clock=120_000_000,
+                bitrate=500000,
+                sample_point=99,
+            )
     # 1. Initialize CAN Bus interface
-    bus = can.interface.Bus(interface='virtual', receive_own_messages=True)
-    
+    bus = can.interface.Bus(interface='pcan', receive_own_messages=True)
+    #bus = can.interfaces.pcan.PcanBus(channel='PCAN_USBBUS1', timing=timing, bitrate=500000, receive_own_messages=False)
+    #print(bus.status_string())
     inverter = Inverter(bus)
     vcu = VCU(bus)
     # 2. Instantiate Main Layout Widget and make it visible
@@ -64,8 +71,8 @@ def main():
     notifier = can.Notifier(bus, listeners)
     
     # 5. Start background simulator to feed virtual data
-    simulator = CANSimulators(bus, msg_def)
-    
+    #simulator = CANSimulators(bus, msg_def)
+    print(bus.status_string())
     # 6. Execute Application and ensure clean socket/notifier resource cleanup on close
     exit_code = app.exec()
     notifier.stop()
