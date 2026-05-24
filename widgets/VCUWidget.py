@@ -59,6 +59,7 @@ class VCUWidget(QtWidgets.QMainWindow):
         self.setupGraph()
         self.window.setPedalMapButton.clicked.connect(self.sendPedalMap)
         self.window.sendConfigButton.clicked.connect(self.vcu.writeConfiguration)
+        self.window.sendMaxTorqueRequest.clicked.connect(self.sendMaxTorque)
         # BPS/APPS threshold buttons
         for btn_name, (param_id, widget_name, info) in self.vcu.const.button_map.items():
             widget = getattr(self.window, widget_name)
@@ -176,7 +177,7 @@ class VCUWidget(QtWidgets.QMainWindow):
     
     @Slot()
     def sendMaxTorque(self):
-        self.vcu.set_param(0x000F, float(self.window.maxTorque.value()))     # Maximum Torque Request
+        self.vcu.set_param(0x0005, float(self.window.maxTorqueRequest.value()),0)     # Maximum Torque Request
 
     @Slot()  
     def show(self):

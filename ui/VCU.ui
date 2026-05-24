@@ -1433,7 +1433,7 @@ QCheckBox::indicator:unchecked {
           <double>500.000000000000000</double>
          </property>
         </widget>
-        <widget class="QPushButton" name="sendMaxTorqRequest">
+        <widget class="QPushButton" name="sendMaxTorqueRequest">
          <property name="geometry">
           <rect>
            <x>960</x>
