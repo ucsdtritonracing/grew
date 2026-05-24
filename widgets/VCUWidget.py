@@ -57,10 +57,10 @@ class VCUWidget(QtWidgets.QMainWindow):
         self.window.setPedalMapButton.clicked.connect(self.sendPedalMap)
         self.window.sendConfigButton.clicked.connect(self.vcu.writeConfiguration)
         # BPS/APPS threshold buttons
-        for btn_name, (param_id, widget_name) in self.vcu.const.button_map.items():
+        for btn_name, (param_id, widget_name, info) in self.vcu.const.button_map.items():
             widget = getattr(self.window, widget_name)
             getattr(self.window, btn_name).clicked.connect(
-                lambda checked=False, pid=param_id, w=widget: self.vcu.set_param(pid, float(w.value()))
+                lambda checked=False, pid=param_id, w=widget, info=info: self.vcu.set_param(pid, float(w.value(), info))
             )
 
         self.window_closed = Signal()

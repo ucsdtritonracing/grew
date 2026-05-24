@@ -14,20 +14,23 @@ class VCU(CANPeripheral):
     def setup(self):
         self.state = {
             "imu": [0,0,0,0,0,0],
-            "apps1RefVolts": [0,0],
-            "apps2RefVolts": [0,0],
+            "apps1Thresholds": [0,0,0,0],
+            "apps2Thresholds": [0,0,0,0],
             "appsValidity": [False,False],
             "appsPositions": [0,0],
-            "bpsThresholds": [0,0],
+            "bpsfThresholds": {0:0,1:0,4:0},
+            "bpsrThresholds": {0:0,1:0,4:0},
             "bpsValidity": [False,False],
             "bpsPositions": [0,0],
-            "sasAngle": 0, # recieve from sensor itself 
+            "sasAngle": 0, # recieve from sensor itself
+            "maxTorqueRequest": 0, 
             "r2dButtonPressed": False,
             "shutdownClosed": False,
             "r2dMode": False,
-             "pedalMap": [0, 0, 0, 0, 0, 0, 0, 0,
+            "pedalMap": [0, 0, 0, 0, 0, 0, 0, 0,
                          0, 0, 0, 0, 0, 0, 0, 0, 0],
             "wheelSpeeds": [0,0,0,0],
+            
         }
         self.txData = [0,0,0,0,0,0,0,0]
         self.txData1 = [0]
@@ -45,15 +48,11 @@ class VCU(CANPeripheral):
     
     @Slot()
     def set_param(self, param_id: int, value: float, info: int):
-        # Reinterpret the float as its raw IEEE 754 uint32 bit pattern so
-        # cantools can pack it into the PARAM_VALUE_FP32 field unchanged.
-        raw_fp32 = struct.unpack('<I', struct.pack('<f', value))[0]
-
         data = self.dbc.encode_message(
             'VCU_SET_PARAM',
             {
                 'PARAM_ID':         param_id,
-                'PARAM_VALUE_FP32': raw_fp32,
+                'PARAM_VALUE_FP32': value,
                 'PARAM_INFO':       info,
             }
         )
@@ -65,9 +64,39 @@ class VCU(CANPeripheral):
     
     def on_message_received(self, msg):
         if(msg.arbitration_id == self.const.RX_PARAMETER_ID):
-            
+            param = self.processParam(msg)
+            match param[0]:
+                case 0x001:
+                    if(self.state["apps1Thresholds"][param[1]] != param[2]):
+                        self.logger.emit(f"apps1 param index {param[1]} desynced (vcu:{param[2]}!=grew:{self.state["apps1Thresholds"][param[1]]})")
+                case 0x002:
+                    if(self.state["apps2Thresholds"][param[1]] != param[2]):
+                        self.logger.emit(f"apps2 param index {param[1]} desynced (vcu:{param[2]}!=grew:{self.state["apps2Thresholds"][param[1]]})")
+                case 0x003:
+                    if(self.state["bpsfThresholds"][param[1]] != param[2]):
+                        self.logger.emit(f"bpsf param index {param[1]} desynced (vcu:{param[2]}!=grew:{self.state["bpsfThresholds"][param[1]]})")
+                case 0x004:
+                    if(self.state["bpsrThresholds"][param[1]] != param[2]):
+                        self.logger.emit(f"bpsr param index {param[1]} desynced (vcu:{param[2]}!=grew:{self.state["bpsrThresholds"][param[1]]})")
+                case 0x005:
+                    if(self.state["maxTorqueRequest"] != param[2]):
+                        self.logger.emit(f"maxTorqueRequest desynced (vcu:{param[2]}!=grew:{self.state["maxTorqueRequest"]})")
+                case 0x006:
+                    if(self.state["pedalMap"][param[1]] != param[2]):
+                        self.logger.emit(f"pedalMap param index {param[1]} desynced (vcu:{param[2]}!=grew:{self.state["pedalMap"][param[1]]})")
         else:
             self.processMessage(msg)
+
+    def processParam(self, msg):
+        data = self.dbc.decode_message(msg.arbitration_id, msg.data)
+
+        param_id = int(data["PARAM_ID"])
+        param_info = int(data["PARAM_INFO"])
+        param_value = data["PARAM_VALUE_FP32"]
+
+        param_name = self.const.PARAM_NAMES.get(param_id, f"UNKNOWN (0x{param_id:04X})")
+
+        return (param_name, param_info, param_value)
 
     def processMessage(self, msg):
         # see VCU CAN API for data format
