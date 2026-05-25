@@ -1439,23 +1439,16 @@ QCheckBox::indicator:unchecked {
         <widget class="QPushButton" name="sendMaxTorque">
          <property name="geometry">
           <rect>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
            <x>270</x>
            <y>30</y>
            <width>191</width>
            <height>32</height>
-=======
->>>>>>> ce9eaf7de95f14d3a3534ff06f4c039fe396d974
+
            <x>280</x>
            <y>21</y>
            <width>181</width>
            <height>41</height>
-<<<<<<< HEAD
-=======
->>>>>>> 266b55360991c54ff84562ef25738fa62f2f9dff
->>>>>>> ce9eaf7de95f14d3a3534ff06f4c039fe396d974
+
           </rect>
          </property>
          <property name="text">
