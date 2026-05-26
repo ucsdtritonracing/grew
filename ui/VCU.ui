@@ -1460,11 +1460,6 @@ QCheckBox::indicator:unchecked {
      </item>
     </layout>
    </widget>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> ce9eaf7de95f14d3a3534ff06f4c039fe396d974
    <widget class="QWidget" name="verticalLayoutWidget_3">
     <property name="geometry">
      <rect>
@@ -1494,7 +1489,6 @@ QCheckBox::indicator:unchecked {
      </item>
     </layout>
    </widget>
->>>>>>> 266b55360991c54ff84562ef25738fa62f2f9dff
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
