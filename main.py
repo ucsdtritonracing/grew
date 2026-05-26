@@ -50,7 +50,7 @@ def main():
     
     # 1. Initialize CAN Bus interface
     bus = can.interface.Bus(
-        interface='pcan',
+        interface='virtual',
         channel='PCAN_USBBUS1',
         bitrate=500000,        # match exactly what the VCU firmware is configured for
         receive_own_messages=True,

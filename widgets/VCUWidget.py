@@ -31,9 +31,9 @@ class DraggablePoint(pg.TargetItem):
         if(self.index == 0):
             self.setPos(self.fixed_x, 0)
         if(self.index == 17):
-            self.setPos(self.fixed_x, 100)
-        if(pos.y() > 100):
-            self.setPos(self.fixed_x, 100)
+            self.setPos(self.fixed_x, 1)
+        if(pos.y() > 1):
+            self.setPos(self.fixed_x, 1)
         elif(pos.y() < 0):
             self.setPos(self.fixed_x, 0)
         # Notify parent
@@ -59,6 +59,7 @@ class VCUWidget(QtWidgets.QMainWindow):
         self.setupGraph()
         self.window.setPedalMapButton.clicked.connect(self.sendPedalMap)
         self.window.sendConfigButton.clicked.connect(self.vcu.writeConfiguration)
+        self.window.sendMaxTorqueRequest.clicked.connect(self.sendMaxTorque)
         # BPS/APPS threshold buttons
         for btn_name, (param_id, widget_name, info) in self.vcu.const.button_map.items():
             widget = getattr(self.window, widget_name)
@@ -68,7 +69,7 @@ class VCUWidget(QtWidgets.QMainWindow):
 
         
         
-        self.window_closed.connect(partial(self.vcu.disable))
+        self.window.exitConfig.clicked.connect(self.vcu.disable)
 
     def closeEvent(self, event):
         self.window_closed.emit()
@@ -146,7 +147,7 @@ class VCUWidget(QtWidgets.QMainWindow):
             value = 0
         if(index == 17):
             value = 1
-        max(0, min(value,1))
+        value = max(0, min(value,1))
         # Update internal mapping
         self.buffers["pedalMap"][index] = value
         self.vcu.state["pedalMap"] = self.buffers["pedalMap"]
@@ -176,7 +177,7 @@ class VCUWidget(QtWidgets.QMainWindow):
     
     @Slot()
     def sendMaxTorque(self):
-        self.vcu.set_param(0x000F, float(self.window.maxTorque.value()))     # Maximum Torque Request
+        self.vcu.set_param(0x0005, float(self.window.maxTorqueRequest.value()),0)     # Maximum Torque Request
 
     @Slot()  
     def show(self):
