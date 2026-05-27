@@ -292,7 +292,7 @@ QCheckBox::indicator:unchecked {
               <string>Send Pedal Map to VCU</string>
              </property>
             </widget>
-            <widget class="PlotWidget" name="pedalGraphWidget" native="true">
+            <widget class="QWidget" name="pedalGraphWidget" native="true">
              <property name="geometry">
               <rect>
                <x>20</x>
@@ -666,7 +666,7 @@ QCheckBox::indicator:unchecked {
                </item>
               </layout>
              </widget>
-             <widget class="QWidget" name="pedalgraph" native="true">
+             <widget class="PlotWidget" name="pedalGraph" native="true">
               <property name="geometry">
                <rect>
                 <x>70</x>
@@ -1113,7 +1113,7 @@ QCheckBox::indicator:unchecked {
               <double>500.000000000000000</double>
              </property>
             </widget>
-            <widget class="QPushButton" name="sendMaxTorqRequest">
+            <widget class="QPushButton" name="sendMaxTorqueRequest">
              <property name="geometry">
               <rect>
                <x>940</x>
@@ -1335,7 +1335,7 @@ QCheckBox::indicator:unchecked {
      <x>0</x>
      <y>0</y>
      <width>1500</width>
-     <height>37</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
