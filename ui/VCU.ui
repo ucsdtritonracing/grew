@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1500</width>
-    <height>1000</height>
+    <height>1007</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -206,7 +206,7 @@ QCheckBox::indicator:unchecked {
       <x>0</x>
       <y>0</y>
       <width>1381</width>
-      <height>911</height>
+      <height>1001</height>
      </rect>
     </property>
     <property name="widgetResizable">
@@ -218,7 +218,7 @@ QCheckBox::indicator:unchecked {
        <x>0</x>
        <y>0</y>
        <width>1379</width>
-       <height>909</height>
+       <height>999</height>
       </rect>
      </property>
      <widget class="QWidget" name="verticalLayoutWidget_6">
