@@ -73,10 +73,13 @@
                <x>0</x>
                <y>20</y>
                <width>251</width>
-               <height>356</height>
+               <height>530</height>
               </rect>
              </property>
              <layout class="QFormLayout" name="formLayout">
+              <property name="leftMargin">
+               <number>10</number>
+              </property>
               <item row="0" column="0">
                <widget class="QLabel" name="StatusLabelInverter">
                 <property name="text">
@@ -101,7 +104,7 @@
               <item row="1" column="1">
                <widget class="QLabel" name="TorqueStatus">
                 <property name="text">
-                 <string>-- Nm</string>
+                 <string>162 Nm</string>
                 </property>
                </widget>
               </item>
@@ -115,7 +118,7 @@
               <item row="2" column="1">
                <widget class="QLabel" name="torqueInfoStatus">
                 <property name="text">
-                 <string>-- Nm</string>
+                 <string>180 Nm</string>
                 </property>
                </widget>
               </item>
@@ -129,7 +132,7 @@
               <item row="3" column="1">
                <widget class="QLabel" name="ActualTorqueStatus">
                 <property name="text">
-                 <string>-NM</string>
+                 <string>150 Nm</string>
                 </property>
                </widget>
               </item>
@@ -143,21 +146,21 @@
               <item row="4" column="1">
                <widget class="QLabel" name="TempStatus">
                 <property name="text">
-                 <string>--C°</string>
+                 <string>42 C°</string>
                 </property>
                </widget>
               </item>
               <item row="5" column="0">
                <widget class="QLabel" name="TempInfoLabel">
                 <property name="text">
-                 <string>tempInfo</string>
+                 <string/>
                 </property>
                </widget>
               </item>
               <item row="5" column="1">
                <widget class="QLabel" name="TempInfoStatus">
                 <property name="text">
-                 <string>[0,0,0,0]</string>
+                 <string/>
                 </property>
                </widget>
               </item>
@@ -171,21 +174,7 @@
               <item row="6" column="1">
                <widget class="QLabel" name="MotorInfoStatus">
                 <property name="text">
-                 <string>[0,0,0]</string>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="0">
-               <widget class="QLabel" name="FaultLabel">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="1">
-               <widget class="QLabel" name="FaultStatus">
-                <property name="text">
-                 <string/>
+                 <string>325 rpm</string>
                 </property>
                </widget>
               </item>
@@ -199,7 +188,7 @@
               <item row="7" column="1">
                <widget class="QLabel" name="label_2">
                 <property name="text">
-                 <string>TextLabel</string>
+                 <string>27.5° </string>
                 </property>
                </widget>
               </item>
@@ -213,14 +202,7 @@
               <item row="8" column="1">
                <widget class="QLabel" name="label_4">
                 <property name="text">
-                 <string>TextLabel</string>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="1">
-               <widget class="QLabel" name="InverterInfoStatus">
-                <property name="text">
-                 <string>False</string>
+                 <string>35 C°</string>
                 </property>
                </widget>
               </item>
@@ -231,10 +213,10 @@
                 </property>
                </widget>
               </item>
-              <item row="10" column="1">
-               <widget class="QLabel" name="label_6">
+              <item row="9" column="1">
+               <widget class="QLabel" name="InverterInfoStatus">
                 <property name="text">
-                 <string>False</string>
+                 <string>True</string>
                 </property>
                </widget>
               </item>
@@ -245,10 +227,31 @@
                 </property>
                </widget>
               </item>
+              <item row="10" column="1">
+               <widget class="QLabel" name="label_6">
+                <property name="text">
+                 <string>False</string>
+                </property>
+               </widget>
+              </item>
               <item row="11" column="1">
                <widget class="QLabel" name="label_7">
                 <property name="text">
-                 <string>False</string>
+                 <string>True</string>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="0">
+               <widget class="QLabel" name="FaultLabel">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="1">
+               <widget class="QLabel" name="FaultStatus">
+                <property name="text">
+                 <string/>
                 </property>
                </widget>
               </item>
@@ -256,13 +259,6 @@
                <widget class="QLabel" name="label_8">
                 <property name="text">
                  <string>Inverter Forward:</string>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="0">
-               <widget class="QPushButton" name="OpenToInverterWindow">
-                <property name="text">
-                 <string>[Open Inverter Details]</string>
                 </property>
                </widget>
               </item>
@@ -328,14 +324,14 @@
               <item row="6" column="0">
                <widget class="QLabel" name="RLLabel">
                 <property name="text">
-                 <string>RL:</string>
+                 <string>RL: 55</string>
                 </property>
                </widget>
               </item>
               <item row="5" column="0">
                <widget class="QLabel" name="FLLabel">
                 <property name="text">
-                 <string>FL:</string>
+                 <string>FL: 0</string>
                 </property>
                </widget>
               </item>
@@ -349,14 +345,14 @@
               <item row="7" column="0">
                <widget class="QLabel" name="BPSLabel">
                 <property name="text">
-                 <string>BPS:</string>
+                 <string>BPS: 60</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="1">
                <widget class="QLabel" name="Ready2DriveStatus">
                 <property name="text">
-                 <string>FALSE</string>
+                 <string>TRUE</string>
                 </property>
                </widget>
               </item>
@@ -377,28 +373,28 @@
               <item row="8" column="0">
                <widget class="QLabel" name="APPSLabel">
                 <property name="text">
-                 <string>APPS:</string>
+                 <string>APPS: 0.71</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="1">
                <widget class="QLabel" name="ShutdownStatus">
                 <property name="text">
-                 <string>FALSE</string>
+                 <string>TRUE</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="1">
                <widget class="QLabel" name="R2DPressedLabelStatus">
                 <property name="text">
-                 <string>FALSE</string>
+                 <string>TRUE</string>
                 </property>
                </widget>
               </item>
               <item row="3" column="1">
                <widget class="QLabel" name="SASAngleStatus">
                 <property name="text">
-                 <string>--°</string>
+                 <string>0.5°</string>
                 </property>
                </widget>
               </item>
@@ -412,14 +408,14 @@
               <item row="5" column="1">
                <widget class="QLabel" name="FRLabel">
                 <property name="text">
-                 <string>FR:</string>
+                 <string> FR: 0</string>
                 </property>
                </widget>
               </item>
               <item row="6" column="1">
                <widget class="QLabel" name="RRLabel">
                 <property name="text">
-                 <string>RR:</string>
+                 <string>RR: 55</string>
                 </property>
                </widget>
               </item>
@@ -586,31 +582,6 @@
                <string>Temperature</string>
               </property>
              </item>
-             <item>
-              <property name="text">
-               <string>New Item</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>New Item</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>New Item</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>New Item</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>New Item</string>
-              </property>
-             </item>
             </widget>
            </widget>
           </item>
@@ -667,7 +638,7 @@
      <x>0</x>
      <y>0</y>
      <width>1348</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMain_Window">

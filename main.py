@@ -4,6 +4,7 @@ import math
 from PySide6 import QtWidgets, QtCore
 import cantools
 import pyqtgraph as pg
+import random
 
 # Dummy wrapper assuming MainWidget loads your UI layout internally
 from widgets.MainWidget import MainWidget 
@@ -22,13 +23,13 @@ class CANSimulators(QtCore.QObject):
         self.timer.start(100)
 
     def send_mock_frame(self):
-        simulated = int(10 * math.sin(self.i * 0.1))
+        simulated = int(5 * random.random() * math.sin(self.i*random.randint(1,10) * 0.1))
         self.i += 1
         signals = {
             "FR_SPEED": simulated,
-            "FL_SPEED": simulated + 20,
-            "BR_SPEED": simulated + 40,
-            "BL_SPEED": simulated + 60
+            "FL_SPEED": simulated + random.randint(10,15),
+            "BR_SPEED": simulated + random.randint(20,30) * math.fabs(math.sin(0.1*self.i)) ,
+            "BL_SPEED": simulated + random.randint(30,33)
         }
         msg_data = self.msg_def.encode(signals)
         can_msg = can.Message(

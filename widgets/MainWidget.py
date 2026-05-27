@@ -7,6 +7,7 @@ from PySide6.QtCore import Slot, Signal, QFile
 import pyqtgraph as pg
 import time
 from collections import deque
+import itertools
 
 class MainWidget(QtWidgets.QMainWindow):
     def __init__(self, bus):
@@ -21,7 +22,7 @@ class MainWidget(QtWidgets.QMainWindow):
         self.vcu.dataSignal.connect(self.updateUI)
         loader = QUiLoader()
         loader.registerCustomWidget(pg.PlotWidget)
-        self.window = loader.load(ui_file,self)
+        self.window = loader.load(ui_file,None)
         ui_file.close()
         self.setupGraph()
         self.window.StartGraphButton.clicked.connect(partial(self.startGraph))
@@ -57,11 +58,18 @@ class MainWidget(QtWidgets.QMainWindow):
             name: {'x': deque(maxlen=500), 'y': deque(maxlen=500)} 
             for name in self.sources
         }
+        
+        CURVE_COLORS = ['r', 'g', 'b', 'c', 'm', 'y', 'w']
+        _color_cycle = itertools.cycle(CURVE_COLORS)
 
         self.curves = {
-            name: self.window.MainGraphWidget.plot(pen=pg.mkPen('r', width=1.5), name=name)
+            name: self.window.MainGraphWidget.plot(
+                pen=pg.mkPen(next(_color_cycle), width=1.5), name=name
+            )
             for name in self.sources
         }
+
+
         self.viewRange = 5 # default seconds to see
 
 
