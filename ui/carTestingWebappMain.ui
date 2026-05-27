@@ -13,6 +13,160 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">/* =========================
+   MAIN WINDOW STYLE
+   Same dark dashboard theme
+   ========================= */
+
+/* Whole app background */
+QMainWindow,
+QWidget {
+    background-color: #07061e;
+    color: white;
+    font-family: Optima;
+    font-size: 14px;
+}
+
+/* Main title */
+QLabel#titleLabel {
+    color: #ffffff;
+    font-size: 42px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+/* Subtitle */
+QLabel#subtitleLabel {
+    color: #e6e5db;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Normal labels */
+QLabel {
+    color: white;
+    font-size: 14px;
+}
+
+/* Big navigation buttons for Main Window */
+QPushButton {
+    background-color: #07061e;
+    color: #ffffff;
+    border: 1px solid #121f35;
+    border-radius: 14px;
+    padding: 12px 22px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #fff08a;
+    color: #07061e;
+    border: 1px solid #fff08a;
+}
+
+QPushButton:pressed {
+    background-color: #d6c75c;
+    color: #07061e;
+}
+
+/* Dashboard cards / sections */
+QGroupBox {
+    background-color: #07061e;
+    border: 1px solid #121f35;
+    border-radius: 18px;
+    margin-top: 18px;
+    padding: 18px;
+    color: white;
+    font-weight: bold;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    left: 14px;
+    padding: 0 6px;
+    color: #e6e5db;
+}
+
+/* Input boxes */
+QLineEdit,
+QSpinBox,
+QDoubleSpinBox {
+    background-color: #11102a;
+    color: white;
+    border: 1px solid #1d2b46;
+    border-radius: 6px;
+    padding: 4px;
+}
+
+QLineEdit:focus,
+QSpinBox:focus,
+QDoubleSpinBox:focus {
+    border: 1px solid #fff08a;
+}
+
+/* Tab widget background */
+QTabWidget::pane {
+    background-color: #07061e;
+    border: 1px solid #121f35;
+    border-radius: 10px;
+}
+
+/* Tab bar */
+QTabBar::tab {
+    background-color: #07061e;
+    color: white;
+    border: 1px solid #121f35;
+    padding: 10px 24px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-right: 4px;
+}
+
+QTabBar::tab:selected {
+    background-color: #121f35;
+    color: #fff08a;
+}
+
+QTabBar::tab:hover {
+    background-color: #1d2b46;
+}
+
+/* Scroll bars */
+QScrollBar:vertical {
+    background-color: #071427;
+    width: 12px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #fff08a;
+    border-radius: 6px;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar:horizontal {
+    background-color: #071427;
+    height: 12px;
+    margin: 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #fff08a;
+    border-radius: 6px;
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0px;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
@@ -70,10 +224,10 @@
             <widget class="QWidget" name="formLayoutWidget">
              <property name="geometry">
               <rect>
-               <x>0</x>
-               <y>20</y>
-               <width>251</width>
-               <height>530</height>
+               <x>-46</x>
+               <y>24</y>
+               <width>351</width>
+               <height>391</height>
               </rect>
              </property>
              <layout class="QFormLayout" name="formLayout">
@@ -267,10 +421,10 @@
             <widget class="QTableWidget" name="FaultLog">
              <property name="geometry">
               <rect>
-               <x>360</x>
-               <y>20</y>
-               <width>481</width>
-               <height>291</height>
+               <x>420</x>
+               <y>40</y>
+               <width>421</width>
+               <height>271</height>
               </rect>
              </property>
              <row>
@@ -479,10 +633,10 @@
             <widget class="QWidget" name="horizontalLayoutWidget">
              <property name="geometry">
               <rect>
-               <x>0</x>
-               <y>260</y>
-               <width>1311</width>
-               <height>71</height>
+               <x>10</x>
+               <y>240</y>
+               <width>1291</width>
+               <height>51</height>
               </rect>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -531,22 +685,15 @@
                 </item>
                </widget>
               </item>
-              <item>
-               <widget class="QPushButton" name="SelectSignalButton">
-                <property name="text">
-                 <string>SelectSignals</string>
-                </property>
-               </widget>
-              </item>
              </layout>
             </widget>
             <widget class="QListWidget" name="listWidget">
              <property name="geometry">
               <rect>
-               <x>965</x>
+               <x>975</x>
                <y>1</y>
-               <width>321</width>
-               <height>251</height>
+               <width>311</width>
+               <height>221</height>
               </rect>
              </property>
              <property name="selectionMode">
@@ -554,27 +701,87 @@
              </property>
              <item>
               <property name="text">
-               <string>APPS</string>
+               <string>APP1 Fault Low</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>BSE Front</string>
+               <string>APP1 Fault High</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>BSE Rear</string>
+               <string>APP1 Signal Low</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>SAS</string>
+               <string>APP1 Signal High</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>APP2 Fault Low</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>APP2 Fault High</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>APP2 Signal Low</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>APP2 Signal High</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>BSEF Fault Low</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>BSEF Fault High</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>BSER Fault Low</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>BSER Fault High</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>BSEF Engaged Threshold</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>BSER Engaged Threshold</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Maximum Torque Request(N.M)</string>
               </property>
              </item>
              <item>
               <property name="text">
                <string>Motor Speed</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Steering Angle Sensor</string>
               </property>
              </item>
              <item>
@@ -616,8 +823,8 @@
         <widget class="QLabel" name="PyCanDashboard">
          <property name="geometry">
           <rect>
-           <x>12</x>
-           <y>25</y>
+           <x>10</x>
+           <y>30</y>
            <width>125</width>
            <height>16</height>
           </rect>
@@ -638,7 +845,7 @@
      <x>0</x>
      <y>0</y>
      <width>1348</width>
-     <height>21</height>
+     <height>37</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMain_Window">
@@ -653,7 +860,7 @@
   <customwidget>
    <class>PlotWidget</class>
    <extends>QWidget</extends>
-   <header>pyqtgraph</header>
+   <header location="global">pyqtgraph</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
