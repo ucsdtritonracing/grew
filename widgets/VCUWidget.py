@@ -69,7 +69,7 @@ class VCUWidget(QtWidgets.QMainWindow):
 
         
         
-        self.window.exitConfig.clicked.connect(self.vcu.disable)
+        #self.window.exitConfig.clicked.connect(self.vcu.disable)
 
     def closeEvent(self, event):
         self.window_closed.emit()
