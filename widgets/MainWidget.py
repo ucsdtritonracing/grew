@@ -15,7 +15,7 @@ class MainWidget(QtWidgets.QMainWindow):
         self.vcu = VCU(bus)
         super().__init__()
         
-        ui_file = QFile("ui\\carTestingWebappMain.ui")
+        ui_file = QFile("ui/carTestingWebappMain.ui")
         ui_file.open(QFile.ReadOnly)
         
         self.inverter.dataSignal.connect(self.updateUI)
