@@ -19,7 +19,7 @@ class Inverter(CANPeripheral):
             "inverterInfo": [False,False,False], # inverter enabled, lockout, forward
             "faults": []
         }
-        self.db = cantools.database.load_file("constants\\20240815_PM_and_RM_CAN_DB.dbc")
+        self.db = cantools.database.load_file("constants/20240815_PM_and_RM_CAN_DB.dbc") #declared as dbc file and loads
         
     @Slot()
     def enable(self):
@@ -30,7 +30,7 @@ class Inverter(CANPeripheral):
         #send vcu enable device message here?
         i = 0
     def processMessage(self, msg):
-        data = self.db.decode_message(msg.arbitration_id, msg.data)
+        data = self.db.decode_message(msg.arbitration_id, msg.data) #decodes can message; returns a dictionary of the signals and data
         id = msg.arbitration_id
         match id:
             case self.const.MOTOR_INFO_ID:
