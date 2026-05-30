@@ -17,7 +17,7 @@ class VCU(CANPeripheral):
             "apps1Thresholds": [0,0,0,0],
             "apps2Thresholds": [0,0,0,0],
             "appsValidity": [False,False],
-            "appsPositions": [0,0],
+            "appsPositions": [0,0], #CurrentLow, CurrentHigh
             "bpsfThresholds": {0:0,1:0,4:0},
             "bpsrThresholds": {0:0,1:0,4:0},
             "bpsValidity": [False,False],
