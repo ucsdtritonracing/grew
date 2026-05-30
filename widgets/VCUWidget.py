@@ -203,22 +203,22 @@ class VCUWidget(QtWidgets.QMainWindow):
     
     @Slot()
     def setupApps1RangeSlider(self):
-        self.apps1FaultSlider = QLabeledDoubleRangeSlider(QtCore.Qt.Vertical)
+        self.apps1SignalSlider = QLabeledDoubleRangeSlider(QtCore.Qt.Vertical)
         #Configure Slider Properties, min max and starting points
-        self.apps1FaultSlider.setMinimum(0)
-        self.apps1FaultSlider.setMaximum(1.0)
-        self.apps1FaultSlider.setValue((0.20,0.80)) #initial set
-        self.apps1FaultSlider.setMinimumHeight(250)
-        self.apps1FaultSlider.setMinimumWidth(60)
-        self.apps1FaultSlider.setBarVisible(True)
+        self.apps1SignalSlider.setMinimum(0)
+        self.apps1SignalSlider.setMaximum(1.0)
+        self.apps1SignalSlider.setValue((0.20,0.80)) #initial set
+        self.apps1SignalSlider.setMinimumHeight(250)
+        self.apps1SignalSlider.setMinimumWidth(60)
+        self.apps1SignalSlider.setBarVisible(True)
 
-        self.apps1FaultSlider.setProperty(
+        self.apps1SignalSlider.setProperty(
             "barColor",
             QtGui.QBrush(QtGui.QColor("#f6e16b"))
         )
 
         # Use QRangeSlider, not QSlider, for superqt range slider styling
-        self.apps1FaultSlider.setStyleSheet("""
+        self.apps1SignalSlider.setStyleSheet("""
             QRangeSlider {
                 qproperty-barColor: #f6e16b;
                 background-color: transparent;
@@ -245,28 +245,28 @@ class VCUWidget(QtWidgets.QMainWindow):
 
 
         #Add slider to widget container
-        layout = self.window.apps1FaultSliderContainer.layout()
+        layout = self.window.apps1SignalSliderContainer.layout()
         if layout is None:
-            layout = QVBoxLayout(self.window.apps1FaultSliderContainer)
+            layout = QVBoxLayout(self.window.apps1SignalSliderContainer)
             layout.setContentsMargins(10, 10, 10, 10)
-        layout.addWidget(self.apps1FaultSlider, alignment=QtCore.Qt.AlignCenter)
-        layout.addWidget(self.apps1FaultSlider)
-        self.apps1FaultSlider.show()
+        layout.addWidget(self.apps1SignalSlider, alignment=QtCore.Qt.AlignCenter)
+        layout.addWidget(self.apps1SignalSlider)
+        self.apps1SignalSlider.show()
 
         #when slider changes call update
-        self.apps1FaultSlider.valuesChanged.connect(self.updateApps1FaultSlider)
+        self.apps1SignalSlider.valuesChanged.connect(self.updateapps1SignalSlider)
         self.window.appsLSignal.valueChanged.connect(self.updateApps1InputBoxes)
         self.window.appsHSignal.valueChanged.connect(self.updateApps1InputBoxes)
 
 
         #when button clicked send values to vcu
-        self.window.sendApps1SignalButton.clicked.connect(self.sendApps1FaultSlider)
+        self.window.sendapps1SignalSlider.clicked.connect(self.sendapps1SignalSlider)
         
 
     @Slot()
-    def updateApps1FaultSlider(self, *args):
+    def updateapps1SignalSlider(self, *args):
         #get values from the slider
-        lowSignal, highSignal = self.apps1FaultSlider.value()
+        lowSignal, highSignal = self.apps1SignalSlider.value()
 
         #allow signals and then block
         self.window.appsLSignal.blockSignals(True)
@@ -290,11 +290,11 @@ class VCUWidget(QtWidgets.QMainWindow):
             return
 
         #stops triggering connected functions
-        self.apps1FaultSlider.blockSignals(True)
+        self.apps1SignalSlider.blockSignals(True)
         #sets new slider input values locally
-        self.apps1FaultSlider.setValue((lowSignal,highSignal))
+        self.apps1SignalSlider.setValue((lowSignal,highSignal))
         #turns signals back on
-        self.apps1FaultSlider.blockSignals(False)
+        self.apps1SignalSlider.blockSignals(False)
 
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_Low"][1]= lowSignal
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1]= lowSignal
@@ -302,8 +302,18 @@ class VCUWidget(QtWidgets.QMainWindow):
 
     
     @Slot()
+<<<<<<< HEAD
     def sendApps1FaultSlider(self):
         pass
+=======
+    def sendapps1SignalSlider(self):
+        #set low and high signal and then send
+        lowSignal= self.vcu.state["apps1Thresholds"][2]
+        highSignal = self.vcu.state["apps1Thresholds"][3]
+
+        self.vcu.set_param(0x0001,lowSignal ,2)
+        self.vcu.set_param(0x0001,highSignal ,3)
+>>>>>>> c1bc336 (Object name changes)
     
     @Slot()
     def sendApps1Inputboxes(self):
