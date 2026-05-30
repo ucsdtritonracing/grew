@@ -846,7 +846,7 @@ QCheckBox::indicator:unchecked {
             <widget class="QDoubleSpinBox" name="appsLSignalCurrent">
              <property name="geometry">
               <rect>
-               <x>220</x>
+               <x>230</x>
                <y>210</y>
                <width>41</width>
                <height>21</height>
@@ -1078,7 +1078,7 @@ QCheckBox::indicator:unchecked {
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <item>
-               <widget class="QWidget" name="apps2FaultSliderContainer" native="true"/>
+               <widget class="QWidget" name="apps1SignalSliderContainer_2" native="true"/>
               </item>
              </layout>
             </widget>
@@ -1134,7 +1134,7 @@ QCheckBox::indicator:unchecked {
               <string>Minimum</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="sendApps1SignalButton">
+            <widget class="QPushButton" name="sendapps1SignalSlider">
              <property name="geometry">
               <rect>
                <x>100</x>
@@ -1242,7 +1242,7 @@ QCheckBox::indicator:unchecked {
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_5">
               <item>
-               <widget class="QWidget" name="apps1FaultSliderContainer" native="true">
+               <widget class="QWidget" name="apps1SignalSliderContainer" native="true">
                 <property name="minimumSize">
                  <size>
                   <width>130</width>
