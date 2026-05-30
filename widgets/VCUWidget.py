@@ -2,11 +2,7 @@ import sys
 from PySide6 import QtCore, QtWidgets, QtGui
 from PySide6.QtCore import QTimer, Slot, Signal, QFile
 from PySide6.QtUiTools import QUiLoader
-<<<<<<< HEAD
-from peripherals.VCU import VCU
-=======
 from peripherals.VCU import VCU 
->>>>>>> 62995fd23bd4d417dffc78f3a2b6f304c541b618
 from functools import partial
 import pyqtgraph as pg
 import time, math
@@ -175,7 +171,6 @@ class VCUWidget(QtWidgets.QMainWindow):
     
     @Slot()
     def sendPedalMap(self):
-<<<<<<< HEAD
         for i in range(2, 17):
             if self.buffers["pedalMap"][i] < self.buffers["pedalMap"][i-1]:
                 self.logger.emit("Pedal Map not monotonically increasing! Mapping not sent.")
@@ -186,20 +181,6 @@ class VCUWidget(QtWidgets.QMainWindow):
             msg_name    = f"DREW_CMD_PEDAL_MAP_POINT_{i}"
             self.vcu.const.CONFIGURATION_SIGNALS[signal_name][1] = float(self.buffers["pedalMap"][i])
             QTimer.singleShot(100 * i, lambda msg_name=msg_name: self.vcu.set_param(msg_name))
-=======
-        PEDAL_MAP_BASE_ID = 0x0100
-        for i in range(2,17):
-            if(self.buffers["pedalMap"][i] < self.buffers["pedalMap"][i-1]):
-                self.logger.emit("Pedal Map not monotonically increasing! Mapping not sent.")
-                return # do not do anything, invalid param
-        for i in range(1, 17):                          # indices 1–16 inclusive
-            param_id = 0x0006
-            QTimer.singleShot(100,lambda param_id=param_id,i=i : self.vcu.set_param(param_id, float(self.buffers["pedalMap"][i]),i))
-    
-    @Slot()
-    def sendMaxTorque(self):
-        self.vcu.set_param(0x0005, float(self.window.maxTorqueRequest.value()),0)     # Maximum Torque Request
->>>>>>> 62995fd23bd4d417dffc78f3a2b6f304c541b618
 
     @Slot()  
     def show(self):
@@ -284,13 +265,8 @@ class VCUWidget(QtWidgets.QMainWindow):
         self.window.appsLSignal.blockSignals(False)
         self.window.appsHSignal.blockSignals(False)
         #update grew locally
-<<<<<<< HEAD
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_Low"][1]= lowSignal
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1]= lowSignal
-=======
-        self.vcu.state["apps1Thresholds"][2]= lowSignal
-        self.vcu.state["apps1Thresholds"][3]=highSignal
->>>>>>> 62995fd23bd4d417dffc78f3a2b6f304c541b618
     
     @Slot()
     def updateApps1InputBoxes(self):
@@ -307,13 +283,8 @@ class VCUWidget(QtWidgets.QMainWindow):
         #turns signals back on
         self.apps1FaultSlider.blockSignals(False)
 
-<<<<<<< HEAD
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_Low"][1]= lowSignal
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1]= lowSignal
-=======
-        self.vcu.state["apps1Thresholds"][2]=lowSignal
-        self.vcu.state["apps1Thresholds"][3]=highSignal
->>>>>>> 62995fd23bd4d417dffc78f3a2b6f304c541b618
 
     @Slot()
     def  updateApps1CurrentReadings(self):
@@ -332,16 +303,7 @@ class VCUWidget(QtWidgets.QMainWindow):
     
     @Slot()
     def sendApps1FaultSlider(self):
-<<<<<<< HEAD
         pass
-=======
-        #set low and high signal and then send
-        lowSignal= self.vcu.state["apps1Thresholds"][2]
-        highSignal = self.vcu.state["apps1Thresholds"][3]
-
-        self.vcu.set_param(0x0001,lowSignal ,2)
-        self.vcu.set_param(0x0001,highSignal ,3)
->>>>>>> 62995fd23bd4d417dffc78f3a2b6f304c541b618
     
     @Slot()
     def sendApps1Inputboxes(self):
@@ -354,13 +316,6 @@ class VCUWidget(QtWidgets.QMainWindow):
     def setupApps2RangeSlider(self):
 
         self.apps2FaultSlider = QLabeledDoubleRangeSlider(QtCore.Qt.Vertical)
-<<<<<<< HEAD
-        #Configure Slider Properties
-        self.apps2FaultSlider.setMinimum(0)
-        self.apps2FaultSlider.setMaximum(100)
-        self.apps2FaultSlider.setValue((20,80)) 
-        
-=======
         #Configure Slider Properties, min max and starting points
         self.apps2FaultSlider.setMinimum(0)
         self.apps2FaultSlider.setMaximum(1.0)
@@ -396,17 +351,10 @@ class VCUWidget(QtWidgets.QMainWindow):
                 border-radius: 9px;
             }
         """)
->>>>>>> 62995fd23bd4d417dffc78f3a2b6f304c541b618
 
         self.window.appsLSignal_2.setValue(0.20)
         self.window.appsHSignal_2.setValue(0.80)
 
-<<<<<<< HEAD
-        layout = self.window.apps2FaultSliderContainer.layout()
-        layout.addWidget(self.apps2FaultSlider)
-        #connects slider to function, wherever the apps slider fault 2 value changes automatically call update
-        self.apps2FaultSlider.valuesChanged.connect(self.updateApps2FaultSlider)
-=======
 
         #Add slider to widget container
         layout = self.window.apps2FaultSliderContainer.layout()
@@ -426,7 +374,6 @@ class VCUWidget(QtWidgets.QMainWindow):
         #when button clicked send values to vcu
         self.window.sendApps2SignalButton.clicked.connect(self.sendApps2FaultSlider)
         
->>>>>>> 62995fd23bd4d417dffc78f3a2b6f304c541b618
 
     @Slot()
     def updateApps2FaultSlider(self,values):

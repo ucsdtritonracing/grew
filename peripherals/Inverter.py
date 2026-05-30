@@ -19,11 +19,7 @@ class Inverter(CANPeripheral):
             "inverterInfo": [False,False,False], # inverter enabled, lockout, forward
             "faults": []
         }
-<<<<<<< HEAD
-        self.db = cantools.database.load_file("constants/20240815_PM_and_RM_CAN_DB.dbc") #declared as dbc file and loads
-=======
         self.db = cantools.database.load_file("constants/20240815_PM_and_RM_CAN_DB.dbc")
->>>>>>> 62995fd23bd4d417dffc78f3a2b6f304c541b618
         
     @Slot()
     def enable(self):
