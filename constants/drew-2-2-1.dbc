@@ -1,0 +1,221 @@
+VERSION ""
+
+NS_ :
+    NS_DESC_
+    CM_
+    BA_DEF_
+    BA_
+    VAL_
+
+
+BS_:
+
+
+BU_: VCU GREW
+
+
+BO_ 298 DREW_WHEELS: 8 VCU
+    SG_ DREW_WSS_FR : 0|16@1- (0.01,0) [-100|100] "m/s" Vector__XXX
+    SG_ DREW_WSS_FL : 16|16@1- (0.01,0) [-100|100] "m/s" Vector__XXX
+    SG_ DREW_WSS_RR : 32|16@1- (0.01,0) [-100|100] "m/s" Vector__XXX
+    SG_ DREW_WSS_RL : 48|16@1- (0.01,0) [-100|100] "m/s" Vector__XXX
+
+BO_ 299 DREW_BSE: 8 VCU
+    SG_ DREW_BSEF_Value : 0|16@1+ (0.001,0) [0|1] "" Vector__XXX
+    SG_ DREW_BSEF_Valid : 47|1@1+ (1,0) [0|1] "" Vector__XXX
+    SG_ DREW_BSER_Value : 16|16@1+ (0.001,0) [0|1] "" Vector__XXX
+    SG_ DREW_BSER_Valid : 63|1@1+ (1,0) [0|0] "" Vector__XXX
+    SG_ DREW_BSEF_Raw : 32|12@1+ (1,0) [0|4095] "" Vector__XXX
+    SG_ DREW_BSER_Raw : 48|12@1+ (1,0) [0|4095] "" Vector__XXX
+
+BO_ 300 DREW_APP: 8 VCU
+    SG_ DREW_APP1_Value : 0|16@1+ (0.001,0) [0|1] "" Vector__XXX
+    SG_ DREW_APP1_Valid : 47|1@1+ (1,0) [0|1] "" Vector__XXX
+    SG_ DREW_APP2_Value : 16|16@1+ (0.001,0) [0|1] "" Vector__XXX
+    SG_ DREW_APP2_Valid : 63|1@1+ (1,0) [0|1] "" Vector__XXX
+    SG_ DREW_APP1_Raw : 32|12@1+ (1,0) [0|4095] "" Vector__XXX
+    SG_ DREW_APP2_Raw : 48|12@1+ (1,0) [0|4095] "" Vector__XXX
+
+BO_ 303 DREW_FLAGS: 1 VCU
+    SG_ DREW_Flags_R2D_Button : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+    SG_ DREW_Flags_SDC_Closed : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+    SG_ DREW_Flags_Fault_APP : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+    SG_ DREW_Flags_Fault_ABPPC : 3|1@1+ (1,0) [0|1] "" Vector__XXX
+    SG_ DREW_Flags_Mode : 4|2@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 302 DREW_IMU: 8 VCU
+    SG_ DREW_IMU_Yaw : 0|16@1- (1,0) [-180|180] "degrees" Vector__XXX
+    SG_ DREW_IMU_Pitch : 16|8@1- (1,0) [-90|90] "degrees" Vector__XXX
+    SG_ DREW_IMU_Roll : 24|16@1- (1,0) [-180|180] "degrees" Vector__XXX
+    SG_ DREW_IMU_X_Accel : 40|8@1- (0.1,0) [-12.8|12.7] "g" Vector__XXX
+    SG_ DREW_IMU_Y_Accel : 48|8@1- (0.1,0) [-12.8|12.7] "g" Vector__XXX
+    SG_ DREW_IMU_Z_Accel : 56|8@1- (0.1,0) [-12.8|12.7] "g" Vector__XXX
+
+
+
+BO_ 768 DREW_CMD_CONFIGURATION_MODE: 1 GREW
+    SG_ DREW_CMD_Config_Mode : 0|8@1+ (1,0) [0|1] "" VCU
+
+BO_ 769 DREW_CMD_WRITE_CONFIGURATION: 0 GREW
+BO_ 770 DREW_CMD_FLASH_CONFIGURATION: 0 GREW
+
+
+BO_ 784 DREW_CMD_APP1_THRESHOLD: 8 GREW
+    SG_ DREW_CMD_APP1_Fault_Low   : 0|16@1+ (1e-4,0) [0|1] "" VCU
+    SG_ DREW_CMD_APP1_Fault_High  : 16|16@1+ (1e-4,0) [0|1] "" VCU
+    SG_ DREW_CMD_APP1_Signal_Low  : 32|16@1+ (1e-4,0) [0|1] "" VCU
+    SG_ DREW_CMD_APP1_Signal_High : 48|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 785 DREW_CMD_APP2_THRESHOLD: 8 GREW
+    SG_ DREW_CMD_APP2_Fault_Low   : 0|16@1+ (1e-4,0) [0|1] "" VCU
+    SG_ DREW_CMD_APP2_Fault_High  : 16|16@1+ (1e-4,0) [0|1] "" VCU
+    SG_ DREW_CMD_APP2_Signal_Low  : 32|16@1+ (1e-4,0) [0|1] "" VCU
+    SG_ DREW_CMD_APP2_Signal_High : 48|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 786 DREW_CMD_BSEF_THRESHOLD: 8 GREW
+    SG_ DREW_CMD_BSEF_Fault_Low   : 0|16@1+ (1e-4,0) [0|1] "" VCU
+    SG_ DREW_CMD_BSEF_Fault_High  : 16|16@1+ (1e-4,0) [0|1] "" VCU
+    SG_ DREW_CMD_BSEF_Signal_Low  : 32|16@1+ (1e-4,0) [0|1] "" VCU
+    SG_ DREW_CMD_BSEF_Signal_High : 48|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 787 DREW_CMD_BSER_THRESHOLD: 8 GREW
+    SG_ DREW_CMD_BSER_Fault_Low   : 0|16@1+ (1e-4,0) [0|1] "" VCU
+    SG_ DREW_CMD_BSER_Fault_High  : 16|16@1+ (1e-4,0) [0|1] "" VCU
+    SG_ DREW_CMD_BSER_Signal_Low  : 32|16@1+ (1e-4,0) [0|1] "" VCU
+    SG_ DREW_CMD_BSER_Signal_High : 48|16@1+ (1e-4,0) [0|1] "" VCU
+
+
+BO_ 800 DREW_CMD_MAX_TORQUE_REQUEST: 4 GREW
+    SG_ DREW_CMD_Max_Torque_Request : 0|32@1+ (0.001,0) [0|300] "Nm" VCU
+
+
+BO_ 816 DREW_CMD_PEDAL_MAP_POINT_1: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_1 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 817 DREW_CMD_PEDAL_MAP_POINT_2: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_2 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 818 DREW_CMD_PEDAL_MAP_POINT_3: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_3 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 819 DREW_CMD_PEDAL_MAP_POINT_4: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_4 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 820 DREW_CMD_PEDAL_MAP_POINT_5: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_5 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 821 DREW_CMD_PEDAL_MAP_POINT_6: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_6 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 822 DREW_CMD_PEDAL_MAP_POINT_7: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_7 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 823 DREW_CMD_PEDAL_MAP_POINT_8: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_8 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 824 DREW_CMD_PEDAL_MAP_POINT_9: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_9 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 825 DREW_CMD_PEDAL_MAP_POINT_10: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_10 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 826 DREW_CMD_PEDAL_MAP_POINT_11: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_11 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 827 DREW_CMD_PEDAL_MAP_POINT_12: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_12 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 828 DREW_CMD_PEDAL_MAP_POINT_13: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_13 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 829 DREW_CMD_PEDAL_MAP_POINT_14: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_14 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 830 DREW_CMD_PEDAL_MAP_POINT_15: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_15 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+BO_ 831 DREW_CMD_PEDAL_MAP_POINT_16: 2 GREW
+    SG_ DREW_CMD_Pedal_Map_Point_16 : 0|16@1+ (1e-4,0) [0|1] "" VCU
+
+
+
+BO_ 1040 DREW_CFG_APP1_THRESHOLD: 8 VCU
+    SG_ DREW_CFG_APP1_Fault_Low   : 0|16@1+ (1e-4,0) [0|1] "" GREW
+    SG_ DREW_CFG_APP1_Fault_High  : 16|16@1+ (1e-4,0) [0|1] "" GREW
+    SG_ DREW_CFG_APP1_Signal_Low  : 32|16@1+ (1e-4,0) [0|1] "" GREW
+    SG_ DREW_CFG_APP1_Signal_High : 48|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1041 DREW_CFG_APP2_THRESHOLD: 8 VCU
+    SG_ DREW_CFG_APP2_Fault_Low   : 0|16@1+ (1e-4,0) [0|1] "" GREW
+    SG_ DREW_CFG_APP2_Fault_High  : 16|16@1+ (1e-4,0) [0|1] "" GREW
+    SG_ DREW_CFG_APP2_Signal_Low  : 32|16@1+ (1e-4,0) [0|1] "" GREW
+    SG_ DREW_CFG_APP2_Signal_High : 48|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1042 DREW_CFG_BSEF_THRESHOLD: 8 VCU
+    SG_ DREW_CFG_BSEF_Fault_Low   : 0|16@1+ (1e-4,0) [0|1] "" GREW
+    SG_ DREW_CFG_BSEF_Fault_High  : 16|16@1+ (1e-4,0) [0|1] "" GREW
+    SG_ DREW_CFG_BSEF_Signal_Low  : 32|16@1+ (1e-4,0) [0|1] "" GREW
+    SG_ DREW_CFG_BSEF_Signal_High : 48|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1043 DREW_CFG_BSER_THRESHOLD: 8 VCU
+    SG_ DREW_CFG_BSER_Fault_Low   : 0|16@1+ (1e-4,0) [0|1] "" GREW
+    SG_ DREW_CFG_BSER_Fault_High  : 16|16@1+ (1e-4,0) [0|1] "" GREW
+    SG_ DREW_CFG_BSER_Signal_Low  : 32|16@1+ (1e-4,0) [0|1] "" GREW
+    SG_ DREW_CFG_BSER_Signal_High : 48|16@1+ (1e-4,0) [0|1] "" GREW
+
+
+BO_ 1056 DREW_CFG_MAX_TORQUE_REQUEST: 4 VCU
+    SG_ DREW_CFG_Max_Torque_Request : 0|32@1+ (0.001,0) [0|300] "Nm" GREW
+
+
+BO_ 1072 DREW_CFG_PEDAL_MAP_POINT_1: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_1 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1073 DREW_CFG_PEDAL_MAP_POINT_2: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_2 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1074 DREW_CFG_PEDAL_MAP_POINT_3: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_3 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1075 DREW_CFG_PEDAL_MAP_POINT_4: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_4 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1076 DREW_CFG_PEDAL_MAP_POINT_5: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_5 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1077 DREW_CFG_PEDAL_MAP_POINT_6: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_6 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1078 DREW_CFG_PEDAL_MAP_POINT_7: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_7 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1079 DREW_CFG_PEDAL_MAP_POINT_8: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_8 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1080 DREW_CFG_PEDAL_MAP_POINT_9: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_9 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1081 DREW_CFG_PEDAL_MAP_POINT_10: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_10 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1082 DREW_CFG_PEDAL_MAP_POINT_11: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_11 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1083 DREW_CFG_PEDAL_MAP_POINT_12: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_12 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1084 DREW_CFG_PEDAL_MAP_POINT_13: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_13 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1085 DREW_CFG_PEDAL_MAP_POINT_14: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_14 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1086 DREW_CFG_PEDAL_MAP_POINT_15: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_15 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1087 DREW_CFG_PEDAL_MAP_POINT_16: 2 VCU
+    SG_ DREW_CFG_Pedal_Map_Point_16 : 0|16@1+ (1e-4,0) [0|1] "" GREW
+
+
+VAL_ 303 DREW_Flags_Mode 0 "IDLE" 1 "READY_TO_DRIVE" 2 "CONFIGURATION" ;
+VAL_ 768 DREW_CMD_Config_Mode 0 "DISABLE" 1 "ENABLE";

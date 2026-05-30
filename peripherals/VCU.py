@@ -28,7 +28,7 @@ class VCU(CANPeripheral):
         }
         self.txData = [0,0,0,0,0,0,0,0]
         self.txData1 = [0]
-        self.dbc = cantools.database.load_file("constants\\TR-26.dbc")
+        self.dbc = cantools.database.load_file("constants\\drew-2-2-1.dbc")
         
     @Slot()
     def enable(self):
