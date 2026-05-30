@@ -64,7 +64,7 @@ def main():
     main_widget.show()  # CRITICAL: Ensures the window actually paints to your desktop
     
     # 3. Setup background CAN configuration 
-    db = cantools.database.load_file("constants\\TR-26.dbc")
+    db = cantools.database.load_file("constants/TR-26.dbc")
     msg_def = db.get_message_by_name('WHEEL_STATE')
     msg = db.get_message_by_name('VCU_SET_PARAM')
     print(f"is_fd={msg.is_fd}, is_extended={msg.is_extended_frame}")
