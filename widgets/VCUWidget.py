@@ -60,6 +60,9 @@ class VCUWidget(QtWidgets.QMainWindow):
         
         self.setupGraph()
         self.setupApps1RangeSlider()
+        self.apps1ReadTimer = QTimer(self)
+        self.apps1ReadTimer.timeout.connect(self.updateApps1CurrentReadings)
+        self.apps1ReadTimer.start(100) 
 
         self.window.setPedalMapButton.clicked.connect(self.sendPedalMap)
         self.window.sendConfigButton.clicked.connect(self.vcu.writeConfiguration)
@@ -138,7 +141,7 @@ class VCUWidget(QtWidgets.QMainWindow):
         # Redraw curve
         self.curves["pedalMap"].setData(
             self.buffers["x"],
-            self.buffers["pedalMap"]
+            self.buffers["pedalMap"] 
         )
     
     def updateGraph(self, index, value):
@@ -161,7 +164,6 @@ class VCUWidget(QtWidgets.QMainWindow):
             self.buffers["x"],
             self.buffers["pedalMap"]
         )
-        # Debug print
     
     @Slot()
     def sendPedalMap(self):
@@ -181,17 +183,45 @@ class VCUWidget(QtWidgets.QMainWindow):
         self.window.raise_()
         self.window.show()
     
+    
     @Slot()
     def setupApps1RangeSlider(self):
         self.apps1FaultSlider = QLabeledDoubleRangeSlider(QtCore.Qt.Vertical)
-        #Configure Slider Properties
+        #Configure Slider Properties, min max and starting points
         self.apps1FaultSlider.setMinimum(0)
         self.apps1FaultSlider.setMaximum(1.0)
         self.apps1FaultSlider.setValue((0.20,0.80)) #initial set
-        self.apps1FaultSlider.show()
-
         self.apps1FaultSlider.setMinimumHeight(250)
         self.apps1FaultSlider.setMinimumWidth(60)
+        self.apps1FaultSlider.setBarVisible(True)
+
+        self.apps1FaultSlider.setProperty(
+            "barColor",
+            QtGui.QBrush(QtGui.QColor("#f6e16b"))
+        )
+
+        # Use QRangeSlider, not QSlider, for superqt range slider styling
+        self.apps1FaultSlider.setStyleSheet("""
+            QRangeSlider {
+                qproperty-barColor: #f6e16b;
+                background-color: transparent;
+            }
+
+            QRangeSlider::groove:vertical {
+                background: #2b3048;
+                width: 8px;
+                border-radius: 4px;
+            }
+
+            QRangeSlider::handle:vertical {
+                background: #f6e16b;
+                border: 2px solid white;
+                height: 18px;
+                width: 18px;
+                margin: 0 -6px;
+                border-radius: 9px;
+            }
+        """)
 
         self.window.appsLSignal.setValue(0.20)
         self.window.appsHSignal.setValue(0.80)
@@ -201,22 +231,35 @@ class VCUWidget(QtWidgets.QMainWindow):
         layout = self.window.apps1FaultSliderContainer.layout()
         if layout is None:
             layout = QVBoxLayout(self.window.apps1FaultSliderContainer)
+            layout.setContentsMargins(10, 10, 10, 10)
+        layout.addWidget(self.apps1FaultSlider, alignment=QtCore.Qt.AlignCenter)
         layout.addWidget(self.apps1FaultSlider)
+        self.apps1FaultSlider.show()
 
         #when slider changes call update
         self.apps1FaultSlider.valuesChanged.connect(self.updateApps1FaultSlider)
+        self.window.appsLSignal.valueChanged.connect(self.updateApps1InputBoxes)
+        self.window.appsHSignal.valueChanged.connect(self.updateApps1InputBoxes)
+
 
         #when button clicked send values to vcu
         self.window.sendApps1SignalButton.clicked.connect(self.sendApps1FaultSlider)
         
 
     @Slot()
-    def updateApps1FaultSlider(self,values):
+    def updateApps1FaultSlider(self, *args):
         #get values from the slider
-        lowSignal, highSignal = values
-        #makes the values into how the vcu shows it
-        lowSignal =lowSignal
-        highSignal =highSignal
+        lowSignal, highSignal = self.apps1FaultSlider.value()
+
+        #allow signals and then block
+        self.window.appsLSignal.blockSignals(True)
+        self.window.appsHSignal.blockSignals(True)
+
+        self.window.appsLSignal.setValue(lowSignal)
+        self.window.appsHSignal.setValue(highSignal)
+        
+        self.window.appsLSignal.blockSignals(False)
+        self.window.appsHSignal.blockSignals(False)
         #update grew locally
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_Low"][1]= lowSignal
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1]= lowSignal
@@ -226,16 +269,34 @@ class VCUWidget(QtWidgets.QMainWindow):
         lowSignal = self.window.appsLSignal.value()
         highSignal = self.window.appsHSignal.value()
 
+        if lowSignal>highSignal:
+            return
+
         #stops triggering connected functions
-        #self.apps1FaultSlider.blockSignals(True)
+        self.apps1FaultSlider.blockSignals(True)
         #sets new slider input values locally
         self.apps1FaultSlider.setValue((lowSignal,highSignal))
         #turns signals back on
-        #self.apps1FaultSlider.blockSignals(False)
+        self.apps1FaultSlider.blockSignals(False)
 
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_Low"][1]= lowSignal
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1]= lowSignal
 
+    @Slot()
+    def  updateApps1CurrentReadings(self):
+        lowSignal = self.vcu.state["appsPositions"][0] 
+        highSignal = self.vcu.state["appsPositions"][1] 
+
+        self.window.appsLSignalCurrent.blockSignals(True)
+        self.window.appsHSignalCurrent.blockSignals(True)
+
+        self.window.appsLSignalCurrent.setValue(lowSignal)
+        self.window.appsHSignalCurrent.setValue(highSignal)
+
+        self.window.appsLSignalCurrent.blockSignals(False)
+        self.window.appsHSignalCurrent.blockSignals(False)
+
+    
     @Slot()
     def sendApps1FaultSlider(self):
         pass
@@ -254,8 +315,8 @@ class VCUWidget(QtWidgets.QMainWindow):
         #Configure Slider Properties
         self.apps2FaultSlider.setMinimum(0)
         self.apps2FaultSlider.setMaximum(100)
-        self.apps2FaultSlider.setValue((20,80)) #initial set
-        #updateApps1FaultSlider is name of object in PythonCode
+        self.apps2FaultSlider.setValue((20,80)) 
+        
 
         self.window.appsLSignal_2.setValue(0.20)
         self.window.appsHSignal_2.setValue(0.80)
