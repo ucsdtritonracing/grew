@@ -4,7 +4,14 @@ import math
 from PySide6 import QtWidgets, QtCore
 import cantools
 import pyqtgraph as pg
+<<<<<<< HEAD
 import random
+=======
+from peripherals.Inverter import Inverter
+from peripherals.VCU import VCU
+from can.interfaces.pcan import PcanBus
+from can import BusState
+>>>>>>> task/vcu
 
 # Dummy wrapper assuming MainWidget loads your UI layout internally
 from widgets.MainWidget import MainWidget 
@@ -46,23 +53,32 @@ def main():
     app = QtWidgets.QApplication(sys.argv)
     
     # 1. Initialize CAN Bus interface
-    bus = can.interface.Bus(interface='virtual', receive_own_messages=True)
-    
+    bus = can.interface.Bus(
+        interface='virtual',
+        channel='PCAN_USBBUS1',
+        bitrate=500000,        # match exactly what the VCU firmware is configured for
+        receive_own_messages=True,
+    )
+    #bus = can.interfaces.pcan.PcanBus(channel='PCAN_USBBUS1', timing=timing, bitrate=500000, receive_own_messages=False)
+    #print(bus.status_string())
+    inverter = Inverter(bus)
+    vcu = VCU(bus)
     # 2. Instantiate Main Layout Widget and make it visible
-    main_widget = MainWidget(bus)
+    main_widget = MainWidget(inverter,vcu)
     main_widget.show()  # CRITICAL: Ensures the window actually paints to your desktop
     
     # 3. Setup background CAN configuration 
-    db = cantools.database.load_file("constants\\TR-26.dbc")
+    db = cantools.database.load_file("constants/TR-26.dbc")
     msg_def = db.get_message_by_name('WHEEL_STATE')
-    
+    msg = db.get_message_by_name('VCU_SET_PARAM')
+    print(f"is_fd={msg.is_fd}, is_extended={msg.is_extended_frame}")
     # 4. Bind listeners using python-can Notifier framework
-    listeners = [main_widget.vcu.getListner(), can.Printer()]
+    listeners = [vcu.getListner(),inverter.getListner(), can.Printer()] 
     notifier = can.Notifier(bus, listeners)
     
     # 5. Start background simulator to feed virtual data
-    simulator = CANSimulators(bus, msg_def)
-    
+    #simulator = CANSimulators(bus, msg_def)
+#    print(bus.status_string())
     # 6. Execute Application and ensure clean socket/notifier resource cleanup on close
     exit_code = app.exec()
     notifier.stop()

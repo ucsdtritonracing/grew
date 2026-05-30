@@ -807,7 +807,7 @@ QScrollBar::sub-line:horizontal {
           <string>PDU</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="VCUconfguration">
+        <widget class="QPushButton" name="VCUConfigButton">
          <property name="geometry">
           <rect>
            <x>270</x>

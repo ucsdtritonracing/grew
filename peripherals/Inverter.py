@@ -19,7 +19,7 @@ class Inverter(CANPeripheral):
             "inverterInfo": [False,False,False], # inverter enabled, lockout, forward
             "faults": []
         }
-        self.db = cantools.database.load_file("constants\\20240815_PM_and_RM_CAN_DB.dbc")
+        self.db = cantools.database.load_file("constants/20240815_PM_and_RM_CAN_DB.dbc") #declared as dbc file and loads
         
     @Slot()
     def enable(self):
@@ -30,7 +30,7 @@ class Inverter(CANPeripheral):
         #send vcu enable device message here?
         i = 0
     def processMessage(self, msg):
-        data = self.db.decode_message(msg.arbitration_id, msg.data)
+        data = self.db.decode_message(msg.arbitration_id, msg.data) #decodes can message; returns a dictionary of the signals and data
         id = msg.arbitration_id
         match id:
             case self.const.MOTOR_INFO_ID:
@@ -53,8 +53,7 @@ class Inverter(CANPeripheral):
                 self.state["inverterInfo"] = data["INV_Inverter_Enable_State"] == 1
                 self.dataSignal.emit(self.state["inverterInfo"],"inverter")
             case self.const.TORQUES_ID:
-                self.state["torqueInfo"][0] = data["INV_Commanded_Torque"]
-                self.state["torqueInfo"][1] = data["INV_Torque_Feedback"]
+                self.state["torqueInfo"][0] = data["VCU_INV_Torque_Command"]
                 self.dataSignal.emit(self.state["torqueInfo"],"torque")
             case self.const.FAULTS_ID:
                 run_fault_lo = int(data.get("INV_Run_Fault_Lo", 0))
@@ -66,7 +65,8 @@ class Inverter(CANPeripheral):
                             self.dataSignal.emit([msg.timestamp, fault_name], "invFaults")
     
     def on_message_received(self, msg):
-        self.processMessage(msg)
+        #self.processMessage(msg)
+        pass
 
     @Slot()
     def shutdown(self):

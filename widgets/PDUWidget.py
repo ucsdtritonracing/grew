@@ -3,9 +3,9 @@ from PySide6 import QtCore, QtWidgets, QtGui
 from peripherals.PDU import PDU
 from functools import partial
 class PDUWidget(QtWidgets.QMainWindow):
-    def __init__(self, bus):
+    def __init__(self, peripheral):
         super().__init__()
-        self.pdu = PDU(bus)
+        self.pdu = peripheral
         self.Channel1Off = QtWidgets.QPushButton("CHANNEL 1 OFF")
         self.Channel1Off.clicked.connect(partial(self.pdu.setCurrentLimit, 1, 0))
         self.Channel1On = QtWidgets.QPushButton("CHANNEL 1 ON")
