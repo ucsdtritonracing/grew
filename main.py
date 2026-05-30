@@ -53,7 +53,7 @@ def main():
     main_widget.show()  # CRITICAL: Ensures the window actually paints to your desktop
     
     # 3. Setup background CAN configuration 
-    db = cantools.database.load_file("constants\\TR-26.dbc")
+    db = cantools.database.load_file("constants/TR-26.dbc")
     msg_def = db.get_message_by_name('WHEEL_STATE')
     
     # 4. Bind listeners using python-can Notifier framework
