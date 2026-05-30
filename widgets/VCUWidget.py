@@ -7,6 +7,8 @@ from functools import partial
 import pyqtgraph as pg
 import time, math
 from collections import deque
+from superqt import QLabeledDoubleRangeSlider
+from PySide6.QtWidgets import QVBoxLayout
 
 class DraggablePoint(pg.TargetItem):
     def __init__(self, x, y, index, callback):
@@ -50,16 +52,18 @@ class VCUWidget(QtWidgets.QMainWindow):
         self.vcu = peripheral
         
         loader = QUiLoader()
-        ui_file = QFile("ui\\VCU.ui")
+        ui_file = QFile("ui/VCU.ui")
         ui_file.open(QFile.ReadOnly)
         loader.registerCustomWidget(pg.PlotWidget)
         self.window = loader.load(ui_file,None)
         ui_file.close()
         
         self.setupGraph()
+        self.setupApps1RangeSlider()
+
         self.window.setPedalMapButton.clicked.connect(self.sendPedalMap)
         self.window.sendConfigButton.clicked.connect(self.vcu.writeConfiguration)
-        self.window.sendMaxTorqueRequest.clicked.connect(self.sendMaxTorque)
+        self.window.sendMaxTorque.clicked.connect(self.sendMaxTorque)
         # BPS/APPS threshold buttons
         for btn_name, (param_id, widget_name, info) in self.vcu.const.button_map.items():
             widget = getattr(self.window, widget_name)
@@ -183,3 +187,123 @@ class VCUWidget(QtWidgets.QMainWindow):
     def show(self):
         self.window.raise_()
         self.window.show()
+    
+    @Slot()
+    def setupApps1RangeSlider(self):
+        self.apps1FaultSlider = QLabeledDoubleRangeSlider(QtCore.Qt.Vertical)
+        #Configure Slider Properties
+        self.apps1FaultSlider.setMinimum(0)
+        self.apps1FaultSlider.setMaximum(1.0)
+        self.apps1FaultSlider.setValue((0.20,0.80)) #initial set
+        self.apps1FaultSlider.show()
+
+        self.apps1FaultSlider.setMinimumHeight(250)
+        self.apps1FaultSlider.setMinimumWidth(60)
+
+        self.window.appsLSignal.setValue(0.20)
+        self.window.appsHSignal.setValue(0.80)
+
+
+        #Add slider to widget container
+        layout = self.window.apps1FaultSliderContainer.layout()
+        if layout is None:
+            layout = QVBoxLayout(self.window.apps1FaultSliderContainer)
+        layout.addWidget(self.apps1FaultSlider)
+
+        #when slider changes call update
+        self.apps1FaultSlider.valuesChanged.connect(self.updateApps1FaultSlider)
+
+        #when button clicked send values to vcu
+        self.window.sendApps1SignalButton.clicked.connect(self.sendApps1FaultSlider)
+        
+
+    @Slot()
+    def updateApps1FaultSlider(self,values):
+        #get values from the slider
+        lowSignal, highSignal = values
+        #makes the values into how the vcu shows it
+        lowSignal =lowSignal
+        highSignal =highSignal
+        #update grew locally
+        self.vcu.state["apps1Thresholds"][2]= lowSignal
+        self.vcu.state["apps1Thresholds"][3]=highSignal
+    
+    @Slot()
+    def updateApps1InputBoxes(self):
+        lowSignal = self.window.appsLSignal.value()
+        highSignal = self.window.appsHSignal.value()
+
+        #stops triggering connected functions
+        #self.apps1FaultSlider.blockSignals(True)
+        #sets new slider input values locally
+        self.apps1FaultSlider.setValue((lowSignal,highSignal))
+        #turns signals back on
+        #self.apps1FaultSlider.blockSignals(False)
+
+        self.vcu.state["apps1Thresholds"][2]=lowSignal
+        self.vcu.state["apps1Thresholds"][3]=highSignal
+
+    
+    @Slot()
+    def sendApps1FaultSlider(self):
+        #set low and high signal and then send
+        lowSignal= self.vcu.state["apps1Thresholds"][2]
+        highSignal = self.vcu.state["apps1Thresholds"][3]
+
+        self.vcu.set_param(0x0001,lowSignal ,2)
+        self.vcu.set_param(0x0001,highSignal ,3)
+    
+    @Slot()
+    def sendApps1Inputboxes(self):
+        lowSignal = self.vcu.state["apps1Thresholds"][2]
+        highSignal = self.vcu.state["apps1Thresholds"][3]
+
+        self.vcu.set_param(0x001,lowSignal,2)
+        self.vcu.set_param(0x001,highSignal,2)
+    @Slot()
+    def setupApps2RangeSlider(self):
+
+        self.apps2FaultSlider = QLabeledDoubleRangeSlider(QtCore.Qt.Vertical)
+        #Configure Slider Properties
+        self.apps2FaultSlider.setMinimum(0)
+        self.apps2FaultSlider.setMaximum(100)
+        self.apps2FaultSlider.setValue((20,80)) #initial set
+        #updateApps1FaultSlider is name of object in PythonCode
+
+        self.window.appsLSignal_2.setValue(0.20)
+        self.window.appsHSignal_2.setValue(0.80)
+
+        layout = self.window.apps2FaultSliderContainer.layout()
+        layout.addWidget(self.apps2FaultSlider)
+        #connects slider to function, wherever the apps slider fault 2 value changes automatically call update
+        self.apps2FaultSlider.valuesChanged.connect(self.updateApps2FaultSlider)
+
+    @Slot()
+    def updateApps2FaultSlider(self,values):
+        #get values from the slider
+        lowSignal, highSignal = values
+        #makes the values into how the vcu shows it
+        lowSignal =lowSignal/100
+        highSignal =highSignal/100
+        #update grew locally
+        self.vcu.state["apps2Thresholds"][2]= lowSignal
+        self.vcu.state["apps2Thresholds"][3]=highSignal
+    
+    @Slot()
+    def sendApps2FaultSlider(self):
+        #set low and high signal and then send
+        lowSignal= self.vcu.state["apps2Thresholds"][2]
+        highSignal = self.vcu.state["apps2Thresholds"][3]
+
+        self.vcu.set_param(0x0002,lowSignal ,2)
+        self.vcu.set_param(0x0002,highSignal ,3)
+
+        #did i make sure u can send from just inputting, how do i connect inputs to sliders
+    @Slot()
+    def sendApps2Inputboxes(self):
+        lowSignal = self.vcu.state["apps2Thresholds"][2]
+        highSignal = self.vcu.state["apps2Thresholds"][3]
+
+        self.vcu.set_param(0x002,lowSignal,2)
+        self.vcu.set_param(0x002,highSignal,3)
+
