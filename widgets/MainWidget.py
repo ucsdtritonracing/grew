@@ -17,7 +17,8 @@ class MainWidget(QtWidgets.QMainWindow):
         self.vcuWidget = VCUWidget(peripheral2)
 
         super().__init__()
-        ui_file = QFile("ui\\carTestingWebappMain.ui")
+        
+        ui_file = QFile("ui/carTestingWebappMain.ui")
         ui_file.open(QFile.ReadOnly)
         loader = QUiLoader()
         loader.registerCustomWidget(pg.PlotWidget)
