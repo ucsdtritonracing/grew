@@ -60,17 +60,18 @@ class VCUWidget(QtWidgets.QMainWindow):
         
         self.setupGraph()
         self.setupApps1RangeSlider()
-        self.apps1ReadTimer = QTimer(self)
-        self.apps1ReadTimer.timeout.connect(self.updateApps1CurrentReadings)
-        self.apps1ReadTimer.start(100) 
+        
+        self.vcu.dataSignal.connect(self.updateUI)
+        #self.apps1ReadTimer = QTimer(self)
+        #.apps1ReadTimer.timeout.connect(self.updateApps1CurrentReadings)
+        #self.apps1ReadTimer.start(100) 
 
         self.window.setPedalMapButton.clicked.connect(self.sendPedalMap)
         self.window.sendConfigButton.clicked.connect(self.vcu.writeConfiguration)
         # BPS/APPS threshold buttons
-        for btn_name, (param_id, widget_name, info) in self.vcu.const.button_map.items():
-            widget = getattr(self.window, widget_name)
+        for btn_name, (msg_name) in self.vcu.const.button_map.items():
             getattr(self.window, btn_name).clicked.connect(
-                lambda checked=False, pid=param_id, w=widget, info=info: self.vcu.set_param(pid, float(w.value()),info))
+                lambda checked=False, msg_name=msg_name: self.vcu.set_param(msg_name))
             
 
         
@@ -80,7 +81,7 @@ class VCUWidget(QtWidgets.QMainWindow):
     def closeEvent(self, event):
         self.window_closed.emit()
         event.accept()
-
+    
     def setupGraph(self):
         self.window.pedalGraph.getViewBox().disableAutoRange()
         self.start_time = time.perf_counter()
@@ -169,6 +170,18 @@ class VCUWidget(QtWidgets.QMainWindow):
             self.buffers["pedalMap"]
         )
     
+    @Slot()
+    def updateUI(self, data, name):
+        
+        self.window.appsLSignalCurrent.blockSignals(True)
+        self.window.appsHSignalCurrent.blockSignals(True)
+
+        self.window.appsLSignalCurrent.setValue(lowSignal)
+        self.window.appsHSignalCurrent.setValue(highSignal)
+
+        self.window.appsLSignalCurrent.blockSignals(False)
+        self.window.appsHSignalCurrent.blockSignals(False)
+
     @Slot()
     def sendPedalMap(self):
         for i in range(2, 17):
@@ -286,19 +299,6 @@ class VCUWidget(QtWidgets.QMainWindow):
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_Low"][1]= lowSignal
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1]= lowSignal
 
-    @Slot()
-    def  updateApps1CurrentReadings(self):
-        lowSignal = self.vcu.state["appsPositions"][0] 
-        highSignal = self.vcu.state["appsPositions"][1] 
-
-        self.window.appsLSignalCurrent.blockSignals(True)
-        self.window.appsHSignalCurrent.blockSignals(True)
-
-        self.window.appsLSignalCurrent.setValue(lowSignal)
-        self.window.appsHSignalCurrent.setValue(highSignal)
-
-        self.window.appsLSignalCurrent.blockSignals(False)
-        self.window.appsHSignalCurrent.blockSignals(False)
 
     
     @Slot()

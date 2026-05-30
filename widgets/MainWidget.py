@@ -36,6 +36,25 @@ class MainWidget(QtWidgets.QMainWindow):
         self.window.TimescaleDropdown.currentIndexChanged.connect(partial(self.setRange))
         self.graphEnabled = True
 
+    @Slot()
+    def startGraph(self):
+        self.graphEnabled = True
+    
+    @Slot()
+    def stopGraph(self):
+        self.graphEnabled = False
+
+    @Slot(int)
+    def setRange(self, index):
+        match index:
+            case 0:
+                self.viewRange = 5
+            case 1: 
+                self.viewRange = 10
+            case 2: 
+                self.viewRange = 30
+            case 3:
+                self.viewRange = 60
     
     def setupGraph(self):
         self.start_time = time.perf_counter()
