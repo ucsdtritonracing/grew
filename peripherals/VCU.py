@@ -12,29 +12,9 @@ class VCU(CANPeripheral):
     def __init__(self, bus,parent = None):
         super().__init__(id=self.const.DEVICE_ID, isExtended=False, bus=bus, func=self.func, parent = parent)
     def setup(self):
-        self.state = {
-            "imu": [0,0,0,0,0,0],
-            "apps1Thresholds": [0,0,0,0],
-            "apps2Thresholds": [0,0,0,0],
-            "appsValidity": [False,False],
-            "appsPositions": [0,0],
-            "bpsfThresholds": {0:0,1:0,4:0},
-            "bpsrThresholds": {0:0,1:0,4:0},
-            "bpsValidity": [False,False],
-            "bpsPositions": [0,0],
-            "sasAngle": 0, # recieve from sensor itself
-            "maxTorqueRequest": 0, 
-            "r2dButtonPressed": False,
-            "shutdownClosed": False,
-            "r2dMode": False,
-            "pedalMap": [0, 0, 0, 0, 0, 0, 0, 0,
-                         0, 0, 0, 0, 0, 0, 0, 0, 0],
-            "wheelSpeeds": [0,0,0,0],
-            
-        }
         self.txData = [0,0,0,0,0,0,0,0]
         self.txData1 = [0]
-        self.dbc = cantools.database.load_file("constants\\drew-2-2-1.dbc")
+        self.dbc = cantools.database.load_file("constants\\drew-2-3-0.dbc")
         
     @Slot()
     def enable(self):
@@ -48,20 +28,17 @@ class VCU(CANPeripheral):
         super().send_message(self.txData1, self.const.FLASH_ID, is_extended_id=False)
     
     @Slot()
-    def set_param(self, param_id: int, value: float, info: int):
-        msg_def = self.dbc.get_message_by_name('VCU_SET_PARAM')
-        
-        # 2. Encode signals to raw bytes (keep as a bytes object)
+    def set_param(self, message_name: str):
+        msg_def = self.dbc.get_message_by_name(message_name)
+
         data = msg_def.encode({
-            'PARAM_ID':         param_id,
-            'PARAM_VALUE_FP32': value,
-            'PARAM_INFO':       info,
-        },padding=True)
-        
-        # 3. Pass the DBC's metadata properties directly to the sender
+            signal.name: self.CONFIGURATION_SIGNALS[signal.name][1]
+            for signal in msg_def.signals
+        }, padding=True)
+
         super().send_message(
-            data=data, 
-            arbitration_id=msg_def.frame_id, 
+            data=data,
+            arbitration_id=msg_def.frame_id,
             is_extended_id=msg_def.is_extended_frame,
             is_fd=msg_def.is_fd
         )
@@ -71,49 +48,19 @@ class VCU(CANPeripheral):
         super().send_message([], self.const.WRITE_CONFIG_ID, is_extended_id=False)
     
     def on_message_received(self, msg):
-        if(msg.arbitration_id == self.const.RX_PARAMETER_ID):
-            param = self.processParam(msg)
-            match param[0]:
-                case 0x001:
-                    if(self.state["apps1Thresholds"][param[1]] != param[2]):
-                        self.logger.emit(f"apps1 param index {param[1]} desynced (vcu:{param[2]}!=grew:{self.state["apps1Thresholds"][param[1]]})")
-                case 0x002:
-                    if(self.state["apps2Thresholds"][param[1]] != param[2]):
-                        self.logger.emit(f"apps2 param index {param[1]} desynced (vcu:{param[2]}!=grew:{self.state["apps2Thresholds"][param[1]]})")
-                case 0x003:
-                    if(self.state["bpsfThresholds"][param[1]] != param[2]):
-                        self.logger.emit(f"bpsf param index {param[1]} desynced (vcu:{param[2]}!=grew:{self.state["bpsfThresholds"][param[1]]})")
-                case 0x004:
-                    if(self.state["bpsrThresholds"][param[1]] != param[2]):
-                        self.logger.emit(f"bpsr param index {param[1]} desynced (vcu:{param[2]}!=grew:{self.state["bpsrThresholds"][param[1]]})")
-                case 0x005:
-                    if(self.state["maxTorqueRequest"] != param[2]):
-                        self.logger.emit(f"maxTorqueRequest desynced (vcu:{param[2]}!=grew:{self.state["maxTorqueRequest"]})")
-                case 0x006:
-                    if(self.state["pedalMap"][param[1]] != param[2]):
-                        self.logger.emit(f"pedalMap param index {param[1]} desynced (vcu:{param[2]}!=grew:{self.state["pedalMap"][param[1]]})")
-        else:
-            #self.processMessage(msg)
-            pass
-
-    def processParam(self, msg):
-        data = self.dbc.decode_message(msg.arbitration_id, msg.data)
-
-        param_id = int(data["PARAM_ID"])
-        param_info = int(data["PARAM_INFO"])
-        param_value = data["PARAM_VALUE_FP32"]
-
-        param_name = self.const.PARAM_NAMES.get(param_id, f"UNKNOWN (0x{param_id:04X})")
-
-        return (param_name, param_info, param_value)
+        self.processMessage(msg)
+    
     def processMessage(self, msg):
-        # see VCU CAN API for data format
         data = self.dbc.decode_message(msg.arbitration_id, msg.data)
         id = msg.arbitration_id
-        match id:
-            case 298: 
-                self.state["wheelSpeeds"][0] = data["FR_SPEED"]
-                self.state["wheelSpeeds"][1] = data["FL_SPEED"]
-                self.state["wheelSpeeds"][2] = data["BR_SPEED"]
-                self.state["wheelSpeeds"][3] = data["BL_SPEED"]
-                self.dataSignal.emit(self.state["wheelSpeeds"],"wheelSpeeds")
+        if id not in self.BROADCAST_SIGNALS:
+            return
+        signals = self.BROADCAST_SIGNALS[id]
+        for signal in signals:
+            signal[1] = data[signal[0]]
+
+        values = [signal[1] for signal in signals]
+        msg_name = self.dbc.get_message_by_frame_id(id).name
+
+        self.dataSignal.emit(values, msg_name)
+        

@@ -84,6 +84,10 @@ BO_ 787 DREW_CMD_BSER_THRESHOLD: 8 GREW
     SG_ DREW_CMD_BSER_Signal_Low  : 32|16@1+ (1e-4,0) [0|1] "" VCU
     SG_ DREW_CMD_BSER_Signal_High : 48|16@1+ (1e-4,0) [0|1] "" VCU
 
+BO_ 788 DREW_CMD_BSE_ENGAGE: 4 GREW
+    SG_ DREW_CMD_BSEF_Engage      : 0|16@1+ (1e-4,0) [0|1] "" VCU
+    SG_ DREW_CMD_BSER_Engage      : 16|16@1+ (1e-4,0) [0|1] "" VCU
+
 
 BO_ 800 DREW_CMD_MAX_TORQUE_REQUEST: 4 GREW
     SG_ DREW_CMD_Max_Torque_Request : 0|32@1+ (0.001,0) [0|300] "Nm" VCU
@@ -162,6 +166,10 @@ BO_ 1043 DREW_CFG_BSER_THRESHOLD: 8 VCU
     SG_ DREW_CFG_BSER_Fault_High  : 16|16@1+ (1e-4,0) [0|1] "" GREW
     SG_ DREW_CFG_BSER_Signal_Low  : 32|16@1+ (1e-4,0) [0|1] "" GREW
     SG_ DREW_CFG_BSER_Signal_High : 48|16@1+ (1e-4,0) [0|1] "" GREW
+
+BO_ 1044 DREW_CFG_BSE_ENGAGE: 4 VCU
+    SG_ DREW_CFG_BSEF_Engage      : 0|16@1+ (1e-4,0) [0|1] "" GREW
+    SG_ DREW_CFG_BSER_Engage      : 16|16@1+ (1e-4,0) [0|1] "" GREW
 
 
 BO_ 1056 DREW_CFG_MAX_TORQUE_REQUEST: 4 VCU

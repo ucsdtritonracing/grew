@@ -63,17 +63,12 @@ class VCUWidget(QtWidgets.QMainWindow):
 
         self.window.setPedalMapButton.clicked.connect(self.sendPedalMap)
         self.window.sendConfigButton.clicked.connect(self.vcu.writeConfiguration)
-        self.window.sendMaxTorque.clicked.connect(self.sendMaxTorque)
         # BPS/APPS threshold buttons
         for btn_name, (param_id, widget_name, info) in self.vcu.const.button_map.items():
             widget = getattr(self.window, widget_name)
             getattr(self.window, btn_name).clicked.connect(
                 lambda checked=False, pid=param_id, w=widget, info=info: self.vcu.set_param(pid, float(w.value()),info))
-            
-
         
-        
-        #self.window.exitConfig.clicked.connect(self.vcu.disable)
 
     def closeEvent(self, event):
         self.window_closed.emit()
@@ -170,18 +165,16 @@ class VCUWidget(QtWidgets.QMainWindow):
     
     @Slot()
     def sendPedalMap(self):
-        PEDAL_MAP_BASE_ID = 0x0100
-        for i in range(2,17):
-            if(self.buffers["pedalMap"][i] < self.buffers["pedalMap"][i-1]):
+        for i in range(2, 17):
+            if self.buffers["pedalMap"][i] < self.buffers["pedalMap"][i-1]:
                 self.logger.emit("Pedal Map not monotonically increasing! Mapping not sent.")
-                return # do not do anything, invalid param
-        for i in range(1, 17):                          # indices 1–16 inclusive
-            param_id = 0x0006
-            QTimer.singleShot(100,lambda param_id=param_id,i=i : self.vcu.set_param(param_id, float(self.buffers["pedalMap"][i]),i))
-    
-    @Slot()
-    def sendMaxTorque(self):
-        self.vcu.set_param(0x0005, float(self.window.maxTorqueRequest.value()),0)     # Maximum Torque Request
+                return
+
+        for i in range(1, 17):
+            signal_name = f"DREW_CMD_Pedal_Map_Point_{i}"
+            msg_name    = f"DREW_CMD_PEDAL_MAP_POINT_{i}"
+            self.vcu.const.CONFIGURATION_SIGNALS[signal_name][1] = float(self.buffers["pedalMap"][i])
+            QTimer.singleShot(100 * i, lambda msg_name=msg_name: self.vcu.set_param(msg_name))
 
     @Slot()  
     def show(self):
@@ -225,8 +218,8 @@ class VCUWidget(QtWidgets.QMainWindow):
         lowSignal =lowSignal
         highSignal =highSignal
         #update grew locally
-        self.vcu.state["apps1Thresholds"][2]= lowSignal
-        self.vcu.state["apps1Thresholds"][3]=highSignal
+        self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_Low"][1]= lowSignal
+        self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1]= lowSignal
     
     @Slot()
     def updateApps1InputBoxes(self):
@@ -240,18 +233,12 @@ class VCUWidget(QtWidgets.QMainWindow):
         #turns signals back on
         #self.apps1FaultSlider.blockSignals(False)
 
-        self.vcu.state["apps1Thresholds"][2]=lowSignal
-        self.vcu.state["apps1Thresholds"][3]=highSignal
+        self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_Low"][1]= lowSignal
+        self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1]= lowSignal
 
-    
     @Slot()
     def sendApps1FaultSlider(self):
-        #set low and high signal and then send
-        lowSignal= self.vcu.state["apps1Thresholds"][2]
-        highSignal = self.vcu.state["apps1Thresholds"][3]
-
-        self.vcu.set_param(0x0001,lowSignal ,2)
-        self.vcu.set_param(0x0001,highSignal ,3)
+        pass
     
     @Slot()
     def sendApps1Inputboxes(self):

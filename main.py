@@ -4,14 +4,11 @@ import math
 from PySide6 import QtWidgets, QtCore
 import cantools
 import pyqtgraph as pg
-<<<<<<< HEAD
-import random
-=======
 from peripherals.Inverter import Inverter
 from peripherals.VCU import VCU
 from can.interfaces.pcan import PcanBus
 from can import BusState
->>>>>>> task/vcu
+import random
 
 # Dummy wrapper assuming MainWidget loads your UI layout internally
 from widgets.MainWidget import MainWidget 
