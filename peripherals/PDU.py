@@ -9,7 +9,7 @@ class PDU(CANPeripheral):
         super().__init__(id=self.const.DEVICE_ID, isExtended=True, bus=bus, func=self.func)
     def setup(self):
         self.state = {
-            "requestedCurrentLimit": [0,0,0,0,0,0,0,0],
+            "requestedCurrentLimit": [0,0,0,0,0,0,0,0], 
             "measuredCurrent": [0,0,0,0,0,0,0,0],
             "errorStatus" : [self.const.ERROR.UNKNOWN] * self.const.NUM_CHANNELS
         }
