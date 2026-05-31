@@ -3,12 +3,13 @@ from enum import Enum
 
 @dataclass(frozen=False)
 class VCUConstants:
-    WRITE_CONFIG_ID: int =  0x194
-    FLASH_ID: int =         0x193
+    WRITE_CONFIG_ID: int =  0x301
+    FLASH_CONFIG_ID: int =  0x302
+    FLASH_ID: int =         0x300
     FLASH_ON: int =         0x01
     FLASH_OFF: int =        0x00
     DEVICE_ID: int =        0x032
-    SET_PARAM_ID: int =     0x190
+    
 
     BROADCAST_SIGNALS: dict[int, list[list[str | float | int]]] = field(default_factory=lambda: {
 
@@ -130,6 +131,9 @@ class VCUConstants:
         "DREW_CMD_BSER_Signal_Low":      [0x313, 0.0],
         "DREW_CMD_BSER_Signal_High":     [0x313, 0.0],
 
+        "DREW_CMD_BSEF_Engage":         [0x314,0.0],
+        "DREW_CMD_BSER_Engage":         [0x314,0.0],
+
         # 0x320  DREW_CMD_MAX_TORQUE_REQUEST
         "DREW_CMD_Max_Torque_Request":   [0x320, 0.0],
 
@@ -152,13 +156,13 @@ class VCUConstants:
         "DREW_CMD_Pedal_Map_Point_16":   [0x33F, 0.0],
     })
     button_map: dict =      field(default_factory=lambda: {
-                                "sendApps1SignalButton":("DREW_CMD_APP1_THRESHOLD",),
-                                "sendBPSHFault":        ("DREW_CMD_BSEF_THRESHOLD"),                              
-                                "sendBPSLFault":        ("DREW_CMD_BSEF_THRESHOLD"),                               
-                                "sendBPSHFault_2":      ("DREW_CMD_BSER_THRESHOLD"),
-                                "sendBPSLFault_2":      ("DREW_CMD_BSER_THRESHOLD"),
-                                "sendApps2SignalButton":("DREW_CMD_APP2_THRESHOLD"),
-                                "sendBPSFEngaged":      ("DREW_CMD_BSEF_THRESHOLD"),
-                                "sendBPSREngaged":      ("DREW_CMD_BSER_THRESHOLD"),
-                                "sendMaxTorque":        ("DREW_CMD_Max_Torque_Request"),
+                                "sendApps1SignalButton":"DREW_CMD_APP1_THRESHOLD",
+                                "sendBPSHFault":        "DREW_CMD_BSEF_THRESHOLD",                              
+                                "sendBPSLFault":        "DREW_CMD_BSEF_THRESHOLD",                               
+                                "sendBPSHFault_2":      "DREW_CMD_BSER_THRESHOLD",
+                                "sendBPSLFault_2":      "DREW_CMD_BSER_THRESHOLD",
+                                "sendApps2SignalButton":"DREW_CMD_APP2_THRESHOLD",
+                                "sendBPSFEngaged":      "DREW_CMD_BSE_ENGAGE",
+                                "sendBPSREngaged":      "DREW_CMD_BSE_ENGAGE",
+                                "sendMaxTorque":        "DREW_CMD_MAX_TORQUE_REQUEST",
                             })

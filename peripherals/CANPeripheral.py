@@ -56,7 +56,7 @@ class CANPeripheral(QObject):
             is_fd=is_fd,
             data=data  # python-can natively handles the raw bytes object
         )
-        print(f"[TX] ID=0x{arbitration_id:03X} | is_fd={is_fd} | is_ext={is_extended_id} | dlc={len(msg.data)} | data={msg.data.hex()}")
+        #print(f"[TX] ID=0x{arbitration_id:03X} | is_fd={is_fd} | is_ext={is_extended_id} | dlc={len(msg.data)} | data={msg.data.hex()}")
         self.bus.send(msg)
         
 

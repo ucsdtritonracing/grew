@@ -68,6 +68,9 @@ class VCUWidget(QtWidgets.QMainWindow):
 
         self.window.setPedalMapButton.clicked.connect(self.sendPedalMap)
         self.window.sendConfigButton.clicked.connect(self.vcu.writeConfiguration)
+        self.window.flashConfig.clicked.connect(self.vcu.flashConfiguration)
+        self.window.drewSync.clicked.connect(self.syncPeriod)
+        self.window.grewSync.clicked.connect(self.vcu.resetUI)
         # BPS/APPS threshold buttons
         for btn_name, (msg_name) in self.vcu.const.button_map.items():
             getattr(self.window, btn_name).clicked.connect(
@@ -77,6 +80,10 @@ class VCUWidget(QtWidgets.QMainWindow):
         
         
         #self.window.exitConfig.clicked.connect(self.vcu.disable)
+    def syncPeriod(self):
+        self.vcu.sync = True
+        QTimer.singleShot(2000, lambda: setattr(self.vcu, 'sync', False))
+        self.vcu.resetUI()
 
     def closeEvent(self, event):
         self.window_closed.emit()
@@ -172,15 +179,51 @@ class VCUWidget(QtWidgets.QMainWindow):
     
     @Slot()
     def updateUI(self, data, name):
-        
-        self.window.appsLSignalCurrent.blockSignals(True)
-        self.window.appsHSignalCurrent.blockSignals(True)
+        if(not self.vcu.sync):
+            return
+        match name:
+            case "DREW_CFG_APP1_THRESHOLD":
+                self.window.appsLSignalCurrent.setValue(data[2])
+                self.window.appsHSignalCurrent.setValue(data[3])
+    
+            case "DREW_CFG_APP2_THRESHOLD":
+                self.window.appsHSignalCurrent_3.setValue(data[2])   # Current Low
+                self.window.appsHSignalCurrent_2.setValue(data[3])   # Current High
+    
+            case "DREW_CFG_BSEF_THRESHOLD":
+                self.window.bpsLFault.setValue(data[0])
+                self.window.bpsHFault.setValue(data[1])
+                # data[2] / data[3] = BSEF Signal Low/High — not used
+    
+            case "DREW_CFG_BSER_THRESHOLD":
+                self.window.bpsLFault_2.setValue(data[0])
+                self.window.bpsHFault_2.setValue(data[1])
+                # data[2] / data[3] = BSER Signal Low/High — not used
+    
+            case "DREW_CFG_BSE_ENGAGE":
+                self.window.bpsfEngaged.setValue(data[0])
+                self.window.bpsrEngaged.setValue(data[1])
+    
+            case "DREW_CFG_MAX_TORQUE_REQUEST":
+                self.window.inputmaxtorque.setValue(int(data[0]))
+    
+            case "DREW_CFG_PEDAL_MAP_POINT_1":  self.window.pointInput1.setValue(data[0])
+            case "DREW_CFG_PEDAL_MAP_POINT_2":  self.window.pointInput2.setValue(data[0])
+            case "DREW_CFG_PEDAL_MAP_POINT_3":  self.window.pointInput3.setValue(data[0])
+            case "DREW_CFG_PEDAL_MAP_POINT_4":  self.window.pointInput4.setValue(data[0])
+            case "DREW_CFG_PEDAL_MAP_POINT_5":  self.window.pointInput5.setValue(data[0])
+            case "DREW_CFG_PEDAL_MAP_POINT_6":  self.window.pointInput6.setValue(data[0])
+            case "DREW_CFG_PEDAL_MAP_POINT_7":  self.window.pointInput7.setValue(data[0])
+            case "DREW_CFG_PEDAL_MAP_POINT_8":  self.window.pointInput8.setValue(data[0])
+            case "DREW_CFG_PEDAL_MAP_POINT_9":  self.window.pointInput9.setValue(data[0])
+            case "DREW_CFG_PEDAL_MAP_POINT_10": self.window.pointInput10.setValue(data[0])
+            case "DREW_CFG_PEDAL_MAP_POINT_11": self.window.pointInput11.setValue(data[0])
+            case "DREW_CFG_PEDAL_MAP_POINT_12": self.window.pointInput12.setValue(data[0])
+            case "DREW_CFG_PEDAL_MAP_POINT_13": self.window.pointInput13.setValue(data[0])
+            case "DREW_CFG_PEDAL_MAP_POINT_14": self.window.pointInput14.setValue(data[0])
+            case "DREW_CFG_PEDAL_MAP_POINT_15": self.window.pointInput15.setValue(data[0])
+            case "DREW_CFG_PEDAL_MAP_POINT_16": self.window.pointInput16.setValue(data[0])
 
-        self.window.appsLSignalCurrent.setValue(lowSignal)
-        self.window.appsHSignalCurrent.setValue(highSignal)
-
-        self.window.appsLSignalCurrent.blockSignals(False)
-        self.window.appsHSignalCurrent.blockSignals(False)
 
     @Slot()
     def sendPedalMap(self):
@@ -259,8 +302,7 @@ class VCUWidget(QtWidgets.QMainWindow):
         self.window.appsHSignal.valueChanged.connect(self.updateApps1InputBoxes)
 
 
-        #when button clicked send values to vcu
-        self.window.sendapps1SignalSlider.clicked.connect(self.sendapps1SignalSlider)
+        #already bound in vcu dict
         
 
     @Slot()
@@ -278,8 +320,10 @@ class VCUWidget(QtWidgets.QMainWindow):
         self.window.appsLSignal.blockSignals(False)
         self.window.appsHSignal.blockSignals(False)
         #update grew locally
+
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_Low"][1]= lowSignal
-        self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1]= lowSignal
+        self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1]= highSignal
+        print(self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1])
     
     @Slot()
     def updateApps1InputBoxes(self):
@@ -297,31 +341,11 @@ class VCUWidget(QtWidgets.QMainWindow):
         self.apps1SignalSlider.blockSignals(False)
 
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_Low"][1]= lowSignal
-        self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1]= lowSignal
+        self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1]= highSignal
 
 
     
-    @Slot()
-<<<<<<< HEAD
-    def sendApps1FaultSlider(self):
-        pass
-=======
-    def sendapps1SignalSlider(self):
-        #set low and high signal and then send
-        lowSignal= self.vcu.state["apps1Thresholds"][2]
-        highSignal = self.vcu.state["apps1Thresholds"][3]
-
-        self.vcu.set_param(0x0001,lowSignal ,2)
-        self.vcu.set_param(0x0001,highSignal ,3)
->>>>>>> c1bc336 (Object name changes)
     
-    @Slot()
-    def sendApps1Inputboxes(self):
-        lowSignal = self.vcu.state["apps1Thresholds"][2]
-        highSignal = self.vcu.state["apps1Thresholds"][3]
-
-        self.vcu.set_param(0x001,lowSignal,2)
-        self.vcu.set_param(0x001,highSignal,2)
     @Slot()
     def setupApps2RangeSlider(self):
 
@@ -381,8 +405,7 @@ class VCUWidget(QtWidgets.QMainWindow):
         self.window.appsHSignal_2.valueChanged.connect(self.updateApps2InputBoxes)
 
 
-        #when button clicked send values to vcu
-        self.window.sendApps2SignalButton.clicked.connect(self.sendApps2FaultSlider)
+        # bound in VCU constants dict
         
 
     @Slot()
@@ -393,8 +416,8 @@ class VCUWidget(QtWidgets.QMainWindow):
         lowSignal =lowSignal/100
         highSignal =highSignal/100
         #update grew locally
-        self.vcu.state["apps2Thresholds"][2]= lowSignal
-        self.vcu.state["apps2Thresholds"][3]=highSignal
+        #self.vcu.state["apps2Thresholds"][2]= lowSignal
+        #self.vcu.state["apps2Thresholds"][3]=highSignal
     
     @Slot()
     def sendApps2FaultSlider(self):
@@ -402,8 +425,8 @@ class VCUWidget(QtWidgets.QMainWindow):
         lowSignal= self.vcu.state["apps2Thresholds"][2]
         highSignal = self.vcu.state["apps2Thresholds"][3]
 
-        self.vcu.set_param(0x0002,lowSignal ,2)
-        self.vcu.set_param(0x0002,highSignal ,3)
+        #self.vcu.set_param(0x0002,lowSignal ,2)
+        #self.vcu.set_param(0x0002,highSignal ,3)
 
         #did i make sure u can send from just inputting, how do i connect inputs to sliders
     @Slot()
@@ -411,6 +434,6 @@ class VCUWidget(QtWidgets.QMainWindow):
         lowSignal = self.vcu.state["apps2Thresholds"][2]
         highSignal = self.vcu.state["apps2Thresholds"][3]
 
-        self.vcu.set_param(0x002,lowSignal,2)
-        self.vcu.set_param(0x002,highSignal,3)
+        #self.vcu.set_param(0x002,lowSignal,2)
+        #self.vcu.set_param(0x002,highSignal,3)
 

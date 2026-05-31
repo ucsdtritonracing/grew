@@ -697,6 +697,32 @@ QCheckBox::indicator:unchecked {
               <string>Set Configuration</string>
              </property>
             </widget>
+            <widget class="QPushButton" name="drewSync">
+             <property name="geometry">
+              <rect>
+               <x>190</x>
+               <y>370</y>
+               <width>131</width>
+               <height>31</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>DREW SYNC</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="grewSync">
+             <property name="geometry">
+              <rect>
+               <x>50</x>
+               <y>370</y>
+               <width>131</width>
+               <height>31</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>GREW SYNC</string>
+             </property>
+            </widget>
            </widget>
            <widget class="QGroupBox" name="groupBox_2">
             <property name="geometry">
@@ -910,27 +936,8 @@ QCheckBox::indicator:unchecked {
             <widget class="QDoubleSpinBox" name="appsHFault_2">
              <property name="geometry">
               <rect>
-               <x>240</x>
+               <x>340</x>
                <y>260</y>
-               <width>62</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>3</number>
-             </property>
-             <property name="maximum">
-              <double>1.000000000000000</double>
-             </property>
-            </widget>
-            <widget class="QDoubleSpinBox" name="appsLFault_2">
-             <property name="geometry">
-              <rect>
-               <x>230</x>
-               <y>280</y>
                <width>62</width>
                <height>22</height>
               </rect>
@@ -969,38 +976,6 @@ QCheckBox::indicator:unchecked {
              </property>
              <property name="text">
               <string>BPSR High Fault</string>
-             </property>
-            </widget>
-            <widget class="QDoubleSpinBox" name="maxTorqueRequest">
-             <property name="geometry">
-              <rect>
-               <x>1180</x>
-               <y>170</y>
-               <width>62</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>3</number>
-             </property>
-             <property name="maximum">
-              <double>500.000000000000000</double>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="sendMaxTorqRequest">
-             <property name="geometry">
-              <rect>
-               <x>940</x>
-               <y>160</y>
-               <width>221</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Maximum Torque Request</string>
              </property>
             </widget>
             <widget class="QPushButton" name="sendBPSFEngaged">
@@ -1134,7 +1109,7 @@ QCheckBox::indicator:unchecked {
               <string>Minimum</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="sendapps1SignalSlider">
+            <widget class="QPushButton" name="sendApps1SignalButton">
              <property name="geometry">
               <rect>
                <x>100</x>
@@ -1405,6 +1380,76 @@ QCheckBox::indicator:unchecked {
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
             </widget>
+            <widget class="QPushButton" name="flashConfig">
+             <property name="geometry">
+              <rect>
+               <x>330</x>
+               <y>-20</y>
+               <width>141</width>
+               <height>81</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>FLASH CONFIG</string>
+             </property>
+            </widget>
+            <widget class="QDoubleSpinBox" name="appsLFault_2">
+             <property name="geometry">
+              <rect>
+               <x>340</x>
+               <y>290</y>
+               <width>62</width>
+               <height>22</height>
+              </rect>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
+            </widget>
+            <widget class="QDoubleSpinBox" name="appsHFault">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>260</y>
+               <width>62</width>
+               <height>22</height>
+              </rect>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
+            </widget>
+            <widget class="QDoubleSpinBox" name="appsLFault">
+             <property name="geometry">
+              <rect>
+               <x>30</x>
+               <y>310</y>
+               <width>62</width>
+               <height>22</height>
+              </rect>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
+            </widget>
            </widget>
            <widget class="QWidget" name="widget_6" native="true">
             <property name="geometry">
@@ -1473,146 +1518,9 @@ QCheckBox::indicator:unchecked {
                  <string>Fault Log</string>
                 </property>
                </widget>
-               <widget class="QPushButton" name="sendAPPSHFault">
-                <property name="geometry">
-                 <rect>
-                  <x>40</x>
-                  <y>40</y>
-                  <width>81</width>
-                  <height>31</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>HFault</string>
-                </property>
-               </widget>
-               <widget class="QPushButton" name="sendAPPSLSignal">
-                <property name="geometry">
-                 <rect>
-                  <x>140</x>
-                  <y>40</y>
-                  <width>71</width>
-                  <height>31</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>appsLsignal</string>
-                </property>
-               </widget>
-               <widget class="QPushButton" name="sendAPPSHSignal">
-                <property name="geometry">
-                 <rect>
-                  <x>270</x>
-                  <y>20</y>
-                  <width>71</width>
-                  <height>41</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>AppsHSignal</string>
-                </property>
-               </widget>
-               <widget class="QPushButton" name="sendAPPSLFault">
-                <property name="geometry">
-                 <rect>
-                  <x>220</x>
-                  <y>70</y>
-                  <width>71</width>
-                  <height>31</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>LFault</string>
-                </property>
-               </widget>
-               <widget class="QPushButton" name="sendAPPSLSignal_2">
-                <property name="geometry">
-                 <rect>
-                  <x>290</x>
-                  <y>70</y>
-                  <width>161</width>
-                  <height>41</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>L2Signal</string>
-                </property>
-               </widget>
-               <widget class="QPushButton" name="sendAPPSHFault_2">
-                <property name="geometry">
-                 <rect>
-                  <x>420</x>
-                  <y>30</y>
-                  <width>100</width>
-                  <height>32</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>H2Fault</string>
-                </property>
-               </widget>
-               <widget class="QPushButton" name="sendAPPSHSignal_3">
-                <property name="geometry">
-                 <rect>
-                  <x>480</x>
-                  <y>70</y>
-                  <width>100</width>
-                  <height>32</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>H2Signal</string>
-                </property>
-               </widget>
-               <widget class="QPushButton" name="sendAPPSLFault_2">
-                <property name="geometry">
-                 <rect>
-                  <x>50</x>
-                  <y>80</y>
-                  <width>100</width>
-                  <height>32</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>L2Fault</string>
-                </property>
-               </widget>
-               <widget class="QPushButton" name="sendAPPSHSignal_2">
-                <property name="geometry">
-                 <rect>
-                  <x>110</x>
-                  <y>70</y>
-                  <width>100</width>
-                  <height>32</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>appsH2</string>
-                </property>
-               </widget>
               </widget>
              </item>
             </layout>
-           </widget>
-           <widget class="QDoubleSpinBox" name="appsLFault">
-            <property name="geometry">
-             <rect>
-              <x>30</x>
-              <y>830</y>
-              <width>62</width>
-              <height>22</height>
-             </rect>
-            </property>
-           </widget>
-           <widget class="QDoubleSpinBox" name="appsHFault">
-            <property name="geometry">
-             <rect>
-              <x>30</x>
-              <y>780</y>
-              <width>62</width>
-              <height>22</height>
-             </rect>
-            </property>
            </widget>
           </widget>
          </item>
@@ -1629,7 +1537,7 @@ QCheckBox::indicator:unchecked {
      <x>0</x>
      <y>0</y>
      <width>1500</width>
-     <height>37</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
