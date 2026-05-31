@@ -302,8 +302,18 @@ class VCUWidget(QtWidgets.QMainWindow):
 
     
     @Slot()
+<<<<<<< HEAD
     def sendApps1FaultSlider(self):
         pass
+=======
+    def sendapps1SignalSlider(self):
+        #set low and high signal and then send
+        lowSignal= self.vcu.state["apps1Thresholds"][2]
+        highSignal = self.vcu.state["apps1Thresholds"][3]
+
+        self.vcu.set_param(0x0001,lowSignal ,2)
+        self.vcu.set_param(0x0001,highSignal ,3)
+>>>>>>> c1bc336 (Object name changes)
     
     @Slot()
     def sendApps1Inputboxes(self):
