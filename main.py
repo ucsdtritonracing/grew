@@ -1,6 +1,7 @@
 import can
 import sys
 import math
+import argparse
 from PySide6 import QtWidgets, QtCore
 import cantools
 import pyqtgraph as pg
@@ -61,13 +62,26 @@ class CANSimulators(QtCore.QObject):
             pass
 
 def main():
+    parser = argparse.ArgumentParser(description='CAN bus monitoring and configuration tool')
+    bus_group = parser.add_mutually_exclusive_group()
+    bus_group.add_argument('--virtual', action='store_true', help='Use virtual CAN bus')
+    bus_group.add_argument('--pcan', action='store_true', help='Use PCAN hardware bus')
+    args = parser.parse_args()
+
     app = QtWidgets.QApplication(sys.argv)
     channels = can.detect_available_configs(interfaces=['pcan'])
     print(channels)
 
     # 1. Initialize CAN Bus interface
+    if args.pcan:
+        interface = 'pcan'
+        print("Using PCAN hardware bus")
+    else:
+        interface = 'virtual'
+        print("Using virtual CAN bus")
+
     bus = can.interface.Bus(
-        interface='virtual',
+        interface=interface,
         channel='PCAN_USBBUS1',
         bitrate=500000,        # match exactly what the VCU firmware is configured for
         receive_own_messages=True,
