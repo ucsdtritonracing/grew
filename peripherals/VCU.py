@@ -15,33 +15,36 @@ class VCU(CANPeripheral):
         self.txData = [0,0,0,0,0,0,0,0]
         self.txData1 = [0]
         self.dbc = cantools.database.load_file("constants/drew-2-3-0.dbc")
-        self.sync = False
-        self._pending_sync_ids = set()
-        
+
     @Slot()
     def enable(self):
         # enter flash mode 
         print("HI IM ENABLED")
         self.txData1[0] = self.const.FLASH_ON
         super().send_message(self.txData1, self.const.FLASH_ID, is_extended_id=False)
+
     @Slot()
     def disable(self):
         self.txData1 = [self.const.FLASH_OFF]
         super().send_message(self.txData1, self.const.FLASH_ID, is_extended_id=False)
-    @Slot()
-    def resetUI(self):
-        # Group signals by CAN ID, preserving insertion order
-        grouped: dict[int, list] = {}
-        for signal_name, (can_id, value) in self.const.CONFIGURATION_SIGNALS.items():
-            grouped.setdefault(can_id, []).append(value)
 
-        for cmd_id, values in grouped.items():
-            cfg_id = cmd_id + 0x100
-            try:
-                msg_name = self.dbc.get_message_by_frame_id(cfg_id).name
-                self.dataSignal.emit(values, msg_name)
-            except KeyError:
-                pass
+    @Slot()
+    def requestSync(self):
+        """Re-emit last-received CFG broadcast values to immediately refresh the UI,
+        and mirror them into local CMD state so unsent changes are replaced by VCU truth."""
+        for id, signals in self.const.BROADCAST_SIGNALS.items():
+            if id >= 0x410:
+                for signal in signals:
+                    cmd_name = signal[0].replace("DREW_CFG_", "DREW_CMD_")
+                    if cmd_name in self.const.CONFIGURATION_SIGNALS:
+                        self.const.CONFIGURATION_SIGNALS[cmd_name][1] = signal[1]
+                values = [signal[1] for signal in signals]
+                try:
+                    msg_name = self.dbc.get_message_by_frame_id(id).name
+                    self.dataSignal.emit(values, msg_name)
+                except Exception:
+                    pass
+
     @Slot()
     def set_param(self, message_name: str):
         msg_def = self.dbc.get_message_by_name(message_name)
@@ -52,7 +55,7 @@ class VCU(CANPeripheral):
         }
 
         data = msg_def.encode(signals, padding=True)
-        
+
         print(f"[set_param] {message_name} | ID: {msg_def.frame_id:#05x} | signals: {signals} | raw: {data.hex()}")
         super().send_message(
             data=data,
@@ -60,13 +63,6 @@ class VCU(CANPeripheral):
             is_extended_id=msg_def.is_extended_frame,
             is_fd=msg_def.is_fd
         )
-
-        cfg_echo_id = msg_def.frame_id + 0x100
-        if cfg_echo_id in self.const.BROADCAST_SIGNALS:
-            if not self.sync:
-                self.sync = True
-                self._pending_sync_ids = set()
-            self._pending_sync_ids.add(cfg_echo_id)
     
     @Slot()
     def writeConfiguration(self):
@@ -90,17 +86,3 @@ class VCU(CANPeripheral):
 
         for signal in signals:
             signal[1] = data[signal[0]]
-
-            if self.sync:
-                cmd_name = signal[0].replace("DREW_CFG_", "DREW_CMD_")
-                if cmd_name in self.const.CONFIGURATION_SIGNALS:
-                    self.const.CONFIGURATION_SIGNALS[cmd_name][1] = signal[1]
-
-        if self.sync and id in self._pending_sync_ids:
-            values = [signal[1] for signal in signals]
-            msg_name = self.dbc.get_message_by_frame_id(id).name
-            self.dataSignal.emit(values, msg_name)
-
-            self._pending_sync_ids.discard(id)
-            if not self._pending_sync_ids:
-                self.sync = False

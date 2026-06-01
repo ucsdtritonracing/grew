@@ -41,7 +41,6 @@ class DraggablePoint(pg.TargetItem):
         # Notify parent
         self.callback(self.index, pos.y())
 
-
 class VCUWidget(QtWidgets.QMainWindow):
     window_closed = Signal()
     logger = Signal(str)
@@ -68,23 +67,13 @@ class VCUWidget(QtWidgets.QMainWindow):
 
         self.window.setPedalMapButton.clicked.connect(self.sendPedalMap)
         self.window.sendConfigButton.clicked.connect(self.vcu.writeConfiguration)
-        self.window.flashConfig.clicked.connect(self.vcu.flashConfiguration)
-        self.window.drewSync.clicked.connect(self.syncPeriod)
-        self.window.grewSync.clicked.connect(self.vcu.resetUI)
+        self.window.syncButton.clicked.connect(self.vcu.requestSync)
         # BPS/APPS threshold buttons
         for btn_name, (msg_name) in self.vcu.const.button_map.items():
             getattr(self.window, btn_name).clicked.connect(
                 lambda checked=False, msg_name=msg_name: self.vcu.set_param(msg_name))
-            
 
-        
-        
         #self.window.exitConfig.clicked.connect(self.vcu.disable)
-    def syncPeriod(self):
-        self.vcu.sync = True
-        QTimer.singleShot(2000, lambda: setattr(self.vcu, 'sync', False))
-        self.vcu.resetUI()
-
     def closeEvent(self, event):
         self.window_closed.emit()
         event.accept()
@@ -96,6 +85,8 @@ class VCUWidget(QtWidgets.QMainWindow):
         self.buffers = {
             "pedalMap": [0, 0, 0, 0, 0, 0, 0, 0, 0,
                          0, 0, 0, 0, 0, 0, 0, 0, 1],
+            "pedalMapVCU": [0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 1],
             "x": [x * 6.25 for x in range(18)]
         }
         self.window.pedalGraph.setXRange(0, 100)
@@ -109,8 +100,15 @@ class VCUWidget(QtWidgets.QMainWindow):
             "pedalMap": self.window.pedalGraph.plot(
                 self.buffers["x"],
                 self.buffers["pedalMap"],
-                pen=pg.mkPen('r', width=1.5)
-            )
+                pen=pg.mkPen('r', width=1.5),
+                name="Local"
+            ),
+            "pedalMapVCU": self.window.pedalGraph.plot(
+                self.buffers["x"],
+                self.buffers["pedalMapVCU"],
+                pen=pg.mkPen('b', width=1.5),
+                name="VCU"
+            ),
         }
 
         # Draggable control points
@@ -179,8 +177,6 @@ class VCUWidget(QtWidgets.QMainWindow):
     
     @Slot()
     def updateUI(self, data, name):
-        if(not self.vcu.sync):
-            return
         match name:
             case "DREW_CFG_APP1_THRESHOLD":
                 self.window.appsLSignalCurrent.setValue(data[2])
@@ -207,22 +203,11 @@ class VCUWidget(QtWidgets.QMainWindow):
             case "DREW_CFG_MAX_TORQUE_REQUEST":
                 self.window.inputmaxtorque.setValue(int(data[0]))
     
-            case "DREW_CFG_PEDAL_MAP_POINT_1":  self.window.pointInput1.setValue(data[0])
-            case "DREW_CFG_PEDAL_MAP_POINT_2":  self.window.pointInput2.setValue(data[0])
-            case "DREW_CFG_PEDAL_MAP_POINT_3":  self.window.pointInput3.setValue(data[0])
-            case "DREW_CFG_PEDAL_MAP_POINT_4":  self.window.pointInput4.setValue(data[0])
-            case "DREW_CFG_PEDAL_MAP_POINT_5":  self.window.pointInput5.setValue(data[0])
-            case "DREW_CFG_PEDAL_MAP_POINT_6":  self.window.pointInput6.setValue(data[0])
-            case "DREW_CFG_PEDAL_MAP_POINT_7":  self.window.pointInput7.setValue(data[0])
-            case "DREW_CFG_PEDAL_MAP_POINT_8":  self.window.pointInput8.setValue(data[0])
-            case "DREW_CFG_PEDAL_MAP_POINT_9":  self.window.pointInput9.setValue(data[0])
-            case "DREW_CFG_PEDAL_MAP_POINT_10": self.window.pointInput10.setValue(data[0])
-            case "DREW_CFG_PEDAL_MAP_POINT_11": self.window.pointInput11.setValue(data[0])
-            case "DREW_CFG_PEDAL_MAP_POINT_12": self.window.pointInput12.setValue(data[0])
-            case "DREW_CFG_PEDAL_MAP_POINT_13": self.window.pointInput13.setValue(data[0])
-            case "DREW_CFG_PEDAL_MAP_POINT_14": self.window.pointInput14.setValue(data[0])
-            case "DREW_CFG_PEDAL_MAP_POINT_15": self.window.pointInput15.setValue(data[0])
-            case "DREW_CFG_PEDAL_MAP_POINT_16": self.window.pointInput16.setValue(data[0])
+            case name if name.startswith("DREW_CFG_PEDAL_MAP_POINT_"):
+                n = int(name.split("_")[-1])  # 1–16
+                getattr(self.window, f"pointInput{n}").setValue(data[0])
+                self.buffers["pedalMapVCU"][n] = data[0]
+                self.curves["pedalMapVCU"].setData(self.buffers["x"], self.buffers["pedalMapVCU"])
 
 
     @Slot()
@@ -242,7 +227,6 @@ class VCUWidget(QtWidgets.QMainWindow):
     def show(self):
         self.window.raise_()
         self.window.show()
-    
     
     @Slot()
     def setupApps1RangeSlider(self):
@@ -285,8 +269,6 @@ class VCUWidget(QtWidgets.QMainWindow):
 
         self.window.appsLSignal.setValue(0.20)
         self.window.appsHSignal.setValue(0.80)
-
-
         #Add slider to widget container
         layout = self.window.apps1SignalSliderContainer.layout()
         if layout is None:
@@ -300,10 +282,6 @@ class VCUWidget(QtWidgets.QMainWindow):
         self.apps1SignalSlider.valuesChanged.connect(self.updateapps1SignalSlider)
         self.window.appsLSignal.valueChanged.connect(self.updateApps1InputBoxes)
         self.window.appsHSignal.valueChanged.connect(self.updateApps1InputBoxes)
-
-
-        #already bound in vcu dict
-        
 
     @Slot()
     def updateapps1SignalSlider(self, *args):
@@ -323,7 +301,6 @@ class VCUWidget(QtWidgets.QMainWindow):
 
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_Low"][1]= lowSignal
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1]= highSignal
-        print(self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1])
     
     @Slot()
     def updateApps1InputBoxes(self):
@@ -342,9 +319,6 @@ class VCUWidget(QtWidgets.QMainWindow):
 
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_Low"][1]= lowSignal
         self.vcu.const.CONFIGURATION_SIGNALS["DREW_CMD_APP1_Signal_High"][1]= highSignal
-
-
-    
     
     @Slot()
     def setupApps2RangeSlider(self):
@@ -388,8 +362,6 @@ class VCUWidget(QtWidgets.QMainWindow):
 
         self.window.appsLSignal_2.setValue(0.20)
         self.window.appsHSignal_2.setValue(0.80)
-
-
         #Add slider to widget container
         layout = self.window.apps2FaultSliderContainer.layout()
         if layout is None:
@@ -398,15 +370,10 @@ class VCUWidget(QtWidgets.QMainWindow):
         layout.addWidget(self.apps2FaultSlider, alignment=QtCore.Qt.AlignCenter)
         layout.addWidget(self.apps2FaultSlider)
         self.apps1FaultSlider.show()
-
         #when slider changes call update
         self.apps1FaultSlider.valuesChanged.connect(self.updateApps2FaultSlider)
         self.window.appsLSignal_2.valueChanged.connect(self.updateApps2InputBoxes)
         self.window.appsHSignal_2.valueChanged.connect(self.updateApps2InputBoxes)
-
-
-        # bound in VCU constants dict
-        
 
     @Slot()
     def updateApps2FaultSlider(self,values):
@@ -428,7 +395,6 @@ class VCUWidget(QtWidgets.QMainWindow):
         #self.vcu.set_param(0x0002,lowSignal ,2)
         #self.vcu.set_param(0x0002,highSignal ,3)
 
-        #did i make sure u can send from just inputting, how do i connect inputs to sliders
     @Slot()
     def sendApps2Inputboxes(self):
         lowSignal = self.vcu.state["apps2Thresholds"][2]
@@ -436,4 +402,3 @@ class VCUWidget(QtWidgets.QMainWindow):
 
         #self.vcu.set_param(0x002,lowSignal,2)
         #self.vcu.set_param(0x002,highSignal,3)
-

@@ -697,32 +697,6 @@ QCheckBox::indicator:unchecked {
               <string>Set Configuration</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="drewSync">
-             <property name="geometry">
-              <rect>
-               <x>190</x>
-               <y>370</y>
-               <width>131</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>DREW SYNC</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="grewSync">
-             <property name="geometry">
-              <rect>
-               <x>50</x>
-               <y>370</y>
-               <width>131</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>GREW SYNC</string>
-             </property>
-            </widget>
            </widget>
            <widget class="QGroupBox" name="groupBox_2">
             <property name="geometry">
@@ -1448,6 +1422,19 @@ QCheckBox::indicator:unchecked {
              </property>
              <property name="maximum">
               <double>1.000000000000000</double>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="syncButton">
+             <property name="geometry">
+              <rect>
+               <x>170</x>
+               <y>-30</y>
+               <width>141</width>
+               <height>81</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>SYNC</string>
              </property>
             </widget>
            </widget>
